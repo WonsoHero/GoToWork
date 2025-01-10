@@ -13,14 +13,14 @@ public class HandController : MonoBehaviour
 
     Vector3 targetVelocity;
     Vector3 prevVelocity = Vector3.zero;
-    [SerializeField] float moveDelay = 0.5f; //ÀÌµ¿ ½ÃÀÛ µô·¹ÀÌ
-    [SerializeField] float smoothFactor = 0.1f; //°ü¼º
-    [SerializeField] float multiflier = 10f; //°¨µµ ¹è¼ö
+    [SerializeField] float moveDelay = 0.5f; //ì´ë™ ì‹œì‘ ë”œë ˆì´
+    [SerializeField] float smoothFactor = 0.1f; //ê´€ì„±
+    [SerializeField] float multiflier = 10f; //ê°ë„ ë°°ìˆ˜
 
     float mouseX;
     float mouseY;
 
-    float mouseNotMovedTime = 0f; //¸¶¿ì½º ÀÌµ¿ÀÌ ¾ø´ø ½Ã°£
+    float mouseNotMovedTime = 0f; //ë§ˆìš°ìŠ¤ ì´ë™ì´ ì—†ë˜ ì‹œê°„
 
     [SerializeField] TextMeshProUGUI velocityTmp;
     [SerializeField] TextMeshProUGUI inputTmp;
@@ -44,12 +44,12 @@ public class HandController : MonoBehaviour
     private void FixedUpdate()
     {
         CalcAcceleration();
-        //¿Ş¼Õ
+        //?ì¢ë™£?ìŒì‚•
         if (Input.GetMouseButton(0))
         {
             MoveHandAfterDelay(leftHand);
         }
-        //¿À¸¥¼Õ
+        //?ì¢ë£?ì‡¿ëœ?ìˆˆì‚•?ì¢ë£??
         else if (Input.GetMouseButton(1))
         {
             MoveHandAfterDelay(rightHand);
@@ -61,9 +61,6 @@ public class HandController : MonoBehaviour
         LimitHandPosition(leftHand);
         LimitHandPosition(rightHand);
     }
-    /* ¸¶¿ì½º ÀÌµ¿  ¼Óµµ¿¡ µû¸¥ °¡¼ÓÀ» ÁÖ´Â ÇÔ¼ö
-     * mouseX,mouseY°¡ ´ëÃ¼·Î 1ÀÌÇÏÀÇ °ªÀÌ ³ª¿Í ÀûÀıÇÑ multiflier¸¦ °öÇÑ ÈÄ Á¦°öÀ» ÅëÇØ ¼Óµµ Áõ°¡
-     ¼öÄ¡¸¦ Á¶ÀıÇÏ¸ç Á¶ÀÛÀ» ±ğ¾Æ¾ß ÇÔ */
     void CalcAcceleration()
     {
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
@@ -78,26 +75,26 @@ public class HandController : MonoBehaviour
     {
         if (mouseX != 0 || mouseY != 0)
         {
-            Debug.Log("Hand velocity: " + hand.linearVelocity);
+            Debug.Log("Hand velocity: " + hand.linearVelocity.magnitude);
             velocityTmp.text = hand.linearVelocity.ToString();
-            // `prevVelocity`¸¦ ÇöÀç ¼ÕÀÇ ¼Óµµ·Î °»½Å
+            // `prevVelocity`ç‘œ??ê¾©ì˜± ?ë¨¯ì“½ ?ë¾ë£„æ¿¡?åª›ê¹†ë–Š
             prevVelocity = Vector3.Lerp(prevVelocity, targetVelocity, smoothFactor);
         }
-        // °»½ÅµÈ ¼Óµµ¸¦ ÄÚ·çÆ¾À¸·Î Àû¿ë
+        // ê°±ì‹ ëœ ì†ë„ë¥¼ ì½”ë£¨í‹´ìœ¼ë¡œ ì ìš©
         StartCoroutine(UpdateVelocity(hand, prevVelocity));
     }
 
-    /*MoveDelay ÀÌÈÄ¿¡ »ç¿ëÀÚÀÇ ¸¶¿ì½º ¿òÁ÷ÀÓ¿¡ µû¸¥ velocity¸¦ °»½ÅÇÑ´Â ÇÔ¼ö
-     »ç¿ëÀÚÀÇ ¸¶¿ì½º ÄÁÆ®·Ñ¿¡ ÀÇÇÑ ¼Õ ÀÌµ¿ÀÌ Áï°¢ÀûÀÌ¸é ³Ê¹« ½±°í ´ÜÁ¶·Î¿ï °Å °°¾Æ ÀÛ¼º
-     Å×½ºÆ®¸¦ ÅëÇÑ Á¶Á¤ ÇÊ¿ä*/
+    /*MoveDelay ì´í›„ì— ì‚¬ìš©ìì˜ ë§ˆìš°ìŠ¤ ì›€ì§ì„ì— ë”°ë¥¸ velocityë¥¼ ê°±ì‹ í•œëŠ” í•¨ìˆ˜
+     ì‚¬ìš©ìì˜ ë§ˆìš°ìŠ¤ ì»¨íŠ¸ë¡¤ì— ì˜í•œ ì† ì´ë™ì´ ì¦‰ê°ì ì´ë©´ ë„ˆë¬´ ì‰½ê³  ë‹¨ì¡°ë¡œìš¸ ê±° ê°™ì•„ ì‘ì„±
+     í…ŒìŠ¤íŠ¸ë¥¼ í†µí•œ ì¡°ì • í•„ìš”*/
     IEnumerator UpdateVelocity(Rigidbody hand, Vector3 velocity)
     {
         yield return new WaitForSeconds(moveDelay);
         hand.linearVelocity = velocity;
     }
-    /*¸¶¿ì½º ÀÌµ¿ÀÌ ÀÖ´Â ½Ã°£À» Ã¼Å©ÇÏ°í ÀÏÁ¤ ½Ã°£ µ¿¾È ¾øÀ¸¸é ¸ØÃß´Â ÇÔ¼ö
-     ½Ã°£À» Ã¼Å©ÇÏ´Â ÀÌÀ¯ : ÀÌµ¿ÀÌ ¾øÀ» ¶§ ¹Ù·Î ¸ØÃß¸é Àá±ñÀÇ ¼ø°£µµ Áï°¢ÀûÀ¸·Î
-    Ã¼Å©ÇØ¼­ ±âº»ÀûÀÎ ¿òÁ÷ÀÓÀÌ ¶Ò¶Ò ²÷±â°Ô µÊ*/
+    /*ë§ˆìš°ìŠ¤ ì´ë™ì´ ìˆëŠ” ì‹œê°„ì„ ì²´í¬í•˜ê³  ì¼ì • ì‹œê°„ ë™ì•ˆ ì—†ìœ¼ë©´ ë©ˆì¶”ëŠ” í•¨ìˆ˜
+     ì‹œê°„ì„ ì²´í¬í•˜ëŠ” ì´ìœ  : ì´ë™ì´ ì—†ì„ ë•Œ ë°”ë¡œ ë©ˆì¶”ë©´ ì ê¹ì˜ ìˆœê°„ë„ ì¦‰ê°ì ìœ¼ë¡œ
+    ì²´í¬í•´ì„œ ê¸°ë³¸ì ì¸ ì›€ì§ì„ì´ ëšëš ëŠê¸°ê²Œ ë¨*/
     void CheckMouseInput()
     {
         if (mouseX == 0 && mouseY == 0)
@@ -113,15 +110,15 @@ public class HandController : MonoBehaviour
             mouseNotMovedTime = 0;
         }
     }
-    /*¸ğµç ¼Õ ¿òÁ÷ÀÓÀ» ¸ØÃß´Â ÇÔ¼ö*/
+    /*ëª¨ë“  ì† ì›€ì§ì„ì„ ë©ˆì¶”ëŠ” í•¨ìˆ˜*/
     void StopHandsMovement()
     {
         leftHand.linearVelocity = Vector3.Lerp(leftHand.linearVelocity, Vector3.zero, smoothFactor);
         rightHand.linearVelocity = Vector3.Lerp(rightHand.linearVelocity, Vector3.zero, smoothFactor);
     }
 
-    /*¼Õ À§Ä¡°¡ È­¸é ¹ÛÀ¸·Î ³ª°¡Áö ¾Ê°Ô ÇÏ´Â ÇÔ¼ö
-     Ä«¸Ş¶ó °æ°è ºÎºĞ¿¡¼­ µåµåµæ °Å·Á °³¼± ÇÊ¿ä*/
+    /*ì† ìœ„ì¹˜ê°€ í™”ë©´ ë°–ìœ¼ë¡œ ë‚˜ê°€ì§€ ì•Šê²Œ í•˜ëŠ” í•¨ìˆ˜
+     ì¹´ë©”ë¼ ê²½ê³„ ë¶€ë¶„ì—ì„œ ë“œë“œë“ ê±°ë ¤ ê°œì„  í•„ìš”*/
     void LimitHandPosition(Rigidbody hand)
     {
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(hand.position);
@@ -130,7 +127,8 @@ public class HandController : MonoBehaviour
         Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
         hand.position = worldPos;
     }
-    /*°¨µµÁ¶Àı ÇÔ¼ö*/
+
+    /*ê°ë„ì¡°ì ˆ í•¨ìˆ˜*/
     void UpdateMultifly()
     {
         if (Input.GetKeyDown(KeyCode.A))
