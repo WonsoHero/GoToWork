@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3afadc8be64c3984fadb4c0c288baa41
+timeCreated: 1501996004
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Prefabs/Furnitures/Fridge.prefab
+  uploadId: 426421

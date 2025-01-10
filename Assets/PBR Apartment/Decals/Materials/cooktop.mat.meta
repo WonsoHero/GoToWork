@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e7d3f93e5bfee414184308a23777260a
+timeCreated: 1501527620
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Decals/Materials/cooktop.mat
+  uploadId: 426421

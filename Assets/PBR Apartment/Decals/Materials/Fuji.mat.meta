@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3f47b07ca7f8b73429060faa4be49aaa
+timeCreated: 1501522998
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Decals/Materials/Fuji.mat
+  uploadId: 426421

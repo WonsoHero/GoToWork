@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0db110fa5e43e3a4199bef9c8cd9bbdf
+timeCreated: 1502135656
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Prefabs/Furnitures/Pipe.prefab
+  uploadId: 426421

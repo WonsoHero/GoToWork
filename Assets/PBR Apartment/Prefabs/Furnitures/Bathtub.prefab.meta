@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f31d4bd2e6714844e8727b74eadcf49d
+timeCreated: 1501989691
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Prefabs/Furnitures/Bathtub.prefab
+  uploadId: 426421

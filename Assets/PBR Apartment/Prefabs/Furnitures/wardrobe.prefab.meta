@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8dbd7fe3c86a2f04ab6df57cd33845cb
+timeCreated: 1503795688
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Prefabs/Furnitures/wardrobe.prefab
+  uploadId: 426421

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: aaaf671cbc939254fb923946ab1622fe
+timeCreated: 1501296142
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Materials/rail.mat
+  uploadId: 426421

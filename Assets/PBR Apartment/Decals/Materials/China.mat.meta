@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e59a0c44062732f45a193ce4641e0860
+timeCreated: 1500607209
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Decals/Materials/China.mat
+  uploadId: 426421

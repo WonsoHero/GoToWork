@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6e3fadf58830b2d40aecd0f9deb295f6
+timeCreated: 1501527619
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Decals/Materials/decal_lighthouse.mat
+  uploadId: 426421

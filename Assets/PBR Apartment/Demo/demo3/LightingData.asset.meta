@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 65ec5a2b181c0bb4cb5645c5ec3a047f
+timeCreated: 1508904125
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 25800000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Demo/demo3/LightingData.asset
+  uploadId: 426421

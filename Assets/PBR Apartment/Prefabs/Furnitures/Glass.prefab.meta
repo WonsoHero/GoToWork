@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 059b4ea21336cd04c9ed7098c81ac2df
+timeCreated: 1506197413
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Prefabs/Furnitures/Glass.prefab
+  uploadId: 426421

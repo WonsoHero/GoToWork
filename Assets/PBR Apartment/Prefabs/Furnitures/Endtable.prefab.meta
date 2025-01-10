@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 13c76b2b258c62345b2838c57f752f92
+timeCreated: 1501541060
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 97614
+  packageName: HD Apartment
+  packageVersion: 1.2
+  assetPath: Assets/PBR Apartment/Prefabs/Furnitures/Endtable.prefab
+  uploadId: 426421
