@@ -29,6 +29,6 @@ public class PlayerTestDebug : MonoBehaviour
 
     public void ChangeDebugText(string text)
     {
-        DebugText.text = text;
+        //DebugText.text = text;
     }
 }

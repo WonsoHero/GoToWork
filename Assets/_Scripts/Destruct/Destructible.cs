@@ -7,6 +7,9 @@ public class Destructible : MonoBehaviour
 
     public float forceMultiplier = 4;
     public float destructForce = 4;
+
+    bool destructed = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,9 +42,12 @@ public class Destructible : MonoBehaviour
             float force = speed.magnitude / Time.fixedDeltaTime;
 
             //충돌시 힘 크기가 destructForce를 초과하면 파괴
-            if (force > destructForce)
+            //파괴 모델 하나만 나오도록 조건 추가
+            if (force > destructForce && !destructed)
             {
+                Debug.Log("부서짐");
                 Destruct(collision.GetContact(0), speed);
+                destructed = true;
             }
         }
     }

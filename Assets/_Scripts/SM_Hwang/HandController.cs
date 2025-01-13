@@ -113,8 +113,8 @@ public class HandController : MonoBehaviour
 
 
 
-        LimitHandPosition(leftHand);
-        LimitHandPosition(rightHand);
+        //LimitHandPosition(leftHand);
+        //LimitHandPosition(rightHand);
         //게이지 범위 제한
         leftHandGauge.fillAmount = Mathf.Clamp(leftHandGauge.fillAmount, 0, 1);
         rightHandGauge.fillAmount = Mathf.Clamp(rightHandGauge.fillAmount, 0, 1);
