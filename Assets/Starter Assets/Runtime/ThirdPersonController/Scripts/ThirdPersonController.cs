@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -14,6 +14,21 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        /// <summary>
+        ///  Player State에 따라 움직임을 막기 위한 변수
+        /// </summary>
+        bool blockInput = false;
+
+        /// <summary>
+        ///  플레이어의 Input을 막아 움직이지 못하게 함
+        /// </summary>
+        /// <param name="block"></param>
+        public void BlockInput(bool block)
+        {
+            blockInput = block;
+        }
+
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -155,6 +170,9 @@ namespace StarterAssets
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
+
+            // input 막기
+            if (blockInput) return;
 
             JumpAndGravity();
             GroundedCheck();
