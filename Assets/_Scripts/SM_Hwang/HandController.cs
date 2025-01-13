@@ -1,15 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class HandController : MonoBehaviour
 {
     [SerializeField] Rigidbody leftHand;
     [SerializeField] Rigidbody rightHand;
+    [SerializeField] Image leftHandGauge;
+    [SerializeField] Image rightHandGauge;
 
     Vector3 targetVelocity;
     Vector3 prevVelocity = Vector3.zero;
@@ -22,15 +26,17 @@ public class HandController : MonoBehaviour
 
     float mouseNotMovedTime = 0f; //마우스 이동이 없던 시간
 
+    bool isLeftHandActing = false;
+    bool isRightHandActing = false;
+
+    //수치 확인용 텍스트
     [SerializeField] TextMeshProUGUI velocityTmp;
     [SerializeField] TextMeshProUGUI inputTmp;
     [SerializeField] TextMeshProUGUI multiflierTmp;
 
     private void Start()
     {
-        //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
     }
     private void Update()
     {
@@ -38,28 +44,68 @@ public class HandController : MonoBehaviour
         {
             SceneManager.LoadScene("SM_Hwang");
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isLeftHandActing = false;
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            isRightHandActing = false;
+        }
         UpdateMultifly();
+        CalcAcceleration();
         CheckMouseInput();
     }
     private void FixedUpdate()
     {
-        CalcAcceleration();
-        //?좎뙣?쎌삕
-        if (Input.GetMouseButton(0))
+        //왼손
+        if (Input.GetMouseButton(0) && !isRightHandActing)
         {
+            isLeftHandActing = true;
             MoveHandAfterDelay(leftHand);
+            if (Input.GetMouseButton(1))
+            {
+                rightHandGauge.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                rightHandGauge.fillAmount -= Time.fixedDeltaTime;
+            }
         }
-        //?좎룞?쇿뜝?숈삕?좎룞??
-        else if (Input.GetMouseButton(1))
+
+        //오른손
+        if (Input.GetMouseButton(1) && !isLeftHandActing)
         {
+            isRightHandActing = true;
             MoveHandAfterDelay(rightHand);
+            if (Input.GetMouseButton(0))
+            {
+                leftHandGauge.fillAmount += Time.fixedDeltaTime;
+            }
+            else
+            {
+                leftHandGauge.fillAmount -= Time.fixedDeltaTime;
+            }
         }
-        else
+        if(!isLeftHandActing)
+        {
+            rightHandGauge.fillAmount -= Time.fixedDeltaTime;
+        }
+        if (!isRightHandActing)
+        {
+            leftHandGauge.fillAmount -= Time.fixedDeltaTime;
+        }
+
+        if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1))
         {
             StopHandsMovement();
         }
+
         LimitHandPosition(leftHand);
         LimitHandPosition(rightHand);
+        //게이지 범위 제한
+        leftHandGauge.fillAmount = Mathf.Clamp(leftHandGauge.fillAmount, 0, 1);
+        rightHandGauge.fillAmount = Mathf.Clamp(rightHandGauge.fillAmount, 0, 1);
     }
     void CalcAcceleration()
     {
@@ -77,11 +123,11 @@ public class HandController : MonoBehaviour
         {
             Debug.Log("Hand velocity: " + hand.linearVelocity.magnitude);
             velocityTmp.text = hand.linearVelocity.ToString();
-            // `prevVelocity`瑜??꾩옱 ?먯쓽 ?띾룄濡?媛깆떊
             prevVelocity = Vector3.Lerp(prevVelocity, targetVelocity, smoothFactor);
+
+            // 갱신된 속도를 코루틴으로 적용
+            StartCoroutine(UpdateVelocity(hand, prevVelocity));
         }
-        // 갱신된 속도를 코루틴으로 적용
-        StartCoroutine(UpdateVelocity(hand, prevVelocity));
     }
 
     /*MoveDelay 이후에 사용자의 마우스 움직임에 따른 velocity를 갱신한는 함수
@@ -100,7 +146,7 @@ public class HandController : MonoBehaviour
         if (mouseX == 0 && mouseY == 0)
         {
             mouseNotMovedTime += Time.deltaTime;
-            if (mouseNotMovedTime > 0.5f)
+            if (mouseNotMovedTime > 0.3f)
             {
                 StopHandsMovement();
             }
@@ -122,10 +168,16 @@ public class HandController : MonoBehaviour
     void LimitHandPosition(Rigidbody hand)
     {
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(hand.position);
+        //카메라 경계를 나가면 true
+        bool isOutOfBounds = viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1;
+
         viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
         viewportPos.y = Mathf.Clamp(viewportPos.y, 0, 1);
         Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
         hand.position = worldPos;
+
+        //isOutOfBounds면 손 정지
+        if (isOutOfBounds) StopHandsMovement();
     }
 
     /*감도조절 함수*/
