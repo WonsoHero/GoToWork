@@ -29,8 +29,11 @@ public class HandController : MonoBehaviour
     float mouseNotMovedTime = 0f; //마우스 이동이 없던 시간
 
     //왼손, 오른손이 동작 중인지 체크하는 bool 변수
-    bool isLeftHandActing = false;
-    bool isRightHandActing = false;
+    private bool _isLeftHandActing = false;
+    private bool _isRightHandActing = false;
+
+    public bool isLeftHandActing { get { return _isLeftHandActing; } }
+    public bool isLRightHandActing { get { return _isLeftHandActing; } }
 
     //수치 확인용 텍스트
     [SerializeField] TextMeshProUGUI multiflierTmp;
@@ -49,13 +52,13 @@ public class HandController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            isLeftHandActing = false;
+            _isLeftHandActing = false;
             prevVelocity = Vector3.zero;
             targetVelocity = Vector3.zero;
         }
         if (Input.GetMouseButtonUp(1))
         {
-            isRightHandActing = false;
+            _isRightHandActing = false;
             prevVelocity = Vector3.zero;
             targetVelocity = Vector3.zero;
         }
@@ -72,9 +75,9 @@ public class HandController : MonoBehaviour
     private void FixedUpdate()
     {
         //왼손
-        if (Input.GetMouseButton(0) && !isRightHandActing)
+        if (Input.GetMouseButton(0) && !_isRightHandActing)
         {
-            isLeftHandActing = true;
+            _isLeftHandActing = true;
             MoveHandAfterDelay(leftHand);
             if (Input.GetMouseButton(1))
             {
@@ -87,9 +90,9 @@ public class HandController : MonoBehaviour
         }
 
         //오른손
-        if (Input.GetMouseButton(1) && !isLeftHandActing)
+        if (Input.GetMouseButton(1) && !_isLeftHandActing)
         {
-            isRightHandActing = true;
+            _isRightHandActing = true;
             MoveHandAfterDelay(rightHand);
             if (Input.GetMouseButton(0))
             {
@@ -100,12 +103,12 @@ public class HandController : MonoBehaviour
                 leftHandGauge.fillAmount -= Time.fixedDeltaTime;
             }
         }
-        if(!isLeftHandActing)
+        if(!_isLeftHandActing)
         {
             rightHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(leftHand);
         }
-        if (!isRightHandActing)
+        if (!_isRightHandActing)
         {
             leftHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(rightHand);
@@ -233,7 +236,7 @@ public class HandController : MonoBehaviour
     //현재 동작 중인 손의 반대 손 게이지를 리턴하는 함수
     public float GetHandGauge()
     {
-        if (isLeftHandActing)
+        if (_isLeftHandActing)
         {
             return rightHandGauge.fillAmount;
         }
