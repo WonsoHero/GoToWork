@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/BedRoom.unity
+    path: Assets/_Scenes/House.unity
     guid: 26a71ce144c9af14fbab5f68a089c46a
   - enabled: 0
     path: Assets/_Scenes/SM_Hwang.unity
