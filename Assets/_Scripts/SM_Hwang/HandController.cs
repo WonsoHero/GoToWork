@@ -33,7 +33,7 @@ public class HandController : MonoBehaviour
     private bool _isRightHandActing = false;
 
     public bool isLeftHandActing { get { return _isLeftHandActing; } }
-    public bool isLRightHandActing { get { return _isLeftHandActing; } }
+    public bool isLRightHandActing { get { return _isRightHandActing; } }
 
     //수치 확인용 텍스트
     [SerializeField] TextMeshProUGUI multiflierTmp;
