@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
-public class Interactable : MonoBehaviour
+public class ObjectIkTarget : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

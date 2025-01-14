@@ -2,12 +2,15 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.InputSystem;
 
 public class FingerIK : MonoBehaviour
 {
-    [SerializeField] List<ChainIKConstraint> constraints;
+    [SerializeField] Rig leftFingerRig;
+    [SerializeField] Rig rightFingerRig;
+    [SerializeField] HandController controller;
+    TwoBoneIKConstraintJob job;
 
-    public float currentWeight = 0;
     public float targetWeight = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,31 +21,29 @@ public class FingerIK : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        MoveFinger();
+    }
+
+    void MoveFinger()
+    {
+        if (controller.isLeftHandActing)
         {
-            foreach(ChainIKConstraint constraint in constraints)
-            {
-                if (targetWeight < 1)
-                {
-                    targetWeight += 0.05f;
-                }
-            }
+            targetWeight = controller.GetHandGauge();
+            leftFingerRig.weight = Mathf.Lerp(leftFingerRig.weight, targetWeight, 0.1f);
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        else
         {
-            foreach(ChainIKConstraint constraint in constraints)
-            {
-                if (targetWeight > 0)
-                {
-                    targetWeight -= 0.05f;
-                }
-            }
+            leftFingerRig.weight = Mathf.Lerp(leftFingerRig.weight, 0, 0.1f);
         }
 
-        foreach(ChainIKConstraint constraint in constraints)
+        if(controller.isRightHandActing)
         {
-            currentWeight = constraint.weight;
-            constraint.weight = Mathf.Lerp(currentWeight, targetWeight, 0.1f);
+            targetWeight = controller.GetHandGauge();
+            rightFingerRig.weight = Mathf.Lerp(rightFingerRig.weight, targetWeight, 0.1f);
+        }
+        else
+        {
+            rightFingerRig.weight = Mathf.Lerp(rightFingerRig.weight, 0, 0.1f);
         }
     }
 }
