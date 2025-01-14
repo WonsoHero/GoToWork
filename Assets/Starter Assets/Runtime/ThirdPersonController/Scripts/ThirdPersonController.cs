@@ -227,6 +227,11 @@ namespace StarterAssets
             // Cinemachine will follow this target
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
+
+            // 캐릭터 Y축을 마우스에 따라 돌리기
+            //transform.Rotate(Vector3.up * _rotationVelocity);
+            //transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
+            transform.rotation = Quaternion.Euler(0.0f, _cinemachineTargetYaw, 0.0f);
         }
 
         private void Move()
@@ -279,7 +284,7 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                //transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
 
 
