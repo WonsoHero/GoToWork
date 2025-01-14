@@ -17,8 +17,6 @@ public class HandController : MonoBehaviour
 
     Vector3 targetVelocity;
     Vector3 prevVelocity;
-    Vector3 lefthandPrevVelocity;
-    Vector3 rightthandPrevVelocity;
 
     [SerializeField] float moveDelay = 0.5f; //이동 시작 딜레이
     [SerializeField] float smoothFactor = 0.1f; //관성
@@ -30,12 +28,14 @@ public class HandController : MonoBehaviour
 
     float mouseNotMovedTime = 0f; //마우스 이동이 없던 시간
 
+    //왼손, 오른손이 동작 중인지 체크하는 bool 변수
     bool isLeftHandActing = false;
     bool isRightHandActing = false;
 
     //수치 확인용 텍스트
     [SerializeField] TextMeshProUGUI multiflierTmp;
     [SerializeField] TextMeshProUGUI maxHandSpeedTmp;
+    [SerializeField] TextMeshProUGUI testTmp;
 
     private void Start()
     {
@@ -110,8 +110,6 @@ public class HandController : MonoBehaviour
             leftHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(rightHand);
         }
-
-
 
         //LimitHandPosition(leftHand);
         //LimitHandPosition(rightHand);
@@ -226,6 +224,22 @@ public class HandController : MonoBehaviour
         if (maxHandSpeedTmp != null)
         {
             maxHandSpeedTmp.text = maxHandSpeed.ToString();
+        }
+        if(testTmp != null)
+        {
+            testTmp.text = GetHandGauge().ToString();
+        }
+    }
+    //현재 동작 중인 손의 반대 손 게이지를 리턴하는 함수
+    public float GetHandGauge()
+    {
+        if (isLeftHandActing)
+        {
+            return rightHandGauge.fillAmount;
+        }
+        else
+        {
+            return leftHandGauge.fillAmount;
         }
     }
 }
