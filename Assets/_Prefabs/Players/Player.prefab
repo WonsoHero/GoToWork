@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42359347af781934ab5d48e6cbaa9e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OriginalCameraTarget: {fileID: 0}
+  OriginalCameraTarget: {fileID: 2492444350887563869}
   InteractionRange: 2
 --- !u!1 &5513169058748974073
 GameObject:

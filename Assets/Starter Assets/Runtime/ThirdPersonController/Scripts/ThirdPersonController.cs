@@ -181,6 +181,8 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
+            if (blockInput) return;
+
             CameraRotation();
         }
 

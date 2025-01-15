@@ -127,7 +127,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        //PlayerTestDebug.Instance.ChangeDebugText("None");
+        PlayerTestDebug.Instance.ChangeDebugText("None");
         selectedInteractableObject = null;
     }
 
