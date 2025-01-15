@@ -46,6 +46,9 @@ public class HandController : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log($"Camera Rotation: {Camera.main.transform.rotation.eulerAngles}");
+        Debug.Log($"Child Rotation: {transform.rotation.eulerAngles}");
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -91,12 +94,12 @@ public class HandController : MonoBehaviour
         }
         if (!_isLeftHandActing)
         {
-            rightHandGauge.fillAmount -= Time.fixedDeltaTime;
+            leftHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(leftHand);
         }
         if (!_isRightHandActing)
         {
-            leftHandGauge.fillAmount -= Time.fixedDeltaTime;
+            rightHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(rightHand);
         }
 
