@@ -48,7 +48,7 @@ public class HandController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("SM_Hwang");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -79,14 +79,7 @@ public class HandController : MonoBehaviour
         {
             _isLeftHandActing = true;
             MoveHandAfterDelay(leftHand);
-            if (Input.GetMouseButton(1))
-            {
-                rightHandGauge.fillAmount += Time.fixedDeltaTime;
-            }
-            else
-            {
-                rightHandGauge.fillAmount -= Time.fixedDeltaTime;
-            }
+            ControlHandPower(leftHandGauge);
         }
 
         //오른손
@@ -94,16 +87,9 @@ public class HandController : MonoBehaviour
         {
             _isRightHandActing = true;
             MoveHandAfterDelay(rightHand);
-            if (Input.GetMouseButton(0))
-            {
-                leftHandGauge.fillAmount += Time.fixedDeltaTime;
-            }
-            else
-            {
-                leftHandGauge.fillAmount -= Time.fixedDeltaTime;
-            }
+            ControlHandPower(rightHandGauge);
         }
-        if(!_isLeftHandActing)
+        if (!_isLeftHandActing)
         {
             rightHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(leftHand);
@@ -243,6 +229,20 @@ public class HandController : MonoBehaviour
         else
         {
             return leftHandGauge.fillAmount;
+        }
+    }
+    /*스페이스 바로 힘을 조절하는 함수
+     해당되는 ImageGauge를 인자로 받아 어느 손에 힘을 줄지
+    지정*/
+    void ControlHandPower(Image handGauge)
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            handGauge.fillAmount += Time.fixedDeltaTime;
+        }
+        else
+        {
+            handGauge.fillAmount -= Time.fixedDeltaTime;
         }
     }
 }
