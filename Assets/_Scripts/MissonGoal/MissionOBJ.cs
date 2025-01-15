@@ -5,7 +5,8 @@ using UnityEngine;
 public class MissionOBJ : MonoBehaviour
 {
     public Action<bool> achieved;
-    //[SerializeField] HandPoser handPoser;
+    public Transform holdPosition;
+
     bool isAchieved = false;
     float stayTime = 0;
     float goalTime = 2.0f;
@@ -38,7 +39,6 @@ public class MissionOBJ : MonoBehaviour
 
     void DoSomething()
     {
-        //handPoser.ChangePose();
-        achieved.Invoke(isAchieved);
+        achieved?.Invoke(isAchieved);
     }
 }
