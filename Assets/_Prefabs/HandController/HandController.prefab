@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 722249054666221635}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.09, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -136,7 +136,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &982824005180526655
@@ -176,7 +176,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6763523616450493832
 Canvas:
@@ -377,7 +377,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &3103750283041962383
@@ -535,9 +535,10 @@ MonoBehaviour:
   moveDelay: 0.1
   smoothFactor: 0.1
   multiflier: 60
-  velocityTmp: {fileID: 0}
-  inputTmp: {fileID: 0}
+  maxHandSpeed: 25
   multiflierTmp: {fileID: 0}
+  maxHandSpeedTmp: {fileID: 0}
+  testTmp: {fileID: 0}
 --- !u!1 &7188732132239500412
 GameObject:
   m_ObjectHideFlags: 0
