@@ -1543,12 +1543,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5820500774304448910, guid: 977b55cf5b2baa947a126e527c5f83af, type: 3}
+      propertyPath: multiflier
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820500774304448910, guid: 977b55cf5b2baa947a126e527c5f83af, type: 3}
       propertyPath: velocityTmp
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5820500774304448910, guid: 977b55cf5b2baa947a126e527c5f83af, type: 3}
       propertyPath: maxHandSpeed
-      value: 150
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5820500774304448910, guid: 977b55cf5b2baa947a126e527c5f83af, type: 3}
       propertyPath: multiflierTmp

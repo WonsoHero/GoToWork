@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -43,7 +44,8 @@ public class HandController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
     private void Update()
     {
@@ -75,8 +77,9 @@ public class HandController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        MaintainDistance(leftHand);
-        MaintainDistance(rightHand);
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //MaintainDistance(leftHand);
+        //MaintainDistance(rightHand);
         //왼손
         if (Input.GetMouseButton(0) && !_isRightHandActing)
         {
@@ -113,45 +116,25 @@ public class HandController : MonoBehaviour
     {
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
+            // 마우스 이동 입력
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
 
-            // 카메라의 forward 및 right 벡터
-            Vector3 cameraForward = Camera.main.transform.forward;
-            // 카메라의 Y축 회전
-            float cameraYaw = Camera.main.transform.eulerAngles.y;
+            // 카메라의 로컬 방향(우측, 상단) 기준으로 이동 벡터 계산
+            Vector3 localMovementVector = new Vector3(mouseX, mouseY, 0f);
 
-            // 카메라가 X축을 많이 바라보는지 Z축을 많이 바라보는지 판단
-            if (Mathf.Abs(cameraForward.x) > Mathf.Abs(cameraForward.z))
-            {
-                if (cameraYaw > 90 && cameraYaw < 270)
-                {
-                    targetVelocity = new Vector3(0, mouseY * Mathf.Pow(mouseY * multiflier, 2), -mouseX * Mathf.Pow(mouseX * multiflier, 2));
-                }
-                else
-                {
-                    targetVelocity = new Vector3(0, mouseY * Mathf.Pow(mouseY * multiflier, 2), mouseX * Mathf.Pow(mouseX * multiflier, 2));
-                }
-            }
-            else
-            {
-                if (cameraYaw > 90 && cameraYaw < 270)
-                {
-                    targetVelocity = new Vector3(-mouseX * Mathf.Pow(mouseX * multiflier, 2), mouseY * Mathf.Pow(mouseY * multiflier, 2), 0);
-                }
-                else
-                {
-                    targetVelocity = new Vector3(mouseX * Mathf.Pow(mouseX * multiflier, 2), mouseY * Mathf.Pow(mouseY * multiflier, 2), 0);
-                }
-            }
+            // 로컬 벡터를 월드 좌표계로 변환
+            Vector3 movementVector = Camera.main.transform.TransformDirection(localMovementVector);
+
+            // 이동 속도 계산
+            targetVelocity = movementVector * Mathf.Pow(new Vector2(mouseX, mouseY).magnitude * multiflier, 2);
 
             // 이동 속도 제한
             targetVelocity.x = Mathf.Clamp(targetVelocity.x, -maxHandSpeed, maxHandSpeed);
             targetVelocity.y = Mathf.Clamp(targetVelocity.y, -maxHandSpeed, maxHandSpeed);
-            targetVelocity.z = Mathf.Clamp(targetVelocity.z, -maxHandSpeed, maxHandSpeed);  // 추가된 z축 제한
+            targetVelocity.z = Mathf.Clamp(targetVelocity.z, -maxHandSpeed, maxHandSpeed);
         }
     }
-
 
 
     void MoveHandAfterDelay(Rigidbody hand)
@@ -218,26 +201,29 @@ public class HandController : MonoBehaviour
     /*감도조절 함수*/
     void UpdateMultifly()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (SceneManager.GetActiveScene().name == "SM_Hwang")
         {
-            multiflier -= 10;
-            if (multiflier < 0)
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                multiflier = 0;
+                multiflier -= 10;
+                if (multiflier < 0)
+                {
+                    multiflier = 0;
+                }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            multiflier += 10;
-        }
-        //maxSpeed Control
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            maxHandSpeed -= 25;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            maxHandSpeed += 25;
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                multiflier += 10;
+            }
+            //maxSpeed Control
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                maxHandSpeed -= 25;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                maxHandSpeed += 25;
+            }
         }
     }
     void ShowInfoText()
