@@ -35,6 +35,7 @@ public class HandController : MonoBehaviour
     public bool isLeftHandActing { get { return _isLeftHandActing; } }
     public bool isRightHandActing { get { return _isRightHandActing; } }
 
+    float maxHandDistance = 1f;
     //수치 확인용 텍스트
     [SerializeField] TextMeshProUGUI multiflierTmp;
     [SerializeField] TextMeshProUGUI maxHandSpeedTmp;
@@ -46,9 +47,6 @@ public class HandController : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log($"Camera Rotation: {Camera.main.transform.rotation.eulerAngles}");
-        Debug.Log($"Child Rotation: {transform.rotation.eulerAngles}");
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -77,6 +75,8 @@ public class HandController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        MaintainDistance(leftHand);
+        MaintainDistance(rightHand);
         //왼손
         if (Input.GetMouseButton(0) && !_isRightHandActing)
         {
@@ -116,11 +116,44 @@ public class HandController : MonoBehaviour
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
 
-            targetVelocity = new Vector3(mouseX * Mathf.Pow(mouseX * multiflier, 2), mouseY * Mathf.Pow(mouseY * multiflier, 2), 0);
+            // 카메라의 forward 및 right 벡터
+            Vector3 cameraForward = Camera.main.transform.forward;
+            // 카메라의 Y축 회전
+            float cameraYaw = Camera.main.transform.eulerAngles.y;
+
+            // 카메라가 X축을 많이 바라보는지 Z축을 많이 바라보는지 판단
+            if (Mathf.Abs(cameraForward.x) > Mathf.Abs(cameraForward.z))
+            {
+                if (cameraYaw > 90 && cameraYaw < 270)
+                {
+                    targetVelocity = new Vector3(0, mouseY * Mathf.Pow(mouseY * multiflier, 2), -mouseX * Mathf.Pow(mouseX * multiflier, 2));
+                }
+                else
+                {
+                    targetVelocity = new Vector3(0, mouseY * Mathf.Pow(mouseY * multiflier, 2), mouseX * Mathf.Pow(mouseX * multiflier, 2));
+                }
+            }
+            else
+            {
+                if (cameraYaw > 90 && cameraYaw < 270)
+                {
+                    targetVelocity = new Vector3(-mouseX * Mathf.Pow(mouseX * multiflier, 2), mouseY * Mathf.Pow(mouseY * multiflier, 2), 0);
+                }
+                else
+                {
+                    targetVelocity = new Vector3(mouseX * Mathf.Pow(mouseX * multiflier, 2), mouseY * Mathf.Pow(mouseY * multiflier, 2), 0);
+                }
+            }
+
+            // 이동 속도 제한
             targetVelocity.x = Mathf.Clamp(targetVelocity.x, -maxHandSpeed, maxHandSpeed);
             targetVelocity.y = Mathf.Clamp(targetVelocity.y, -maxHandSpeed, maxHandSpeed);
+            targetVelocity.z = Mathf.Clamp(targetVelocity.z, -maxHandSpeed, maxHandSpeed);  // 추가된 z축 제한
         }
     }
+
+
+
     void MoveHandAfterDelay(Rigidbody hand)
     {
         if (mouseX != 0 || mouseY != 0)
@@ -200,7 +233,7 @@ public class HandController : MonoBehaviour
         //maxSpeed Control
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            maxHandSpeed -= 25;           
+            maxHandSpeed -= 25;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -217,7 +250,7 @@ public class HandController : MonoBehaviour
         {
             maxHandSpeedTmp.text = maxHandSpeed.ToString();
         }
-        if(testTmp != null)
+        if (testTmp != null)
         {
             testTmp.text = GetHandGauge().ToString();
         }
@@ -239,13 +272,24 @@ public class HandController : MonoBehaviour
     지정*/
     void ControlHandPower(Image handGauge)
     {
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             handGauge.fillAmount += Time.fixedDeltaTime;
         }
         else
         {
             handGauge.fillAmount -= Time.fixedDeltaTime;
+        }
+    }
+    void MaintainDistance(Rigidbody hand)
+    {
+        float currentDistance = Vector3.Distance(hand.position, transform.position);
+
+        if (currentDistance > maxHandDistance)
+        {
+            // 목표 위치로 이동하도록 조정
+            Vector3 direction = (transform.position - hand.position).normalized;
+            hand.position = transform.position - direction * maxHandDistance;
         }
     }
 }
