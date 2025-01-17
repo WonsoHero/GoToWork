@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Destructible : MonoBehaviour
 {
     [SerializeField] GameObject destructModel;
+
+    public Action<bool> destruct;
 
     public float forceMultiplier = 4;
     public float destructForce = 4;
@@ -46,8 +49,10 @@ public class Destructible : MonoBehaviour
             if (force > destructForce && !destructed)
             {
                 Debug.Log("부서짐");
-                Destruct(collision.GetContact(0), speed);
                 destructed = true;
+                destruct?.Invoke(destructed);
+                Destruct(collision.GetContact(0), speed);
+
             }
         }
     }

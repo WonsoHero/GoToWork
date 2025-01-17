@@ -2,43 +2,40 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MissionOBJ : MonoBehaviour
+public class MissionOBJ : MonoBehaviour, IMissionObject
 {
-    public Action<bool> achieved;
-    public Transform holdPosition;
+    public MissionData missionData;
+    public Action<bool> succeed;
+    public Action<bool> failed;
+    public Action<bool> inTriggered;
 
-    bool isAchieved = false;
-    float stayTime = 0;
-    float goalTime = 2.0f;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    bool isSucceed = true;
+    bool isFailed = true;
+
+    public bool inTrigger;
+
+    public void OnMissionSuccess()
     {
-        
+        succeed?.Invoke(isSucceed);
+    }
+    public void OnMissionSuccess(bool success)
+    {
+        Debug.Log("미션 성공 이벤트 발생");
+        succeed?.Invoke(success);
     }
 
-    // Update is called once per frame
-    private void FixedUpdate()
+    public void OnMissionFailed()
     {
-        
+        failed?.Invoke(isFailed);
     }
-
-    private void OnTriggerStay(Collider other)
+    public void OnMissionFailed(bool fail)
     {
-        if(other.tag == "Player" && !isAchieved)
-        {
-            stayTime += Time.fixedDeltaTime;
-            if(stayTime > goalTime)
-            {
-                isAchieved = true;
-                DoSomething();
-                stayTime = 0;
-            }
-        }
+        Debug.Log("미션 실패 이벤트 발생");
+        failed?.Invoke(fail);
     }
-
-    void DoSomething()
-    {
-        achieved?.Invoke(isAchieved);
-    }
+}
+public interface IMissionObject
+{
+    void OnMissionSuccess();
+    void OnMissionFailed();
 }

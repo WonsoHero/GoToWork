@@ -4,20 +4,20 @@ using UnityEngine.Animations.Rigging;
 
 public class HandPoser : MonoBehaviour
 {
-    [SerializeField] GameObject missionObjPrefab;
-
-    [SerializeField] List<Pose> poses;
-    [SerializeField] List<Transform> bones;
-    [SerializeField] List<Transform> checkPointTransforms;
+    List<Pose> poses;
+    List<Transform> bones;
+    List<Transform> checkPointTransforms;
 
     [SerializeField] RigBuilder rigBuilder;
 
-    [SerializeField] MultiParentConstraint leftHandHolder;
-    [SerializeField] MultiParentConstraint rightHandHolder;
-    [SerializeField] Transform leftHandBone;
-    [SerializeField] Transform rightHandBone;
+    MultiParentConstraint leftHandHolder;
+    MultiParentConstraint rightHandHolder;
+    Transform leftHandBone;
+    Transform rightHandBone;
 
-    MissionOBJ missionObj;
+    [SerializeField] GameObject missionObjPrefab;
+    [SerializeField] List<Transform> IKTargets;
+    [SerializeField] MissionOBJ missionObj;
 
     int poseIdx = 0;
 
@@ -33,79 +33,57 @@ public class HandPoser : MonoBehaviour
 
     private void OnEnable()
     {
-        missionObj.achieved += OnAchieved;
+        missionObj.succeed += OnAchieved;
+        missionObj.failed += OnAchieved;
+        missionObj.inTriggered += OnTriggered;
     }
 
     private void OnDisable()
     {
-        missionObj.achieved -= OnAchieved;
+        missionObj.succeed -= OnAchieved;
+        missionObj.failed -= OnAchieved;
+        missionObj.inTriggered -= OnTriggered;
     }
 
     void OnAchieved(bool isAchieved)
     {
         if (isAchieved)
         {
-            ChangePose();
+            
+        }
+    }
+
+    void OnTriggered(bool isTriggered)
+    {
+        if (isTriggered)
+        {
+            ChangePose(1);
+        }
+        else
+        {
+            ChangePose(0);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            poseIdx++;
-            poseIdx %= poses.Count;
-            Debug.Log("현재 포즈 : " +  poseIdx + " 번");
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            poseIdx--;
-            poseIdx %= poses.Count;
-            Debug.Log("현재 포즈 : " + poseIdx + " 번");
-        }
-
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            ChangePose();
-            Debug.Log("현재 포즈 : " + poseIdx + " 번");
-        }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            HoldObject(leftHandBone, leftHandHolder);
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            HoldObject(rightHandBone, rightHandHolder);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReleaseObject();
-        }
+        
     }
 
     //추후 게임 매니저에서 미션별 인덱스 받아와 포즈 관리
     //임시로 포즈 인덱스 사용
-    public void ChangePose()
+    public void ChangePose(int idx)
     {
         Debug.Log("포즈 변경");
-        //-1은 포즈가 없는 기본 상태, 인덱스 오류 방지를 위해 리턴
-        if (poseIdx == -1) return;
 
-        //리그 빌더가 본을 통제하고 있어 트랜스폼이 안먹혀 잠깐 껐다 킴
-        rigBuilder.enabled = false;
-        
-        Pose targetPose = poses[poseIdx];
-        for(int i = 0; i < bones.Count; i++)
+        Pose pose = missionObj.missionData.poses[idx];
+
+        for (int i = 0; i<IKTargets.Count; i++)
         {
-            bones[i].transform.position = targetPose.transforms[i].position;
-            bones[i].transform.rotation = targetPose.transforms[i].rotation;
+            IKTargets[i].localPosition = pose.Positions[i];
+            IKTargets[i].localRotation = pose.Rotations[i];
         }
-
-        rigBuilder.enabled = true;
     }
 
     void HoldObject(Transform hand, MultiParentConstraint holder)
