@@ -40,11 +40,13 @@ public class HandController : MonoBehaviour
     public bool isRightHandActing { get { return _isRightHandActing; } }
 
     HandControlMode handControlMode;
+    HandMoveAxis handMoveAxis;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         handControlMode = HandControlMode.None;
+        handMoveAxis = HandMoveAxis.Horizontal;
         canvas.gameObject.SetActive(false);
     }
     private void Update()
@@ -98,12 +100,12 @@ public class HandController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //왼손
+        //손 이동모드
         if (handControlMode == HandControlMode.Move)
         {
             HandMoveMode();
         }
-        //오른손
+        //손 회전모드
         if (handControlMode == HandControlMode.Rotate)
         {
             HandRotateMode();
@@ -125,11 +127,26 @@ public class HandController : MonoBehaviour
     }
     void CalcAcceleration()
     {
+        mouseX = 0;
+        mouseY = 0;
         if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             // 마우스 이동 입력
-            mouseX = Input.GetAxis("Mouse X");
-            mouseY = Input.GetAxis("Mouse Y");
+            switch (handMoveAxis)
+            {
+                case HandMoveAxis.All:
+                    mouseX = Input.GetAxis("Mouse X");
+                    mouseY = Input.GetAxis("Mouse Y");
+                    break;
+
+                case HandMoveAxis.Vertical:
+                    mouseY = Input.GetAxis("Mouse Y");
+                    break;
+
+                case HandMoveAxis.Horizontal:
+                    mouseX = Input.GetAxis("Mouse X");
+                    break;
+            }
             mouseSpeed = new Vector2(mouseX, mouseY).magnitude / Time.deltaTime;
             // 카메라의 로컬 방향(우측, 상단) 기준으로 이동 벡터 계산
             Vector3 localMovementVector = new Vector3(mouseX, mouseY, 0f);
@@ -283,9 +300,10 @@ public class HandController : MonoBehaviour
      * 1. HandControlMode : None,Move,Rotate
      * 2. HandMoveAxis : All,Vertical,Horizontal
      * 3. HandReverse : None, Reverse
-     각 항목에 대해선 HandControlMode의 주석 참조*/
-    public void SetHandControlMode(HandControlMode mode)
+     각 항목에 대해선 HandControlMode.cs의 주석 참조*/
+    public void SetHandControlMode(HandControlMode mode, HandMoveAxis moveAxis = HandMoveAxis.All)
     {
         handControlMode = mode;
+        handMoveAxis = moveAxis;
     }
 }
