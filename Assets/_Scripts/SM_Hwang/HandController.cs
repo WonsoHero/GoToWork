@@ -85,7 +85,10 @@ public class HandController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        LimitHandDistance();
+        LimitHandDistance(leftHand,leftClavicle);
+        LimitHandDistance(rightHand,rightClavicle);
+        LimitHandPosition(leftHand);
+        LimitHandPosition(rightHand);
         switch (handControlMode)
         {
             //손 이동 모드
@@ -299,18 +302,27 @@ public class HandController : MonoBehaviour
         handMoveAxis = moveAxis;
         handReverse = reverse;
     }
-    void LimitHandDistance()
+    void LimitHandDistance(Rigidbody hand, Transform clavicle)
     {
-        Vector3 leftDistance = (leftHand.position - leftClavicle.position).normalized;
-        float leftCurrentDistance=Vector3.Distance(leftHand.position, leftClavicle.position);
+        Vector3 leftDistance = (hand.position - clavicle.position).normalized;
+        float leftCurrentDistance=Vector3.Distance(hand.position, clavicle.position);
         if (!Mathf.Approximately(leftCurrentDistance, maxHandDistance)){
-            leftHand.MovePosition(leftClavicle.position + leftDistance * maxHandDistance);
+            hand.MovePosition(clavicle.position + leftDistance * maxHandDistance);
         }
-        Vector3 rightDistance = (rightHand.position - rightClavicle.position).normalized;
-        float rightCurrentDistance = Vector3.Distance(rightHand.position, rightClavicle.position);
-        if (!Mathf.Approximately(rightCurrentDistance, maxHandDistance)){
-            rightHand.MovePosition(rightClavicle.position + rightDistance * maxHandDistance);
-        }
+    }
+    void LimitHandPosition(Rigidbody hand)
+    {
+        Vector3 viewportPos = Camera.main.WorldToViewportPoint(hand.position);
+        //카메라 경계를 나가면 true
+        bool isOutOfBounds = viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1;
+
+        viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
+        viewportPos.y = Mathf.Clamp(viewportPos.y, 0, 1);
+        Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
+        hand.position = worldPos;
+
+        //isOutOfBounds면 손 정지
+        if (isOutOfBounds) StopHandMovement(hand);
     }
     void TestParameterByInput()
     {
