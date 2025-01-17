@@ -21,6 +21,16 @@ public enum PlayerState
 public class PlayerManager : MonoBehaviour
 {
     /// <summary>
+    /// 모델링 교체용 팬티 모델
+    /// </summary>
+    [SerializeField] GameObject PantsModel;
+
+    /// <summary>
+    /// 모델링 교체용 수트 모델
+    /// </summary>
+    [SerializeField] GameObject SuitModel;
+
+    /// <summary>
     ///  상호작용 모드 탈출할 때 다시 원래자리로 되돌릴 카메라 위치
     /// </summary>
     [SerializeField] Transform OriginalCameraTarget;
@@ -96,6 +106,18 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+#if DEBUG
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            ChangeModelToPants();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            ChangeModelToSuit();
+        }
+#endif
+
         if (Input.GetKeyDown(KeyCode.Escape) && state == PlayerState.Interaction)
         {
             ExitInteraction();
@@ -139,6 +161,24 @@ public class PlayerManager : MonoBehaviour
         var target = new CameraTarget();
         target.TrackingTarget = transform;
         GetComponentInChildren<CinemachineCamera>().Target = target;
+    }
+
+    public void ChangeModelToPants()
+    {
+        //if(currentModel != null) Destroy(currentModel);
+        //currentModel = Instantiate(PantsModel, transform);
+        PantsModel.SetActive(true);
+        PantsModel.transform.SetAsFirstSibling();
+        SuitModel.SetActive(false);
+    }
+
+    public void ChangeModelToSuit()
+    {
+        //if (currentModel != null) Destroy(currentModel);
+        //currentModel = Instantiate(SuitModel, transform);
+        SuitModel.SetActive(true);
+        SuitModel.transform.SetAsFirstSibling();
+        PantsModel.SetActive(false);
     }
 
     /// <summary>

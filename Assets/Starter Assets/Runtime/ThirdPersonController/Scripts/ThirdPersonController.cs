@@ -186,6 +186,39 @@ namespace StarterAssets
             CameraRotation();
         }
 
+        /// <summary>
+        /// Child 애니메이션 전파용
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void SetFloat(int id, float value)
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.SetFloat(id, value);
+            var childComponents = GetComponentsInChildren<Animator>();
+            foreach (var child in childComponents)
+            {
+                child.SetFloat(id, value);
+            }
+        }
+
+        /// <summary>
+        /// Child 애니메이션 전파용
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void SetBool(int id, bool value)
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.SetBool(id, value);
+            var childComponents = GetComponentsInChildren<Animator>();
+            foreach (var child in childComponents)
+            {
+                child.SetBool(id, value);
+            }
+        }
+
+
         private void AssignAnimationIDs()
         {
             _animIDSpeed = Animator.StringToHash("Speed");
@@ -206,7 +239,7 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDGrounded, Grounded);
+                SetBool(_animIDGrounded, Grounded);
             }
         }
 
@@ -300,8 +333,8 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+                SetFloat(_animIDSpeed, _animationBlend);
+                SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
 
@@ -315,8 +348,8 @@ namespace StarterAssets
                 // update animator if using character
                 if (_hasAnimator)
                 {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
+                    SetBool(_animIDJump, false);
+                    SetBool(_animIDFreeFall, false);
                 }
 
                 // stop our velocity dropping infinitely when grounded
@@ -359,7 +392,7 @@ namespace StarterAssets
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDFreeFall, true);
+                        SetBool(_animIDFreeFall, true);
                     }
                 }
 
