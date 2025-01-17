@@ -1,4 +1,5 @@
 using NUnit.Framework.Constraints;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -48,6 +49,7 @@ public class HandController : MonoBehaviour
         handControlMode = HandControlMode.None;
         handMoveAxis = HandMoveAxis.Horizontal;
         canvas.gameObject.SetActive(false);
+
     }
     private void Update()
     {
@@ -305,5 +307,25 @@ public class HandController : MonoBehaviour
     {
         handControlMode = mode;
         handMoveAxis = moveAxis;
+    }
+
+    private void Awake()
+    {
+        // PlayerManager의 State Changed 콜백 등록
+        PlayerManager.OnPlayerStateChanged += OnPlayerStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerManager.OnPlayerStateChanged -= OnPlayerStateChanged;
+    }
+
+    /// <summary>
+    ///  PlayerManager의 State가 변경되었을 때 호출된다
+    /// </summary>
+    /// <param name="param">Action에 parameter 하나만 전달되길래 두개 보내려고 대충 struct로 만듦</param>
+    void OnPlayerStateChanged(PlayerStateChangedParam param)
+    {
+        Debug.Log($"기존상태({Enum.GetName(typeof(PlayerState), param.OldState)})에서 새로운상태({Enum.GetName(typeof(PlayerState), param.NewState)})로 전환");
     }
 }

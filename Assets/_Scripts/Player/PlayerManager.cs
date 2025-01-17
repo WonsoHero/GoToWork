@@ -1,5 +1,8 @@
 using StarterAssets;
+using System;
 using Unity.Cinemachine;
+using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -55,9 +58,27 @@ public class PlayerManager : MonoBehaviour
     /// </summary>
     public InteractableObject SelectedInteractableObject { get; }
 
+    /// <summary>
+    ///  외부에서 구독해서 사용 할 PlayerState 변경 콜백
+    /// </summary>
+    public static Action<PlayerStateChangedParam> OnPlayerStateChanged;
+
     void Start()
     {
         state = PlayerState.Normal;
+    }
+
+    /// <summary>
+    ///  상태 변경
+    /// </summary>
+    /// <param name="oldState">기존 상태</param>
+    /// <param name="newState">변경된 새로운 상태</param>
+    void ChangeState(PlayerState newState)
+    {
+        var param = new PlayerStateChangedParam(state, newState);
+
+        state = newState;
+        OnPlayerStateChanged?.Invoke(param);
     }
 
     /// <summary>
@@ -69,7 +90,7 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Entered Interaction mode");
         PlayerTestDebug.Instance.ChangeDebugText("Interaction Mode: Press Esc to Exit");
         GetComponentInChildren<ThirdPersonController>().BlockInput(true);
-        state = PlayerState.Interaction;
+        ChangeState(PlayerState.Interaction);
 
         ChangeCinemachineTarget(interactableObject.CameraPosition);
     }
@@ -82,7 +103,7 @@ public class PlayerManager : MonoBehaviour
         Debug.Log("Exit Interaction");
         PlayerTestDebug.Instance.ChangeDebugText("");
         GetComponentInChildren<ThirdPersonController>().BlockInput(false);
-        state = PlayerState.Normal;
+        ChangeState(PlayerState.Normal);
 
         ChangeCinemachineTarget(OriginalCameraTarget);
     }
