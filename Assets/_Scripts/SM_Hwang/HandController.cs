@@ -39,24 +39,17 @@ public class HandController : MonoBehaviour
     public bool isLeftHandActing { get { return _isLeftHandActing; } }
     public bool isRightHandActing { get { return _isRightHandActing; } }
 
-    float maxHandDistance = 1f;
-    internal enum HandControlMode
-    {
-        Move,
-        Rotate,
-    }
     HandControlMode handControlMode;
-
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        handControlMode = HandControlMode.Move;
+        handControlMode = HandControlMode.None;
         canvas.gameObject.SetActive(false);
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (canvas.gameObject.activeSelf)
             {
@@ -90,47 +83,30 @@ public class HandController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            handControlMode = HandControlMode.Move;
+            SetHandControlMode(HandControlMode.Move);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            handControlMode = HandControlMode.Rotate;
+            SetHandControlMode(HandControlMode.Rotate);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SetHandControlMode(HandControlMode.None);
         }
         CalcAcceleration();
         CheckMouseInput();
     }
     private void FixedUpdate()
     {
-        //MaintainDistance(leftHand);
-        //MaintainDistance(rightHand);
-
         //왼손
-        if (Input.GetMouseButton(0) && !_isRightHandActing)
+        if (handControlMode == HandControlMode.Move)
         {
-            _isLeftHandActing = true;
-            if (handControlMode == HandControlMode.Move)
-            {
-                MoveHandAfterDelay(leftHand);
-            }
-            else if (handControlMode == HandControlMode.Rotate)
-            {
-                RotateHand(leftHand);
-            }
-            ControlHandPower(leftHandGauge);
+            HandMoveMode();
         }
         //오른손
-        if (Input.GetMouseButton(1) && !_isLeftHandActing)
+        if (handControlMode == HandControlMode.Rotate)
         {
-            _isRightHandActing = true;
-            if (handControlMode == HandControlMode.Move)
-            {
-                MoveHandAfterDelay(rightHand);
-            }
-            else if (handControlMode == HandControlMode.Rotate)
-            {
-                RotateHand(rightHand);
-            }
-            ControlHandPower(rightHandGauge);
+            HandRotateMode();
         }
         if (!_isLeftHandActing)
         {
@@ -143,8 +119,6 @@ public class HandController : MonoBehaviour
             StopHandMovement(rightHand);
         }
 
-        //LimitHandPosition(leftHand);
-        //LimitHandPosition(rightHand);
         //게이지 범위 제한
         leftHandGauge.fillAmount = Mathf.Clamp(leftHandGauge.fillAmount, 0, 1);
         rightHandGauge.fillAmount = Mathf.Clamp(rightHandGauge.fillAmount, 0, 1);
@@ -202,7 +176,7 @@ public class HandController : MonoBehaviour
             //목표 각도 계산
             float angle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
             //목표 회전으로 보간
-            float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, mouseSpeed*Time.deltaTime);
+            float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, mouseSpeed * Time.deltaTime);
 
             canvas.ShowText(GetHandRotation().ToString());
             // 회전 적용 (Quaternion.Euler로 y축 회전만 적용)
@@ -235,24 +209,7 @@ public class HandController : MonoBehaviour
         hand.linearVelocity = Vector3.Lerp(hand.linearVelocity, Vector3.zero, smoothFactor);
     }
 
-    /*손 위치가 화면 밖으로 나가지 않게 하는 함수
-     카메라 경계 부분에서 드드득 거려 개선 필요*/
-    void LimitHandPosition(Rigidbody hand)
-    {
-        Vector3 viewportPos = Camera.main.WorldToViewportPoint(hand.position);
-        //카메라 경계를 나가면 true
-        bool isOutOfBounds = viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1;
-
-        viewportPos.x = Mathf.Clamp(viewportPos.x, 0, 1);
-        viewportPos.y = Mathf.Clamp(viewportPos.y, 0, 1);
-        Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewportPos);
-        hand.position = worldPos;
-
-        //isOutOfBounds면 손 정지
-        if (isOutOfBounds) StopHandMovement(hand);
-    }
-
-    //현재 동작 중인 손의 반대 손 게이지를 리턴하는 함수
+    //현재 동작 중인 손의 게이지를 반환하는 함수
     public float GetHandGauge()
     {
         if (_isLeftHandActing)
@@ -264,6 +221,7 @@ public class HandController : MonoBehaviour
             return rightHandGauge.fillAmount;
         }
     }
+    /*현재 동작 중인 손의 회전값을 반환하는 함수*/
     public float GetHandRotation()
     {
         if (_isLeftHandActing)
@@ -289,15 +247,45 @@ public class HandController : MonoBehaviour
             handGauge.fillAmount -= Time.fixedDeltaTime;
         }
     }
-    void MaintainDistance(Rigidbody hand)
+    void HandMoveMode()
     {
-        float currentDistance = Vector3.Distance(hand.position, transform.position);
-
-        if (currentDistance > maxHandDistance)
+        if (Input.GetMouseButton(0) && !_isRightHandActing)
         {
-            // 목표 위치로 이동하도록 조정
-            Vector3 direction = (transform.position - hand.position).normalized;
-            hand.position = transform.position - direction * maxHandDistance;
+            _isLeftHandActing = true;
+            MoveHandAfterDelay(leftHand);
+            ControlHandPower(leftHandGauge);
         }
+        //오른손
+        if (Input.GetMouseButton(1) && !_isLeftHandActing)
+        {
+            _isRightHandActing = true;
+            MoveHandAfterDelay(rightHand);
+            ControlHandPower(rightHandGauge);
+        }
+    }
+    void HandRotateMode()
+    {
+        if (Input.GetMouseButton(0) && !_isRightHandActing)
+        {
+            _isLeftHandActing = true;
+            RotateHand(leftHand);
+            ControlHandPower(leftHandGauge);
+        }
+        //오른손
+        if (Input.GetMouseButton(1) && !_isLeftHandActing)
+        {
+            _isRightHandActing = true;
+            RotateHand(rightHand);
+            ControlHandPower(rightHandGauge);
+        }
+    }
+    /*3개의 enum인자를 통해 조작 모드를 설정하게 할 예정
+     * 1. HandControlMode : None,Move,Rotate
+     * 2. HandMoveAxis : All,Vertical,Horizontal
+     * 3. HandReverse : None, Reverse
+     각 항목에 대해선 HandControlMode의 주석 참조*/
+    public void SetHandControlMode(HandControlMode mode)
+    {
+        handControlMode = mode;
     }
 }

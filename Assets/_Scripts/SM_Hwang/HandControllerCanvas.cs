@@ -12,7 +12,6 @@ public class HandControllerCanvas : MonoBehaviour
     [SerializeField] HandController handController;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
