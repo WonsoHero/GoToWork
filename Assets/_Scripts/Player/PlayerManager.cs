@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
     /// <summary>
     ///  현재 Player의 State를 가져온다.
     /// </summary>
-    public PlayerState State { get; }
+    public PlayerState State { get => state; }
 
     /// <summary>
     /// 현재 화면 중앙 근처에 있는 InteractableObject
@@ -179,29 +179,5 @@ public class PlayerManager : MonoBehaviour
         SuitModel.SetActive(true);
         SuitModel.transform.SetAsFirstSibling();
         PantsModel.SetActive(false);
-    }
-
-    /// <summary>
-    ///  근처에 있고, 보이는 Interactable을 감지하여 외곽선을 하이라이트 적용
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log("OnTriggerEnter");
-        //if (other.TryGetComponent<InteractableObject>(out var obj))
-        //{
-        //    Debug.Log("isPlayerInDetectArea: true");
-        //    obj.ShowOutline();
-        //}
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        //Debug.Log("OnTriggerExit");
-        //if (other.TryGetComponent<InteractableObject>(out var obj))
-        //{
-        //    Debug.Log("isPlayerInDetectArea: false");
-        //    obj.HideOutline();
-        //}
     }
 }
