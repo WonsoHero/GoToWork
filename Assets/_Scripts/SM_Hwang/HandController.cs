@@ -37,6 +37,12 @@ public class HandController : MonoBehaviour
     public bool isRightHandActing { get { return _isRightHandActing; } }
 
     float maxHandDistance = 1f;
+    internal enum HandControlMode
+    {
+        Move,
+        Rotate,
+    }
+    HandControlMode handControlMode;
     //수치 확인용 텍스트
     [SerializeField] TextMeshProUGUI multiflierTmp;
     [SerializeField] TextMeshProUGUI maxHandSpeedTmp;
@@ -45,7 +51,8 @@ public class HandController : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        //Cursor.visible = false;
+        handControlMode = HandControlMode.Move;
     }
     private void Update()
     {
@@ -70,6 +77,14 @@ public class HandController : MonoBehaviour
             StopHandMovement(leftHand);
             StopHandMovement(rightHand);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handControlMode = HandControlMode.Move;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            handControlMode = HandControlMode.Rotate;
+        }
         UpdateMultifly();
         CalcAcceleration();
         CheckMouseInput();
@@ -77,22 +92,36 @@ public class HandController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //MaintainDistance(leftHand);
         //MaintainDistance(rightHand);
+
         //왼손
         if (Input.GetMouseButton(0) && !_isRightHandActing)
         {
             _isLeftHandActing = true;
-            MoveHandAfterDelay(leftHand);
+            if (handControlMode == HandControlMode.Move)
+            {
+                MoveHandAfterDelay(leftHand);
+            }
+            else if (handControlMode == HandControlMode.Rotate)
+            {
+                RotateHand(leftHand);
+            }
             ControlHandPower(leftHandGauge);
         }
-
         //오른손
         if (Input.GetMouseButton(1) && !_isLeftHandActing)
         {
             _isRightHandActing = true;
-            MoveHandAfterDelay(rightHand);
+            if (handControlMode == HandControlMode.Move)
+            {
+                Debug.Log("Move");
+                MoveHandAfterDelay(rightHand);
+            }
+            else if (handControlMode == HandControlMode.Rotate)
+            {
+                RotateHand(rightHand);
+            }
             ControlHandPower(rightHandGauge);
         }
         if (!_isLeftHandActing)
@@ -125,7 +154,6 @@ public class HandController : MonoBehaviour
 
             // 로컬 벡터를 월드 좌표계로 변환
             Vector3 movementVector = Camera.main.transform.TransformDirection(localMovementVector);
-
             // 이동 속도 계산
             targetVelocity = movementVector * Mathf.Pow(new Vector2(mouseX, mouseY).magnitude * multiflier, 2);
 
@@ -135,8 +163,6 @@ public class HandController : MonoBehaviour
             targetVelocity.z = Mathf.Clamp(targetVelocity.z, -maxHandSpeed, maxHandSpeed);
         }
     }
-
-
     void MoveHandAfterDelay(Rigidbody hand)
     {
         if (mouseX != 0 || mouseY != 0)
@@ -147,7 +173,6 @@ public class HandController : MonoBehaviour
             StartCoroutine(UpdateVelocity(hand, prevVelocity));
         }
     }
-
     /*MoveDelay 이후에 사용자의 마우스 움직임에 따른 velocity를 갱신한는 함수
      사용자의 마우스 컨트롤에 의한 손 이동이 즉각적이면 너무 쉽고 단조로울 거 같아 작성
      테스트를 통한 조정 필요*/
@@ -156,6 +181,48 @@ public class HandController : MonoBehaviour
         yield return new WaitForSeconds(moveDelay);
         hand.linearVelocity = velocity;
     }
+    public float rotateInterporlate = 1f;
+    //void RotateHand(Rigidbody hand)
+    //{
+    //    Debug.Log(targetVelocity);
+    //    if (mouseX != 0 || mouseY != 0)
+    //    {
+    //        // 목표 방향을 계산 (y축 제외)
+    //        Vector3 targetDir = new Vector3(targetVelocity.x, 0f, targetVelocity.z).normalized;
+
+    //        // 목표 각도 계산 (Atan2는 -180에서 180 사이의 값을 반환)
+    //        float angle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
+    //        // 현재 회전에서 목표 회전으로 부드럽게 보간하기
+    //        float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, rotateInterporlate);
+    //        //Debug.Log(smoothAngle);
+
+    //        // 회전 적용 (Quaternion.Euler로 y축 회전만 적용)
+    //        hand.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
+    //    }
+    //}
+    void RotateHand(Rigidbody hand)
+    {
+        Debug.Log(targetVelocity);
+        if (mouseX != 0 || mouseY != 0)
+        {
+            // 마우스 이동에 따른 이동 벡터 계산
+            Vector3 movementVector = new Vector3(mouseX, 0f, mouseY);
+
+            // 이동 벡터를 월드 좌표계로 변환
+            Vector3 targetDir = Camera.main.transform.TransformDirection(movementVector).normalized;
+
+            //목표 각도 계산
+            //float angle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(mouseX,mouseY) * Mathf.Rad2Deg;
+
+            //목표 회전으로 보간
+            float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, rotateInterporlate);
+
+            // 회전 적용 (Quaternion.Euler로 y축 회전만 적용)
+            hand.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
+        }
+    }
+
     /*마우스 이동이 있는 시간을 체크하고 일정 시간 동안 없으면 멈추는 함수
      시간을 체크하는 이유 : 이동이 없을 때 바로 멈추면 잠깐의 순간도 즉각적으로
     체크해서 기본적인 움직임이 뚝뚝 끊기게 됨*/
