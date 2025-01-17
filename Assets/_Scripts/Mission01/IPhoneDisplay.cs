@@ -26,7 +26,6 @@ public class IPhoneDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(playerManager.State.ToString());
         //if(playerManager.State == PlayerState.Interaction)
         //{
         //    display.SetActive(true);
@@ -38,7 +37,7 @@ public class IPhoneDisplay : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "LeftHand")
         {
             enteredColliers++;
             if(enteredColliers == 1)
@@ -52,8 +51,8 @@ public class IPhoneDisplay : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //트리거 안에 플레이어가 들어오면 x축을 따라감
-        if(other.tag == "Player" && enteredColliers >= 1)
+        //트리거 안에 왼손이 들어오면 x축을 따라감
+        if(other.tag == "LeftHand" && enteredColliers >= 1)
         {
             //Debug.Log("터치중");
             float dist = other.transform.position.x - playerOriginX;
@@ -74,7 +73,7 @@ public class IPhoneDisplay : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player" && !isSucceed)
+        if(other.tag == "LeftHand" && !isSucceed)
         {
             enteredColliers--;
             if(enteredColliers == 0)
