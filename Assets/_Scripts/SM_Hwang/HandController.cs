@@ -21,11 +21,14 @@ public class HandController : MonoBehaviour
 
     [SerializeField] float moveDelay = 0.5f; //이동 시작 딜레이
     [SerializeField] float smoothFactor = 0.1f; //관성
-    [SerializeField] float multiflier = 10f; //감도 배수
+    [SerializeField] public float multiflier = 10f; //감도 배수
+
+    [SerializeField] HandControllerCanvas canvas;
 
     float mouseX;
     float mouseY;
-    [SerializeField] float maxHandSpeed;
+    float mouseSpeed;
+    public float maxHandSpeed = 25f;
 
     float mouseNotMovedTime = 0f; //마우스 이동이 없던 시간
 
@@ -43,19 +46,27 @@ public class HandController : MonoBehaviour
         Rotate,
     }
     HandControlMode handControlMode;
-    //수치 확인용 텍스트
-    [SerializeField] TextMeshProUGUI multiflierTmp;
-    [SerializeField] TextMeshProUGUI maxHandSpeedTmp;
-    [SerializeField] TextMeshProUGUI testTmp;
+
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         handControlMode = HandControlMode.Move;
+        canvas.gameObject.SetActive(false);
     }
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (canvas.gameObject.activeSelf)
+            {
+                canvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                canvas.gameObject.SetActive(true);
+            }
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -85,10 +96,8 @@ public class HandController : MonoBehaviour
         {
             handControlMode = HandControlMode.Rotate;
         }
-        UpdateMultifly();
         CalcAcceleration();
         CheckMouseInput();
-        ShowInfoText();
     }
     private void FixedUpdate()
     {
@@ -115,7 +124,6 @@ public class HandController : MonoBehaviour
             _isRightHandActing = true;
             if (handControlMode == HandControlMode.Move)
             {
-                Debug.Log("Move");
                 MoveHandAfterDelay(rightHand);
             }
             else if (handControlMode == HandControlMode.Rotate)
@@ -148,7 +156,7 @@ public class HandController : MonoBehaviour
             // 마우스 이동 입력
             mouseX = Input.GetAxis("Mouse X");
             mouseY = Input.GetAxis("Mouse Y");
-
+            mouseSpeed = new Vector2(mouseX, mouseY).magnitude / Time.deltaTime;
             // 카메라의 로컬 방향(우측, 상단) 기준으로 이동 벡터 계산
             Vector3 localMovementVector = new Vector3(mouseX, mouseY, 0f);
 
@@ -181,28 +189,8 @@ public class HandController : MonoBehaviour
         yield return new WaitForSeconds(moveDelay);
         hand.linearVelocity = velocity;
     }
-    public float rotateInterporlate = 1f;
-    //void RotateHand(Rigidbody hand)
-    //{
-    //    Debug.Log(targetVelocity);
-    //    if (mouseX != 0 || mouseY != 0)
-    //    {
-    //        // 목표 방향을 계산 (y축 제외)
-    //        Vector3 targetDir = new Vector3(targetVelocity.x, 0f, targetVelocity.z).normalized;
-
-    //        // 목표 각도 계산 (Atan2는 -180에서 180 사이의 값을 반환)
-    //        float angle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
-    //        // 현재 회전에서 목표 회전으로 부드럽게 보간하기
-    //        float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, rotateInterporlate);
-    //        //Debug.Log(smoothAngle);
-
-    //        // 회전 적용 (Quaternion.Euler로 y축 회전만 적용)
-    //        hand.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
-    //    }
-    //}
     void RotateHand(Rigidbody hand)
     {
-        Debug.Log(targetVelocity);
         if (mouseX != 0 || mouseY != 0)
         {
             // 마우스 이동에 따른 이동 벡터 계산
@@ -212,12 +200,11 @@ public class HandController : MonoBehaviour
             Vector3 targetDir = Camera.main.transform.TransformDirection(movementVector).normalized;
 
             //목표 각도 계산
-            //float angle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
-            float angle = Mathf.Atan2(mouseX,mouseY) * Mathf.Rad2Deg;
-
+            float angle = Mathf.Atan2(targetDir.x, targetDir.z) * Mathf.Rad2Deg;
             //목표 회전으로 보간
-            float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, rotateInterporlate);
+            float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, mouseSpeed*Time.deltaTime);
 
+            canvas.ShowText(GetHandRotation().ToString());
             // 회전 적용 (Quaternion.Euler로 y축 회전만 적용)
             hand.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
         }
@@ -265,59 +252,27 @@ public class HandController : MonoBehaviour
         if (isOutOfBounds) StopHandMovement(hand);
     }
 
-    /*감도조절 함수*/
-    void UpdateMultifly()
-    {
-        if (SceneManager.GetActiveScene().name == "SM_Hwang")
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                multiflier -= 10;
-                if (multiflier < 0)
-                {
-                    multiflier = 0;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                multiflier += 10;
-            }
-            //maxSpeed Control
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                maxHandSpeed -= 25;
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                maxHandSpeed += 25;
-            }
-        }
-    }
-    void ShowInfoText()
-    {
-        if (multiflierTmp != null)
-        {
-            multiflierTmp.text = multiflier.ToString();
-        }
-        if (maxHandSpeedTmp != null)
-        {
-            maxHandSpeedTmp.text = maxHandSpeed.ToString();
-        }
-        if (testTmp != null)
-        {
-            testTmp.text = GetHandGauge().ToString();
-        }
-    }
     //현재 동작 중인 손의 반대 손 게이지를 리턴하는 함수
     public float GetHandGauge()
     {
         if (_isLeftHandActing)
         {
-            return rightHandGauge.fillAmount;
+            return leftHandGauge.fillAmount;
         }
         else
         {
-            return leftHandGauge.fillAmount;
+            return rightHandGauge.fillAmount;
+        }
+    }
+    public float GetHandRotation()
+    {
+        if (_isLeftHandActing)
+        {
+            return leftHand.rotation.eulerAngles.y;
+        }
+        else
+        {
+            return rightHand.rotation.eulerAngles.y;
         }
     }
     /*스페이스 바로 힘을 조절하는 함수
