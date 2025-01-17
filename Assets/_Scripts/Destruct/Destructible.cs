@@ -35,7 +35,7 @@ public class Destructible : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
         {
             //상대속도를 기준으로 충돌시 힘 계산
             Vector3 speed = collision.relativeVelocity;

@@ -30,7 +30,7 @@ public class Mission01 : MissionOBJ
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "LeftHand")
         {
             enteredColliders++;
 
@@ -46,7 +46,7 @@ public class Mission01 : MissionOBJ
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "LeftHand")
         {
             enteredColliders--;
 
