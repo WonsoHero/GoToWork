@@ -16,6 +16,8 @@ public class HandController : MonoBehaviour
     [SerializeField] Rigidbody rightHand;
     [SerializeField] Image leftHandGauge;
     [SerializeField] Image rightHandGauge;
+    [SerializeField] Transform leftClavicle;
+    [SerializeField] Transform rightClavicle;
 
     Vector3 targetVelocity;
     Vector3 prevVelocity;
@@ -32,7 +34,7 @@ public class HandController : MonoBehaviour
     public float maxHandSpeed = 25f;
 
     float mouseNotMovedTime = 0f; //마우스 이동이 없던 시간
-
+    public float maxHandDistance=1f;
     //왼손, 오른손이 동작 중인지 체크하는 bool 변수
     private bool _isLeftHandActing = false;
     private bool _isRightHandActing = false;
@@ -42,32 +44,20 @@ public class HandController : MonoBehaviour
 
     HandControlMode handControlMode;
     HandMoveAxis handMoveAxis;
+    HandReverse handReverse;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         handControlMode = HandControlMode.None;
-        handMoveAxis = HandMoveAxis.Horizontal;
+        handMoveAxis = HandMoveAxis.All;
+        handReverse= HandReverse.None;
         canvas.gameObject.SetActive(false);
 
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (canvas.gameObject.activeSelf)
-            {
-                canvas.gameObject.SetActive(false);
-            }
-            else
-            {
-                canvas.gameObject.SetActive(true);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+
         if (Input.GetMouseButtonUp(0))
         {
             _isLeftHandActing = false;
@@ -85,32 +75,31 @@ public class HandController : MonoBehaviour
             StopHandMovement(leftHand);
             StopHandMovement(rightHand);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetHandControlMode(HandControlMode.Move);
+        //테스트용 인풋 동작들
+        TestParameterByInput();
+
+        if(handControlMode!=HandControlMode.None) {
+            CalcAcceleration();
+            CheckMouseInput();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetHandControlMode(HandControlMode.Rotate);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SetHandControlMode(HandControlMode.None);
-        }
-        CalcAcceleration();
-        CheckMouseInput();
     }
     private void FixedUpdate()
     {
-        //손 이동모드
-        if (handControlMode == HandControlMode.Move)
+        LimitHandDistance();
+        switch (handControlMode)
         {
-            HandMoveMode();
-        }
-        //손 회전모드
-        if (handControlMode == HandControlMode.Rotate)
-        {
-            HandRotateMode();
+            //손 이동 모드
+            case HandControlMode.Move:
+                HandMoveMode();
+                break;
+            //손 회전 모드
+            case HandControlMode.Rotate:
+                HandRotateMode();
+                break;
+            //조작 없음
+            case HandControlMode.None:
+            default:
+                break;
         }
         if (!_isLeftHandActing)
         {
@@ -298,15 +287,60 @@ public class HandController : MonoBehaviour
             ControlHandPower(rightHandGauge);
         }
     }
-    /*3개의 enum인자를 통해 조작 모드를 설정하게 할 예정
+    /*3개의 enum인자를 통해 조작 모드를 설정하는 함수
      * 1. HandControlMode : None,Move,Rotate
      * 2. HandMoveAxis : All,Vertical,Horizontal
      * 3. HandReverse : None, Reverse
      각 항목에 대해선 HandControlMode.cs의 주석 참조*/
-    public void SetHandControlMode(HandControlMode mode, HandMoveAxis moveAxis = HandMoveAxis.All)
+    public void SetHandControlMode(HandControlMode mode, HandMoveAxis moveAxis = HandMoveAxis.All,
+        HandReverse reverse=HandReverse.None)
     {
         handControlMode = mode;
         handMoveAxis = moveAxis;
+        handReverse = reverse;
+    }
+    void LimitHandDistance()
+    {
+        Vector3 leftDistance = (leftHand.position - leftClavicle.position).normalized;
+        float leftCurrentDistance=Vector3.Distance(leftHand.position, leftClavicle.position);
+        if (!Mathf.Approximately(leftCurrentDistance, maxHandDistance)){
+            leftHand.MovePosition(leftClavicle.position + leftDistance * maxHandDistance);
+        }
+        Vector3 rightDistance = (rightHand.position - rightClavicle.position).normalized;
+        float rightCurrentDistance = Vector3.Distance(rightHand.position, rightClavicle.position);
+        if (!Mathf.Approximately(rightCurrentDistance, maxHandDistance)){
+            rightHand.MovePosition(rightClavicle.position + rightDistance * maxHandDistance);
+        }
+    }
+    void TestParameterByInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (canvas.gameObject.activeSelf)
+            {
+                canvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                canvas.gameObject.SetActive(true);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetHandControlMode(HandControlMode.Move);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetHandControlMode(HandControlMode.Rotate);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SetHandControlMode(HandControlMode.None);
+        }
     }
 
     private void Awake()

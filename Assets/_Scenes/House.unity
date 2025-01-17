@@ -542,6 +542,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3735415707342125922, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
+      propertyPath: leftClavicle
+      value: 
+      objectReference: {fileID: 852522856}
+    - target: {fileID: 3735415707342125922, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
+      propertyPath: rightClavicle
+      value: 
+      objectReference: {fileID: 979251203}
+    - target: {fileID: 3735415707342125922, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
+      propertyPath: maxHandDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3868918256362494428, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
       propertyPath: missionObjPrefab
       value: 
@@ -2684,6 +2696,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4346148664340848, guid: ff79bbf38e32f664e8faf03a78f2cc3d, type: 3}
   m_PrefabInstance: {fileID: 839248214}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &852522856 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5481659937330928997, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
+  m_PrefabInstance: {fileID: 158354323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &859999087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3212,6 +3229,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d79bbe21d6995c64bbe9f35e331a0879, type: 3}
+--- !u!4 &979251203 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3941005456723207702, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
+  m_PrefabInstance: {fileID: 158354323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &987867055
 PrefabInstance:
   m_ObjectHideFlags: 0
