@@ -11,13 +11,18 @@ public class MissionData : ScriptableObject
     // 플레이어 트랜스폼
     public Vector3 modelPosition;
     public Quaternion modelRotation;
-    public Vector3 handControllerPosition;
-    public Quaternion handControllerRotation;
+
+    public Vector3 leftHandControllerPosition;
+    public Quaternion leftHandControllerRotation;
+
+    public Vector3 rightHandControllerPosition;
+    public Quaternion rightHandControllerRotation;
+
     public List<Pose> poses;
 
     // 미션 오브젝트 트랜스폼
-    public Vector3 missionPosition;
-    public Quaternion missionRotation;
+    public Vector3 missionObjPosition;
+    public Quaternion missionObjRotation;
 
     // 조작 방식
     public HandControlMode handControlMode;

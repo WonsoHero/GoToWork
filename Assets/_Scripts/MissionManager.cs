@@ -16,6 +16,16 @@ public class MissionManager : MonoBehaviour
     //지금 진행중인 미션에서 사용할것들을 캐싱
     [SerializeField] MissionData missionData;
     [SerializeField] MissionOBJ missionObj;
+
+    //미션에 사용할 게임오브젝트들
+    [SerializeField] GameObject playerModel;
+    [SerializeField] GameObject handControllerLeft;
+    [SerializeField] GameObject handControllerRight;
+
+    Transform playerModelOrigin;
+    Transform handControllerLeftOrigin;
+    Transform handControllerRightOrigin;
+
     public MissionOBJ MissionOBJ { get { return missionObj; } }
     public MissionData MissionData {  get { return missionData; } }
 
@@ -29,15 +39,20 @@ public class MissionManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        //if(instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        instance = this;
+
+        playerModelOrigin  = playerModel.transform;
+        handControllerLeftOrigin = handControllerLeft.transform;
+        handControllerRightOrigin = handControllerRight.transform;
     }
 
     private void OnEnable()
@@ -51,6 +66,9 @@ public class MissionManager : MonoBehaviour
             missions.Add(obj.MissionData.missionIdx, obj);
             obj.missionStart += AssignMission;
             obj.missionStop += RemoveMission;
+
+            //미션모드가 아니더라도 물건 부수면 미션 실패할 수 있도록 미리 구독
+            obj.failed += MissionFail;
         }
     }
 
@@ -63,6 +81,8 @@ public class MissionManager : MonoBehaviour
         {
             obj.missionStart -= AssignMission;
             obj.missionStop -= RemoveMission;
+
+            obj.failed -= MissionFail;
         }
     }
 
@@ -92,13 +112,13 @@ public class MissionManager : MonoBehaviour
 
         //이벤트 구독
         missionObj.succeed += MissionComplete;
-        missionObj.failed += MissionFail; //이 안에서 구독해서 미션모드로 진입 안하면 미션 실패 못함
 
         //미션 오브젝트 쓰는 곳에서 쓸 수 있도록 이벤트 발생
         MissionEventArgs args = new MissionEventArgs(missionObj, true); //계속 새로 만드는데 안쓰이는건 가비지 컬렉터가 알아서 회수하나??
         missionObjChanged?.Invoke(args);
 
-        //해당 미션 조작 활성화
+        //미션에 맞게 트랜스폼 로드
+        LoadTransforms();
 
         Debug.Log(missionObj.name + "미션 할당됨");
     }
@@ -109,18 +129,18 @@ public class MissionManager : MonoBehaviour
 
         //이벤트 구독 해제
         missionObj.succeed -= MissionComplete;
-        missionObj.failed -= MissionFail;
 
-        //캐싱 취소
+        //캐싱 취소 -> 미션 0번을 대목표로 설정?
         missionObj = null;
-        missionData = null;
+        missionData = null; //null -> 0번 미션으로 디폴트 설정? 
+
+        //원래 트랜스폼으로 되돌리기
+        //LoadTransforms();
+        LoadOrigins();
 
         //미션 오브젝트 쓰던 곳에서 할당 해제할 수 있도록 이벤트 발생
         MissionEventArgs args = new MissionEventArgs(missionObj, false);
         missionObjChanged?.Invoke(args);
-
-        //해당 미션 조작 비활성화, 일반 조작모드
-        
     }
 
     void MissionComplete(bool success)
@@ -151,6 +171,43 @@ public class MissionManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(2);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    void LoadTransforms()
+    {
+        //플레이어 모델의 트랜스폼 로드
+        playerModel.transform.position = missionData.modelPosition;
+        playerModel.transform.rotation = missionData.modelRotation;
+
+        //왼손 핸드컨트롤러 트랜스폼 로드
+        handControllerLeft.transform.position = missionData.leftHandControllerPosition;
+        handControllerLeft.transform.rotation = missionData.leftHandControllerRotation;
+
+        //오른손 핸드컨트롤러 트랜스폼 로드
+        handControllerRight.transform.position = missionData.rightHandControllerPosition;
+        handControllerRight.transform.rotation = missionData.rightHandControllerRotation;
+
+        //미션 오브젝트 트랜스폼 로드
+        missionObj.transform.position = missionData.missionObjPosition;
+        missionObj.transform.rotation = missionData.missionObjRotation;
+    }
+
+    //임시 함수
+    void LoadOrigins()
+    {
+        Debug.Log("트랜스폼 원상복구");
+        //플레이어 모델의 트랜스폼 로드
+        playerModel.transform.position = playerModelOrigin.position;
+        playerModel.transform.rotation = playerModelOrigin.rotation;
+
+        //왼손 핸드컨트롤러 트랜스폼 로드
+        handControllerLeft.transform.position = handControllerLeftOrigin.position;
+        handControllerLeft.transform.rotation = handControllerLeftOrigin.rotation;
+
+        //오른손 핸드컨트롤러 트랜스폼 로드
+        handControllerRight.transform.position = handControllerRightOrigin.position;
+        handControllerRight.transform.rotation = handControllerRightOrigin.rotation;
+
+        //미션 오브젝트는 내가 건든 그대로 남아있음
     }
 
     // Update is called once per frame

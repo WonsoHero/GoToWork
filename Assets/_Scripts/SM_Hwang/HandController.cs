@@ -384,6 +384,7 @@ public class HandController : MonoBehaviour
     private void OnDestroy()
     {
         PlayerManager.OnPlayerStateChanged -= OnPlayerStateChanged;
+        MissionManager.Instance.missionObjChanged -= OnMissionChanged;
     }
 
     /// <summary>
