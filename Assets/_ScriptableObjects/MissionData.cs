@@ -5,13 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MissionData", menuName = "Scriptable Objects/MissionData")]
 public class MissionData : ScriptableObject
 {
+    public int missionIdx;
+    public bool isCleared;
+
     // 플레이어 트랜스폼
-    public Transform playerTransform;
+    public Vector3 modelPosition;
+    public Quaternion modelRotation;
+    public Vector3 handControllerPosition;
+    public Quaternion handControllerRotation;
     public List<Pose> poses;
 
     // 미션 오브젝트 트랜스폼
-    public Transform missionObjectTransform;
+    public Vector3 missionPosition;
+    public Quaternion missionRotation;
 
     // 조작 방식
-
+    public HandControlMode handControlMode;
+    public HandMoveAxis moveAxis;
+    public HandReverse handReverse;
 }

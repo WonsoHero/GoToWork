@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MissionOBJ : MonoBehaviour, IMissionObject
 {
-    public MissionData missionData;
     public Action<bool> succeed;
     public Action<bool> failed;
     public Action<bool> inTriggered;
-
-    bool isSucceed = true;
-    bool isFailed = true;
+    //n번 미션 시작, 중지를 알림
+    public Action<int> missionStart;
+    public Action<int> missionStop;
 
     public bool inTrigger;
+
+    //public int missionIdx = 0;
+    bool isSucceed = false;
+    bool isFailed = false;
+
+    [SerializeField] MissionData missionData;
+    public MissionData MissionData { get { return missionData; } }
 
     public void OnMissionSuccess()
     {
@@ -32,6 +38,18 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
     {
         Debug.Log("미션 실패 이벤트 발생");
         failed?.Invoke(fail);
+    }
+
+    public void MissionStarted()
+    {
+        Debug.Log(missionData.missionIdx + " 시작");
+        missionStart?.Invoke(missionData.missionIdx);
+    }
+
+    public void MissionStopped()
+    {
+        Debug.Log(missionData.missionIdx + " 중단");
+        missionStop.Invoke(missionData.missionIdx);
     }
 }
 public interface IMissionObject

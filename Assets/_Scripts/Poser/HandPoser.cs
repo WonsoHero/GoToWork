@@ -21,30 +21,15 @@ public class HandPoser : MonoBehaviour
 
     int poseIdx = 0;
 
-    private void Awake()
-    {
-        missionObj = missionObjPrefab.GetComponent<MissionOBJ>();
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
-        missionObj.succeed += OnAchieved;
-        missionObj.failed += OnAchieved;
-        missionObj.inTriggered += OnTriggered;
+        MissionManager.Instance.missionObjChanged += OnMissionChanged;
     }
 
     private void OnDisable()
     {
-        missionObj.succeed -= OnAchieved;
-        missionObj.failed -= OnAchieved;
-        missionObj.inTriggered -= OnTriggered;
+        MissionManager.Instance.missionObjChanged -= OnMissionChanged;
     }
-
     void OnAchieved(bool isAchieved)
     {
         if (isAchieved)
@@ -65,6 +50,38 @@ public class HandPoser : MonoBehaviour
         }
     }
 
+    void OnMissionChanged(MissionEventArgs args)
+    {
+        if (args.isAssigned)
+        {
+            AssignMissionOBJ(args.missionOBJ);
+        }
+        else
+        {
+            RemoveMissionObj();
+        }
+    }
+
+    //미션 매니저에서 미션 오브젝트를 받아옴
+    void AssignMissionOBJ(MissionOBJ obj)
+    {
+        missionObj = obj;
+
+        missionObj.succeed += OnAchieved;
+        missionObj.failed += OnAchieved;
+        missionObj.inTriggered += OnTriggered;
+    }
+
+    //구독 해제
+    void RemoveMissionObj()
+    {
+        missionObj.succeed -= OnAchieved;
+        missionObj.failed -= OnAchieved;
+        missionObj.inTriggered -= OnTriggered;
+
+        missionObj = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -75,9 +92,12 @@ public class HandPoser : MonoBehaviour
     //임시로 포즈 인덱스 사용
     public void ChangePose(int idx)
     {
+        //미션 안할때는 작동 안함
+        if (missionObj == null) return;
+
         Debug.Log("포즈 변경");
 
-        Pose pose = missionObj.missionData.poses[idx];
+        Pose pose = MissionManager.Instance.MissionData.poses[idx];
 
         for (int i = 0; i<IKTargets.Count; i++)
         {

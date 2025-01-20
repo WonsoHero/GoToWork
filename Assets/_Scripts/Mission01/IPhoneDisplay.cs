@@ -5,7 +5,6 @@ using UnityEngine;
 public class IPhoneDisplay : MonoBehaviour
 {
     [SerializeField] GameObject display;
-    [SerializeField] PlayerManager playerManager;
     [SerializeField] GameObject circle;
     [SerializeField] Transform circleLimitLeft;
     [SerializeField] Transform circleLimitRight;
@@ -26,17 +25,13 @@ public class IPhoneDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(playerManager.State == PlayerState.Interaction)
-        //{
-        //    display.SetActive(true);
-        //}
-        //else
-        //{
-        //    display.SetActive(false);
-        //}
+        
     }
     private void OnTriggerEnter(Collider other)
     {
+        //미션 안할땐 작동 안해야함
+        if(MissionManager.Instance.MissionOBJ == null) return;
+
         if(other.tag == "LeftHand")
         {
             enteredColliers++;
@@ -51,8 +46,11 @@ public class IPhoneDisplay : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //미션 안할땐 작동 안해야함
+        if (MissionManager.Instance.MissionOBJ == null) return;
+
         //트리거 안에 왼손이 들어오면 x축을 따라감
-        if(other.tag == "LeftHand" && enteredColliers >= 1)
+        if (other.tag == "LeftHand" && enteredColliers >= 1)
         {
             //Debug.Log("터치중");
             float dist = other.transform.position.x - playerOriginX;
@@ -73,7 +71,10 @@ public class IPhoneDisplay : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "LeftHand" && !isSucceed)
+        //미션 안할땐 작동 안해야함
+        if (MissionManager.Instance.MissionOBJ == null) return;
+
+        if (other.tag == "LeftHand" && !isSucceed)
         {
             enteredColliers--;
             if(enteredColliers == 0)

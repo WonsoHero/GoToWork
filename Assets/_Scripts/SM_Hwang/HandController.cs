@@ -378,6 +378,7 @@ public class HandController : MonoBehaviour
     {
         // PlayerManager의 State Changed 콜백 등록
         PlayerManager.OnPlayerStateChanged += OnPlayerStateChanged;
+        MissionManager.Instance.missionObjChanged += OnMissionChanged;
     }
 
     private void OnDestroy()
@@ -392,5 +393,21 @@ public class HandController : MonoBehaviour
     void OnPlayerStateChanged(PlayerStateChangedParam param)
     {
         Debug.Log($"기존상태({Enum.GetName(typeof(PlayerState), param.OldState)})에서 새로운상태({Enum.GetName(typeof(PlayerState), param.NewState)})로 전환");
+    }
+
+    void OnMissionChanged(MissionEventArgs param)
+    {
+        //미션 할당되면 조작모드 변경
+        if (param.isAssigned)
+        {
+            MissionData data = param.missionOBJ.MissionData;
+            //미션 데이터에서 핸드 컨트롤 모드, 움직일 축, 정역방향 불러오기
+            SetHandControlMode(data.handControlMode, data.moveAxis, data.handReverse);
+        }
+        //미션이 null이면 일반조작
+        else
+        {
+            SetHandControlMode(HandControlMode.None);
+        }
     }
 }

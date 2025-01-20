@@ -3,7 +3,7 @@ using UnityEngine;
 
 //휴대폰 알람 끄는 미션
 
-public class Mission01 : MissionOBJ
+public class MissionObj_01 : MissionOBJ
 {
     [SerializeField] IPhoneDisplay display;
     [SerializeField] Destructible destructible;
@@ -11,7 +11,6 @@ public class Mission01 : MissionOBJ
 
     private void Awake()
     {
-
     }
 
     private void OnEnable()

@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5bf069b5066de4181d407f99215ad1, type: 3}
   m_Name: Mission1Data
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  missionIdx: 1
+  modelPosition: {x: 0, y: 0, z: 0}
+  modelRotation: {x: 0, y: 0, z: 0, w: 0}
   poses:
   - {fileID: 11400000, guid: 3fe50f1a99a13c94ba752bc8930db5d4, type: 2}
   - {fileID: 11400000, guid: ea251ade9298c5f40bf2c498d8e4e09f, type: 2}
-  missionObjectTransform: {fileID: 0}
+  missionPosition: {x: 0, y: 0, z: 0}
+  missionRotation: {x: 0, y: 0, z: 0, w: 0}
+  handControlMode: 1
+  moveAxis: 2
+  handReverse: 0

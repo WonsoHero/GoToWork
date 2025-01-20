@@ -92,6 +92,8 @@ public class PlayerManager : MonoBehaviour
         GetComponentInChildren<ThirdPersonController>().BlockInput(true);
         ChangeState(PlayerState.Interaction);
 
+        interactableObject.GetComponent<MissionOBJ>().MissionStarted(); //상호작용한 물체의 미션이 뭔지 체크
+
         ChangeCinemachineTarget(interactableObject.CameraPosition);
     }
 
@@ -104,7 +106,7 @@ public class PlayerManager : MonoBehaviour
         PlayerTestDebug.Instance.ChangeDebugText("");
         GetComponentInChildren<ThirdPersonController>().BlockInput(false);
         ChangeState(PlayerState.Normal);
-
+        
         ChangeCinemachineTarget(OriginalCameraTarget);
     }
 

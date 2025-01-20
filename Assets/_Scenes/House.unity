@@ -8355,6 +8355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9791142906ce57148b6fcabba4ee83ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missionObjects:
+  - {fileID: 577413264}
+  missionData: {fileID: 0}
+  missionObj: {fileID: 0}
 --- !u!4 &1508830596
 Transform:
   m_ObjectHideFlags: 0
