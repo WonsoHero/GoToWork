@@ -1,3 +1,4 @@
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -218,6 +219,48 @@ namespace StarterAssets
             }
         }
 
+        /// <summary>
+        /// Child 애니메이션 전파용
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void SetTrigger(string trigger)
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger(trigger);
+            var childComponents = GetComponentsInChildren<Animator>();
+            foreach (var child in childComponents)
+            {
+                child.SetTrigger(trigger);
+            }
+        }
+
+        public void SetSpeed(float value)
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.speed = value;
+            var childComponents = GetComponentsInChildren<Animator>();
+            foreach (var child in childComponents)
+            {
+                child.speed = value;
+            }
+        }
+
+        /// <summary>
+        /// Child 애니메이션 전파용
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void ResetTrigger(string trigger)
+        {
+            Animator animator = GetComponent<Animator>();
+            animator.ResetTrigger(trigger);
+            var childComponents = GetComponentsInChildren<Animator>();
+            foreach (var child in childComponents)
+            {
+                child.ResetTrigger(trigger);
+            }
+        }
 
         private void AssignAnimationIDs()
         {
@@ -446,6 +489,24 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        /// <summary>
+        ///  Player State 변경될 때, Animation을 멈추기 위함
+        /// </summary>
+        public void StopAnimation()
+        {
+            //SetTrigger("TrueIdle");
+            SetSpeed(0f);
+        }
+
+        /// <summary>
+        ///  Player State 변경될 때, Animation을 원래대로 되돌리기 위함
+        /// </summary>
+        public void ResumeAnimation()
+        {
+            //ResetTrigger("TrueIdle");
+            SetSpeed(1f);
         }
     }
 }

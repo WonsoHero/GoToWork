@@ -89,7 +89,11 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Entered Interaction mode");
         PlayerTestDebug.Instance.ChangeDebugText("Interaction Mode: Press Esc to Exit");
-        GetComponentInChildren<ThirdPersonController>().BlockInput(true);
+
+        var thirdPersonController = GetComponentInChildren<ThirdPersonController>();
+        thirdPersonController.BlockInput(true);
+        thirdPersonController.StopAnimation();
+
         ChangeState(PlayerState.Interaction);
 
         interactableObject.GetComponent<MissionOBJ>().MissionStarted(); //상호작용한 물체의 미션이 뭔지 체크
@@ -104,7 +108,10 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Exit Interaction");
         PlayerTestDebug.Instance.ChangeDebugText("");
-        GetComponentInChildren<ThirdPersonController>().BlockInput(false);
+        var thirdPersonController = GetComponentInChildren<ThirdPersonController>();
+        thirdPersonController.BlockInput(false);
+        thirdPersonController.ResumeAnimation();
+
         ChangeState(PlayerState.Normal);
         
         ChangeCinemachineTarget(OriginalCameraTarget);
