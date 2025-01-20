@@ -57,7 +57,6 @@ public class HandController : MonoBehaviour
     }
     private void Update()
     {
-
         if (Input.GetMouseButtonUp(0))
         {
             _isLeftHandActing = false;
@@ -89,6 +88,7 @@ public class HandController : MonoBehaviour
         LimitHandDistance(rightHand,rightClavicle);
         LimitHandPosition(leftHand);
         LimitHandPosition(rightHand);
+        ControlHandPower();
         switch (handControlMode)
         {
             //손 이동 모드
@@ -106,18 +106,12 @@ public class HandController : MonoBehaviour
         }
         if (!_isLeftHandActing)
         {
-            leftHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(leftHand);
         }
         if (!_isRightHandActing)
         {
-            rightHandGauge.fillAmount -= Time.fixedDeltaTime;
             StopHandMovement(rightHand);
         }
-
-        //게이지 범위 제한
-        leftHandGauge.fillAmount = Mathf.Clamp(leftHandGauge.fillAmount, 0, 1);
-        rightHandGauge.fillAmount = Mathf.Clamp(rightHandGauge.fillAmount, 0, 1);
     }
     void CalcAcceleration()
     {
@@ -223,13 +217,19 @@ public class HandController : MonoBehaviour
     //현재 동작 중인 손의 게이지를 반환하는 함수
     public float GetHandGauge()
     {
-        if (_isLeftHandActing)
+        //이동하는 손과 힘을 주는 손이 같으면
+        if (handReverse == HandReverse.None)
         {
-            return leftHandGauge.fillAmount;
+            //왼손 동작 시 왼손 게이지 리턴
+            if (_isLeftHandActing) return leftHandGauge.fillAmount;            
+            else return rightHandGauge.fillAmount;          
         }
+        //이동하는 손과 힘을 주는 손이 다르면
         else
         {
-            return rightHandGauge.fillAmount;
+            //왼손 동작 시 오른손 게이지 리턴
+            if (_isLeftHandActing) return rightHandGauge.fillAmount;          
+            else return leftHandGauge.fillAmount;           
         }
     }
     /*현재 동작 중인 손의 회전값을 반환하는 함수*/
@@ -247,16 +247,39 @@ public class HandController : MonoBehaviour
     /*스페이스 바로 힘을 조절하는 함수
      해당되는 ImageGauge를 인자로 받아 어느 손에 힘을 줄지
     지정*/
-    void ControlHandPower(Image handGauge)
+    void ControlHandPower()
     {
-        if (Input.GetKey(KeyCode.Space))
+        void UpdateHandGauge(bool isActing, Image actingHandGauge)
         {
-            handGauge.fillAmount += Time.fixedDeltaTime;
+            if(isActing)
+            {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    actingHandGauge.fillAmount += Time.fixedDeltaTime;
+                }
+                else
+                {
+                    actingHandGauge.fillAmount -= Time.fixedDeltaTime;
+                }
+            }
+            else
+            {
+                actingHandGauge.fillAmount-= Time.fixedDeltaTime;
+            }
         }
-        else
+        if(handReverse == HandReverse.None)
         {
-            handGauge.fillAmount -= Time.fixedDeltaTime;
+            UpdateHandGauge(_isLeftHandActing,leftHandGauge);
+            UpdateHandGauge(_isRightHandActing,rightHandGauge);
         }
+        else if (handReverse == HandReverse.Reverse)
+        {
+            UpdateHandGauge(_isLeftHandActing, rightHandGauge);
+            UpdateHandGauge(_isRightHandActing,leftHandGauge);
+        }
+        //게이지 범위 제한
+        leftHandGauge.fillAmount = Mathf.Clamp(leftHandGauge.fillAmount, 0, 1);
+        rightHandGauge.fillAmount = Mathf.Clamp(rightHandGauge.fillAmount, 0, 1);
     }
     void HandMoveMode()
     {
@@ -264,14 +287,12 @@ public class HandController : MonoBehaviour
         {
             _isLeftHandActing = true;
             MoveHandAfterDelay(leftHand);
-            ControlHandPower(leftHandGauge);
         }
         //오른손
         if (Input.GetMouseButton(1) && !_isLeftHandActing)
         {
             _isRightHandActing = true;
             MoveHandAfterDelay(rightHand);
-            ControlHandPower(rightHandGauge);
         }
     }
     void HandRotateMode()
@@ -280,14 +301,12 @@ public class HandController : MonoBehaviour
         {
             _isLeftHandActing = true;
             RotateHand(leftHand);
-            ControlHandPower(leftHandGauge);
         }
         //오른손
         if (Input.GetMouseButton(1) && !_isLeftHandActing)
         {
             _isRightHandActing = true;
             RotateHand(rightHand);
-            ControlHandPower(rightHandGauge);
         }
     }
     /*3개의 enum인자를 통해 조작 모드를 설정하는 함수
