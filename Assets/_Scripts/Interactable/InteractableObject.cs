@@ -11,35 +11,9 @@ public class InteractableObject : MonoBehaviour
     public Transform CameraPosition;
 
     /// <summary>
-    /// 외곽선을 적용하기 위한 Material
-    /// </summary>
-    [SerializeField] Material OutlineMaterial;
-
-    /// <summary>
-    /// 기본 상태 Material
-    /// </summary>
-    [SerializeField] Material DefaultMaterial;
-
-    /// <summary>
     /// Player가 DetectArea 안에 있는지 여부.
     /// </summary>
     public bool IsPlayerInDetectArea { get => isPlayerInDetectArea; }
     
     private bool isPlayerInDetectArea;
-
-    /// <summary>
-    ///  강조용 외곽선을 보여준다.
-    /// </summary>
-    public void ShowOutline()
-    {
-        GetComponent<MeshRenderer>().SetMaterials(new System.Collections.Generic.List<Material> { OutlineMaterial, DefaultMaterial });
-    }
-
-    /// <summary>
-    ///  강조용 외곽선을 숨긴다.
-    /// </summary>
-    public void HideOutline()
-    {
-        GetComponent<MeshRenderer>().SetMaterials(new System.Collections.Generic.List<Material> { DefaultMaterial });
-    }
 }
