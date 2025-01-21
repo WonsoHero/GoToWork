@@ -39,11 +39,12 @@ public class Destructible : MonoBehaviour
         {
             //상대속도를 기준으로 충돌시 힘 계산
             Vector3 speed = collision.relativeVelocity;
+            Debug.Log("speed : "+speed);
             //F = 충격량 / 시간
             //collision.impulse로 충격량을 구하려 했으나 항상 (0,0,0) 나와서 못씀
             //질량을 1로 가정, 생략하고 속도의 크기를 충격량으로 삼음
             float force = speed.magnitude / Time.fixedDeltaTime;
-
+            Debug.Log("forece : " + force);
             //충돌시 힘 크기가 destructForce를 초과하면 파괴
             //파괴 모델 하나만 나오도록 조건 추가
             if (force > destructForce && !destructed)
