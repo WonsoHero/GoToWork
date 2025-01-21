@@ -21,15 +21,18 @@ public class MissionManager : MonoBehaviour
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject handControllerLeft;
     [SerializeField] GameObject handControllerRight;
+    
     HandPoser handPoser;
-    public HandPoser HandPoser { get { return handPoser; } }
 
     Transform playerModelOrigin;
     Transform handControllerLeftOrigin;
     Transform handControllerRightOrigin;
-
+    public HandPoser HandPoser { get { return handPoser; } }
     public MissionOBJ MissionOBJ { get { return missionObj; } }
     public MissionData MissionData {  get { return missionData; } }
+
+    public PlayerManager playerManager;
+
 
     static MissionManager instance;
     public static MissionManager Instance
@@ -171,7 +174,7 @@ public class MissionManager : MonoBehaviour
 
     void MissionFail(bool fail)
     {
-        Debug.Log(missionObj.name + " 실패, 2초후 다시 시작");
+        Debug.Log("미션실패, 2초후 다시 시작");
         StartCoroutine(RestartMission());
     }
 
@@ -217,11 +220,6 @@ public class MissionManager : MonoBehaviour
         handControllerRight.transform.rotation = handControllerRightOrigin.rotation;
 
         //미션 오브젝트는 내가 건든 그대로 남아있음
-    }
-
-    void LoadPose()
-    {
-        
     }
 
     // Update is called once per frame

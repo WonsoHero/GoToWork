@@ -13,48 +13,48 @@ public class Destructible : MonoBehaviour
 
     bool destructed = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log("-----------------------\n" + gameObject.GetComponent<Rigidbody>().GetPointVelocity(transform.position));
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        //Debug.Log("콜리전 엔터 : " + collision.relativeVelocity.magnitude / Time.fixedDeltaTime);
-
-        
-    }
-
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
+        //플레이 모드가 기본조작모드일때
+        if (MissionManager.Instance.playerManager.State == PlayerState.Normal)
         {
-            //상대속도를 기준으로 충돌시 힘 계산
-            Vector3 speed = collision.relativeVelocity;
-            Debug.Log("speed : "+speed);
-            //F = 충격량 / 시간
-            //collision.impulse로 충격량을 구하려 했으나 항상 (0,0,0) 나와서 못씀
-            //질량을 1로 가정, 생략하고 속도의 크기를 충격량으로 삼음
-            float force = speed.magnitude / Time.fixedDeltaTime;
-            Debug.Log("forece : " + force);
-            //충돌시 힘 크기가 destructForce를 초과하면 파괴
-            //파괴 모델 하나만 나오도록 조건 추가
-            if (force > destructForce && !destructed)
+            //몸통으로 뿌수고
+            if(collision.gameObject.tag == "Body")
             {
-                Debug.Log("부서짐");
-                destructed = true;
-                destruct?.Invoke(destructed);
-                Destruct(collision.GetContact(0), speed);
-
+                Debug.Log("몸통 충돌");
+                DetectDestruct(collision);
             }
+        }
+        //플레이 모드가 미션 조작모드일때
+        else if(MissionManager.Instance.playerManager.State == PlayerState.Interaction)
+        {
+            //손으로 뿌순다
+            if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
+            {
+                Debug.Log("손 충돌");
+                DetectDestruct(collision);
+            }
+        }
+    }
+
+    void DetectDestruct(Collision collision)
+    {
+        //상대속도를 기준으로 충돌시 힘 계산
+        Vector3 speed = collision.relativeVelocity;
+        Debug.Log("speed : " + speed);
+        //F = 충격량 / 시간
+        //collision.impulse로 충격량을 구하려 했으나 항상 (0,0,0) 나와서 못씀
+        //질량을 1로 가정, 생략하고 속도의 크기를 충격량으로 삼음
+        float force = speed.magnitude / Time.fixedDeltaTime;
+        Debug.Log("forece : " + force);
+        //충돌시 힘 크기가 destructForce를 초과하면 파괴
+        //파괴 모델 하나만 나오도록 조건 추가
+        if (force > destructForce && !destructed)
+        {
+            Debug.Log("부서짐");
+            destructed = true;
+            destruct?.Invoke(destructed);
+            Destruct(collision.GetContact(0), speed);
         }
     }
 
