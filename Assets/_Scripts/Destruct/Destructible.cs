@@ -12,6 +12,8 @@ public class Destructible : MonoBehaviour
     public float destructForce = 4;
 
     bool destructed = false;
+    float handForceFactor = 1;
+    float bodyForceFactor = 10;
 
     private void OnCollisionStay(Collision collision)
     {
@@ -22,7 +24,7 @@ public class Destructible : MonoBehaviour
             if(collision.gameObject.tag == "Body")
             {
                 Debug.Log("몸통 충돌");
-                DetectDestruct(collision);
+                DetectDestruct(collision, bodyForceFactor);
             }
         }
         //플레이 모드가 미션 조작모드일때
@@ -32,12 +34,12 @@ public class Destructible : MonoBehaviour
             if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
             {
                 Debug.Log("손 충돌");
-                DetectDestruct(collision);
+                DetectDestruct(collision, handForceFactor);
             }
         }
     }
 
-    void DetectDestruct(Collision collision)
+    void DetectDestruct(Collision collision, float forceFactor)
     {
         //상대속도를 기준으로 충돌시 힘 계산
         Vector3 speed = collision.relativeVelocity;
@@ -46,6 +48,7 @@ public class Destructible : MonoBehaviour
         //collision.impulse로 충격량을 구하려 했으나 항상 (0,0,0) 나와서 못씀
         //질량을 1로 가정, 생략하고 속도의 크기를 충격량으로 삼음
         float force = speed.magnitude / Time.fixedDeltaTime;
+        force *= forceFactor; //몸뚱이로 밀면 쉽게 부술 수 있게함
         Debug.Log("forece : " + force);
         //충돌시 힘 크기가 destructForce를 초과하면 파괴
         //파괴 모델 하나만 나오도록 조건 추가
