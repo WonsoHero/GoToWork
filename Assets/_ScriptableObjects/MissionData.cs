@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MissionData", menuName = "Scriptable Objects/MissionData")]
 public class MissionData : ScriptableObject
 {
+    [SerializeField] bool poseDictCreated;
+
     public int missionIdx;
     public bool isCleared;
 
@@ -18,7 +20,8 @@ public class MissionData : ScriptableObject
     public Vector3 rightHandControllerPosition;
     public Quaternion rightHandControllerRotation;
 
-    public List<Pose> poses;
+    //포즈
+    public List<PoseName> poses;
 
     // 미션 오브젝트 트랜스폼
     public Vector3 missionObjPosition;

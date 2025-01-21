@@ -21,6 +21,8 @@ public class MissionManager : MonoBehaviour
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject handControllerLeft;
     [SerializeField] GameObject handControllerRight;
+    HandPoser handPoser;
+    public HandPoser HandPoser { get { return handPoser; } }
 
     Transform playerModelOrigin;
     Transform handControllerLeftOrigin;
@@ -50,9 +52,15 @@ public class MissionManager : MonoBehaviour
         //}
         instance = this;
 
+        handPoser = playerModel.GetComponent<HandPoser>();
+
         playerModelOrigin  = playerModel.transform;
         handControllerLeftOrigin = handControllerLeft.transform;
         handControllerRightOrigin = handControllerRight.transform;
+
+        //이전에 플레이하다가 다시올때 남아있는거 비워줌
+        missionObj = null;
+        missionData = null;
     }
 
     private void OnEnable()
@@ -119,6 +127,7 @@ public class MissionManager : MonoBehaviour
 
         //미션에 맞게 트랜스폼 로드
         LoadTransforms();
+
 
         Debug.Log(missionObj.name + "미션 할당됨");
     }
@@ -208,6 +217,11 @@ public class MissionManager : MonoBehaviour
         handControllerRight.transform.rotation = handControllerRightOrigin.rotation;
 
         //미션 오브젝트는 내가 건든 그대로 남아있음
+    }
+
+    void LoadPose()
+    {
+        
     }
 
     // Update is called once per frame

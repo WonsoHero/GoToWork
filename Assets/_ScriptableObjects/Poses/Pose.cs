@@ -9,8 +9,3 @@ public class Pose : ScriptableObject
     public List<Quaternion> Rotations;
     public string PoseName;
 }
-
-struct PoseState
-{
-    
-}

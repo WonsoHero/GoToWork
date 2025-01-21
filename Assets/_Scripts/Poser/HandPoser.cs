@@ -30,25 +30,6 @@ public class HandPoser : MonoBehaviour
     {
         MissionManager.Instance.missionObjChanged -= OnMissionChanged;
     }
-    void OnAchieved(bool isAchieved)
-    {
-        if (isAchieved)
-        {
-            
-        }
-    }
-
-    void OnTriggered(bool isTriggered)
-    {
-        if (isTriggered)
-        {
-            ChangePose(1);
-        }
-        else
-        {
-            ChangePose(0);
-        }
-    }
 
     void OnMissionChanged(MissionEventArgs args)
     {
@@ -66,19 +47,11 @@ public class HandPoser : MonoBehaviour
     void AssignMissionOBJ(MissionOBJ obj)
     {
         missionObj = obj;
-
-        missionObj.succeed += OnAchieved;
-        missionObj.failed += OnAchieved;
-        missionObj.inTriggered += OnTriggered;
     }
 
     //구독 해제
     void RemoveMissionObj()
     {
-        missionObj.succeed -= OnAchieved;
-        missionObj.failed -= OnAchieved;
-        missionObj.inTriggered -= OnTriggered;
-
         missionObj = null;
     }
 
@@ -88,18 +61,18 @@ public class HandPoser : MonoBehaviour
         
     }
 
-    //추후 게임 매니저에서 미션별 인덱스 받아와 포즈 관리
-    //임시로 포즈 인덱스 사용
-    public void ChangePose(int idx)
+    //포즈 네임을 받아 포즈 컨테이너에서 필요한 포즈를 바로 꺼내씀
+    //무슨 포즈를 쓸지는 각 미션오브젝트에서 관리해야할듯
+    public void ChangePose(PoseName poseName)
     {
         //미션 안할때는 작동 안함
         if (missionObj == null) return;
 
         Debug.Log("포즈 변경");
 
-        Pose pose = MissionManager.Instance.MissionData.poses[idx];
+        Pose pose = PoseContainer.Instance.PoseDict[poseName];
 
-        for (int i = 0; i<IKTargets.Count; i++)
+        for (int i = 0; i < IKTargets.Count; i++)
         {
             IKTargets[i].localPosition = pose.Positions[i];
             IKTargets[i].localRotation = pose.Rotations[i];

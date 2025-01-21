@@ -7,10 +7,13 @@ public class MissionObj_01 : MissionOBJ
 {
     [SerializeField] IPhoneDisplay display;
     [SerializeField] Destructible destructible;
+
+    HandPoser handPoser;
     int enteredColliders = 0;
 
     private void Awake()
     {
+        handPoser = MissionManager.Instance.HandPoser;
     }
 
     private void OnEnable()
@@ -35,10 +38,9 @@ public class MissionObj_01 : MissionOBJ
 
             if (enteredColliders == 1)
             {
-                Debug.Log("트리거됨");
-                
+                //폰 근처로 손을 가져가면 손가락 폄
                 inTrigger = true;
-                inTriggered?.Invoke(true);
+                handPoser.ChangePose(PoseName.IphonePointing);
             }
         }
     }
@@ -51,10 +53,9 @@ public class MissionObj_01 : MissionOBJ
 
             if(enteredColliders == 0)
             {
-                Debug.Log("트리거 떠남");
-
+                //벗어나면 원래 포즈로 복귀
                 inTrigger = false;
-                inTriggered?.Invoke(false);
+                handPoser.ChangePose(PoseName.OriginalPose);
             }
         }
     }
