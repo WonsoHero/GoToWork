@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6932508375364354058}
@@ -101,7 +101,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.8
+  m_Height: 1.6
   m_Radius: 0.28
   m_SlopeLimit: 45
   m_StepOffset: 0.25
@@ -439,8 +439,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4130037100990251396, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+      propertyPath: leftClavicle
+      value: 
+      objectReference: {fileID: 5481659937330928997}
+    - target: {fileID: 4130037100990251396, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+      propertyPath: rightClavicle
+      value: 
+      objectReference: {fileID: 3941005456723207702}
+    - target: {fileID: 4130037100990251396, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+      propertyPath: maxHandDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352376439271323701, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3681451589028906253, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3235669271431681679, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
@@ -479,6 +496,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &3941005456723207702 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4339017592395209968, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+  m_PrefabInstance: {fileID: 758304685407861478}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5481659937330928997 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5085917188156974979, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+  m_PrefabInstance: {fileID: 758304685407861478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1145343603494029634
 PrefabInstance:
   m_ObjectHideFlags: 0
