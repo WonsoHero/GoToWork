@@ -9,6 +9,7 @@ public enum PoseName
 
     //미션 01 - 폰 알람 미션
     IphonePointing, //왼손 검지로 가리키는 포즈
+    IphoneGrab, //오른손으로 쥐고 있는 포즈
     
 }
 

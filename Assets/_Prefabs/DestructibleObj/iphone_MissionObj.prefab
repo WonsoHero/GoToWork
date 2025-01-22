@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 4512562639178796204}
   - component: {fileID: 1487878240002184141}
   - component: {fileID: 6747446458841387710}
+  - component: {fileID: 6677693310203325280}
   m_Layer: 10
   m_Name: iphone_MissionObj
   m_TagString: Interactable
@@ -439,6 +440,21 @@ MonoBehaviour:
   missionData: {fileID: 11400000, guid: df92d55f17953dc4e85f8277941cb00f, type: 2}
   display: {fileID: 5434200633909092762}
   destructible: {fileID: 4218713707072186583}
+  rightHand: {fileID: 0}
+--- !u!114 &6677693310203325280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131164441771248574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3040e83ee118e242953dfa9cc4b95d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGripStrengthLeft: 0.3
+  minGripStrengthRight: 0.3
 --- !u!1 &3624470970139805140
 GameObject:
   m_ObjectHideFlags: 0

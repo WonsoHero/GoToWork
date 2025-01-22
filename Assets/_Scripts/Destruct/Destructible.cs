@@ -11,9 +11,16 @@ public class Destructible : MonoBehaviour
     public float forceMultiplier = 4;
     public float destructForce = 4;
 
+    GrabbaleObject grabbaleObject;
     bool destructed = false;
     float handForceFactor = 1;
     float bodyForceFactor = 10;
+    float grabForce = 10f;
+
+    private void Awake()
+    {
+        grabbaleObject = GetComponent<GrabbaleObject>();
+    }
 
     private void OnCollisionStay(Collision collision)
     {
@@ -31,10 +38,35 @@ public class Destructible : MonoBehaviour
         else if(MissionManager.Instance.playerManager.State == PlayerState.Interaction)
         {
             //손으로 뿌순다
-            if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
+            //잡을 수 없는 오브젝트라면 양 손과의 충돌을 감지하고
+            if(grabbaleObject == null)
             {
-                Debug.Log("손 충돌");
-                DetectDestruct(collision, handForceFactor);
+                if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
+                {
+                    Debug.Log("손 충돌");
+                    DetectDestruct(collision, handForceFactor);
+                }
+            }
+            //잡을수 있는 오브젝트라면
+            else
+            {
+                //이 오브젝트를 잡은 손과의 충돌은 무시한다
+                if (grabbaleObject.IsRightGrapped)
+                {
+                    if (collision.gameObject.tag == "LeftHand")
+                    {
+                        Debug.Log("손 충돌");
+                        DetectDestruct(collision, handForceFactor);
+                    }
+                }
+                else if(grabbaleObject.IsLeftGrapped)
+                {
+                    if (collision.gameObject.tag == "RightHand")
+                    {
+                        Debug.Log("손 충돌");
+                        DetectDestruct(collision, handForceFactor);
+                    }
+                }
             }
         }
     }
@@ -54,15 +86,16 @@ public class Destructible : MonoBehaviour
         //파괴 모델 하나만 나오도록 조건 추가
         if (force > destructForce && !destructed)
         {
-            Debug.Log("부서짐");
-            destructed = true;
-            destruct?.Invoke(destructed);
             Destruct(collision.GetContact(0), speed);
         }
     }
 
+    //손이 충돌하는 파괴
     public void Destruct(ContactPoint contact, Vector3 force)
     {
+        destructed = true;
+        destruct?.Invoke(destructed);
+
         gameObject.SetActive(false);
 
         //화면 흔들림 및 소리도 여기서 처리
@@ -77,6 +110,29 @@ public class Destructible : MonoBehaviour
         foreach (Rigidbody cell in cellRigidbodies)
         {
             cell.AddForceAtPosition(force * forceMultiplier ,contact.point, ForceMode.Impulse);
+        }
+    }
+
+    //손으로 쥐어짜는 파괴
+    public void Destruct()
+    {
+        destructed = true;
+        destruct?.Invoke(destructed);
+
+        gameObject.SetActive(false);
+
+        //화면 흔들림 및 소리도 여기서 처리
+
+        //파괴 모델로 교체
+        GameObject go = Instantiate(destructModel);
+        go.transform.position = transform.position;
+        go.transform.rotation = transform.rotation;
+
+        //파괴 모델의 조각들에 힘을 가해 충돌방향으로 날라가게함
+        Rigidbody[] cellRigidbodies = go.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody cell in cellRigidbodies)
+        {
+            cell.AddExplosionForce(grabForce, transform.position, 10f);
         }
     }
 }

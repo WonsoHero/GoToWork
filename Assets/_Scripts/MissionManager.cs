@@ -13,15 +13,22 @@ public class MissionManager : MonoBehaviour
     [SerializeField] List<MissionOBJ> missionObjects;
     Dictionary<int, MissionOBJ> missions = new Dictionary<int, MissionOBJ>();
 
-    //지금 진행중인 미션에서 사용할것들을 캐싱
-    [SerializeField] MissionData missionData;
-    [SerializeField] MissionOBJ missionObj;
-
     //미션에 사용할 게임오브젝트들
     [SerializeField] GameObject playerModel;
     [SerializeField] GameObject handControllerLeft;
     [SerializeField] GameObject handControllerRight;
-    
+    [SerializeField] GameObject leftHand;
+    [SerializeField] GameObject rightHand;
+
+    //미션에 사용할 클래스들
+    [SerializeField] HandController handController;
+    FixedJoint leftHandJoint;
+    FixedJoint rightHandJoint;
+
+    //지금 진행중인 미션에서 사용할것들을 캐싱
+    MissionData missionData;
+    MissionOBJ missionObj;
+
     HandPoser handPoser;
 
     Transform playerModelOrigin;
@@ -31,8 +38,13 @@ public class MissionManager : MonoBehaviour
     public MissionOBJ MissionOBJ { get { return missionObj; } }
     public MissionData MissionData {  get { return missionData; } }
 
-    public PlayerManager playerManager;
+    public HandController HandController { get { return handController; } }
+    public GameObject LeftHand { get { return leftHand; } }
+    public GameObject RightHand { get { return rightHand; } }
+    public FixedJoint LeftHandJoint { get { return leftHandJoint; } }
+    public FixedJoint RightHandJoint { get { return rightHandJoint; } }
 
+    public PlayerManager playerManager;
 
     static MissionManager instance;
     public static MissionManager Instance
@@ -57,9 +69,12 @@ public class MissionManager : MonoBehaviour
 
         handPoser = playerModel.GetComponent<HandPoser>();
 
-        playerModelOrigin  = playerModel.transform;
+        playerModelOrigin = playerModel.transform;
         handControllerLeftOrigin = handControllerLeft.transform;
         handControllerRightOrigin = handControllerRight.transform;
+
+        leftHandJoint = leftHand.GetComponent<FixedJoint>();
+        rightHandJoint = rightHand.GetComponent<FixedJoint>();
 
         //이전에 플레이하다가 다시올때 남아있는거 비워줌
         missionObj = null;
@@ -208,8 +223,8 @@ public class MissionManager : MonoBehaviour
     {
         Debug.Log("트랜스폼 원상복구");
         //플레이어 모델의 트랜스폼 로드
-        playerModel.transform.position = playerModelOrigin.position;
-        playerModel.transform.rotation = playerModelOrigin.rotation;
+        playerModel.transform.localPosition = Vector3.zero;
+        playerModel.transform.localRotation = Quaternion.identity;
 
         //왼손 핸드컨트롤러 트랜스폼 로드
         handControllerLeft.transform.position = handControllerLeftOrigin.position;
