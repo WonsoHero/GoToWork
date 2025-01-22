@@ -6,7 +6,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerTestDebug : MonoBehaviour
 {
-    [SerializeField] TMP_Text DebugText;
+    [SerializeField] TMP_Text InformationText;
+    [SerializeField] TMP_Text AlertText;
 
     private static PlayerTestDebug instance;
     public static PlayerTestDebug Instance
@@ -27,8 +28,23 @@ public class PlayerTestDebug : MonoBehaviour
         }
     }
 
-    public void ChangeDebugText(string text)
+    public void ChangeInformationText(string text)
     {
-        DebugText.text = text;
+        if (InformationText == null) return;
+
+        InformationText.text = text;
+    }
+
+    /// <summary>
+    ///  UI 상단 사라지는 텍스트
+    /// </summary>
+    /// <param name="text"></param>
+    public void ShowAlertText(string text)
+    {
+        if (AlertText == null) return;
+
+        AlertText.text = text;
+        AlertText.CrossFadeAlpha(1.0f, 0.01f, true);
+        AlertText.CrossFadeAlpha(0.0f, 2f, true);
     }
 }

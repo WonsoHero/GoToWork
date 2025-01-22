@@ -12,7 +12,7 @@ public class DetectArea : MonoBehaviour
         {
             Debug.Log("OnTriggerEnter : " + other.name);
             obj.OutlineColor = Color.white;
-            obj.OutlineMode = Outline.Mode.OutlineVisible;
+            obj.OutlineMode = Outline.Mode.OutlineAll;
         }
     }
 

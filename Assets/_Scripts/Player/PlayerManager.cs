@@ -88,7 +88,8 @@ public class PlayerManager : MonoBehaviour
     void EnterInteraction(InteractableObject interactableObject)
     {
         Debug.Log("Entered Interaction mode");
-        PlayerTestDebug.Instance.ChangeDebugText("Interaction Mode: Press Esc to Exit");
+        PlayerTestDebug.Instance.ShowAlertText(Strings.PlayerInInteractionMode);
+        PlayerTestDebug.Instance.ChangeInformationText(String.Empty);
 
         var thirdPersonController = GetComponentInChildren<ThirdPersonController>();
         thirdPersonController.BlockInput(true);
@@ -107,7 +108,7 @@ public class PlayerManager : MonoBehaviour
     void ExitInteraction()
     {
         Debug.Log("Exit Interaction");
-        PlayerTestDebug.Instance.ChangeDebugText("");
+        PlayerTestDebug.Instance.ChangeInformationText(String.Empty);
         var thirdPersonController = GetComponentInChildren<ThirdPersonController>();
         thirdPersonController.BlockInput(false);
         thirdPersonController.ResumeAnimation();
@@ -173,13 +174,13 @@ public class PlayerManager : MonoBehaviour
             // InteractableObject가 감지되면
             if (hit.collider.gameObject.TryGetComponent<InteractableObject>(out var obj))
             {
-                PlayerTestDebug.Instance.ChangeDebugText("Press F to Interact");
+                PlayerTestDebug.Instance.ChangeInformationText(Strings.PlayerEnterInteractionMode);
                 selectedInteractableObject = obj;
                 return;
             }
         }
 
-        PlayerTestDebug.Instance.ChangeDebugText("None");
+        PlayerTestDebug.Instance.ChangeInformationText(String.Empty);
         selectedInteractableObject = null;
     }
 
