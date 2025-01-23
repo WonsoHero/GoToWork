@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165b0ec8718f6284da6116eac7d2a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructModel: {fileID: 1409275051989496973, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+  destructModel: {fileID: 2958691101492836264, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
   forceMultiplier: 4
   destructForce: 4
 --- !u!65 &6413760252140655599

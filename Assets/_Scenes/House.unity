@@ -12929,6 +12929,63 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: f61f0bfa08cd2d64586fd89a8dca9403, type: 3}
+--- !u!1001 &1191758745364664342
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469293440280997138, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958691101492836264, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
+      propertyPath: m_Name
+      value: Speaker_destructed_Prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5079e81d18ad74498352e465d64d00d, type: 3}
 --- !u!1001 &2160183577206536204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13071,7 +13128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165b0ec8718f6284da6116eac7d2a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructModel: {fileID: 3028995933871083555, guid: 3e432683f888b28449ab960edf51553d, type: 3}
+  destructModel: {fileID: 8015156200235147170, guid: 3e432683f888b28449ab960edf51553d, type: 3}
   forceMultiplier: 4
   destructForce: 4
 --- !u!1001 &3057202916402825069
@@ -13892,3 +13949,4 @@ SceneRoots:
   - {fileID: 1508830596}
   - {fileID: 1306767293}
   - {fileID: 955035279}
+  - {fileID: 1191758745364664342}
