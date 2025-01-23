@@ -432,6 +432,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 225102537}
     m_Modifications:
+    - target: {fileID: 695252006977142942, guid: 6c58c2a3b1366404f8f2e63c1f25de41, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 695252006977641662, guid: 6c58c2a3b1366404f8f2e63c1f25de41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7520,6 +7524,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 225102537}
     m_Modifications:
+    - target: {fileID: 2454142003251179082, guid: fd80363e62500444aae6900b0d9d75b1, type: 3}
+      propertyPath: destructModel
+      value: 
+      objectReference: {fileID: 9108169503523696863, guid: fe02fc6d72ed473419fdb872570ae782, type: 3}
     - target: {fileID: 2601799562522935020, guid: fd80363e62500444aae6900b0d9d75b1, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -7567,6 +7575,10 @@ PrefabInstance:
     - target: {fileID: 2601799562523157196, guid: fd80363e62500444aae6900b0d9d75b1, type: 3}
       propertyPath: m_Name
       value: Kitchen_furniture_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212054375947175393, guid: fd80363e62500444aae6900b0d9d75b1, type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7990,7 +8002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165b0ec8718f6284da6116eac7d2a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructModel: {fileID: 1200399656582330991, guid: 5f27c2e42af9db440822672e1efc188a, type: 3}
+  destructModel: {fileID: 1577902533296026129, guid: f0452262eea5ef641bee711478fc127f, type: 3}
   forceMultiplier: 4
   destructForce: 4
 --- !u!4 &1384384529 stripped
@@ -13216,7 +13228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 45019d2689c2c93408c74a2bcb976605, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45019d2689c2c93408c74a2bcb976605, type: 3}
       propertyPath: m_RootOrder
@@ -13361,7 +13373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 8d3f336ec027b344da1660323cfd4a58, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8d3f336ec027b344da1660323cfd4a58, type: 3}
       propertyPath: m_RootOrder
@@ -13566,7 +13578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165b0ec8718f6284da6116eac7d2a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructModel: {fileID: 6224583119621585429, guid: 885995e6dedbf2d408c2dadd89878b87, type: 3}
+  destructModel: {fileID: 7120472720397788705, guid: 055ad6ab11399094b9251f28ad4ff449, type: 3}
   forceMultiplier: 4
   destructForce: 4
 --- !u!1001 &4483424063118035907
@@ -13583,7 +13595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
       propertyPath: m_RootOrder
@@ -13731,6 +13743,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 225102537}
     m_Modifications:
+    - target: {fileID: 188853745199907969, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250822807845867746, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3441857302717077112, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7136651505070301526, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388877077918272951, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8610431675867772954, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.743
@@ -13774,6 +13806,10 @@ PrefabInstance:
     - target: {fileID: 8950259196657328800, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
       propertyPath: m_Name
       value: Microwave.openable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8950259196657328800, guid: 940d08e4d05cc28499b33dd6e2a54df2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
