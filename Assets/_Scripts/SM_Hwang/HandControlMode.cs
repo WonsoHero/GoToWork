@@ -19,10 +19,12 @@ public enum HandMoveAxis
     Horizontal,
 }
 //손 힘주기 방식 정의
-public enum HandReverse
+public enum HandPower
 {
-    //일반 : 왼손을 움직이며 왼손에 힘을 줌
+    //없음 : 힘주기 안 함
     None,
-    //역 : 왼손을 움직이며 오른손에 힘을 줌
+    //정방향 : 왼손을 움직이며 왼손에 힘을 줌
+    Forward,
+    //역방향 : 왼손을 움직이며 오른손에 힘을 줌
     Reverse
 }

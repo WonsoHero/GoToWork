@@ -44,14 +44,14 @@ public class HandController : MonoBehaviour
 
     HandControlMode handControlMode;
     HandMoveAxis handMoveAxis;
-    HandReverse handReverse;
+    HandPower handPower;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         handControlMode = HandControlMode.None;
         handMoveAxis = HandMoveAxis.All;
-        handReverse= HandReverse.None;
+        handPower= HandPower.None;
         canvas.gameObject.SetActive(false);
 
     }
@@ -218,19 +218,20 @@ public class HandController : MonoBehaviour
     public float GetHandGauge()
     {
         //이동하는 손과 힘을 주는 손이 같으면
-        if (handReverse == HandReverse.None)
+        if (handPower == HandPower.Forward)
         {
             //왼손 동작 시 왼손 게이지 리턴
-            if (_isLeftHandActing) return leftHandGauge.fillAmount;            
-            else return rightHandGauge.fillAmount;          
+            if (_isLeftHandActing) return leftHandGauge.fillAmount;
+            else return rightHandGauge.fillAmount;
         }
         //이동하는 손과 힘을 주는 손이 다르면
-        else
+        else if (handPower == HandPower.Reverse)
         {
             //왼손 동작 시 오른손 게이지 리턴
-            if (_isLeftHandActing) return rightHandGauge.fillAmount;          
-            else return leftHandGauge.fillAmount;           
+            if (_isLeftHandActing) return rightHandGauge.fillAmount;
+            else return leftHandGauge.fillAmount;
         }
+        else return 0f;
     }
     /*현재 동작 중인 손의 회전값을 반환하는 함수*/
     public float GetHandRotation()
@@ -249,6 +250,7 @@ public class HandController : MonoBehaviour
     지정*/
     void ControlHandPower()
     {
+        if (handPower == HandPower.None) return;
         void UpdateHandGauge(bool isActing, Image actingHandGauge)
         {
             if(isActing)
@@ -267,12 +269,12 @@ public class HandController : MonoBehaviour
                 actingHandGauge.fillAmount-= Time.fixedDeltaTime;
             }
         }
-        if(handReverse == HandReverse.None)
+        if(handPower == HandPower.Forward)
         {
             UpdateHandGauge(_isLeftHandActing,leftHandGauge);
             UpdateHandGauge(_isRightHandActing,rightHandGauge);
         }
-        else if (handReverse == HandReverse.Reverse)
+        else if (handPower == HandPower.Reverse)
         {
             UpdateHandGauge(_isLeftHandActing, rightHandGauge);
             UpdateHandGauge(_isRightHandActing,leftHandGauge);
@@ -315,14 +317,15 @@ public class HandController : MonoBehaviour
      * 3. HandReverse : None, Reverse
      각 항목에 대해선 HandControlMode.cs의 주석 참조*/
     public void SetHandControlMode(HandControlMode mode, HandMoveAxis moveAxis = HandMoveAxis.All,
-        HandReverse reverse=HandReverse.None)
+        HandPower power=HandPower.Reverse)
     {
         handControlMode = mode;
         handMoveAxis = moveAxis;
-        handReverse = reverse;
+        handPower = power;
     }
     void LimitHandDistance(Rigidbody hand, Transform clavicle)
     {
+        if (clavicle == null) return;
         Vector3 leftDistance = (hand.position - clavicle.position).normalized;
         float leftCurrentDistance=Vector3.Distance(hand.position, clavicle.position);
         if (!Mathf.Approximately(leftCurrentDistance, maxHandDistance)){
