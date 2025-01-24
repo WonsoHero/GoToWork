@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165b0ec8718f6284da6116eac7d2a3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructModel: {fileID: 4317752993589058005, guid: d0fa0ed431955ce4399fc439a37ad793, type: 3}
+  destructModel: {fileID: 7031158502081584059, guid: cc20ef3b30f7956478084f6513ef8cc9, type: 3}
   forceMultiplier: 4
   destructForce: 4
 --- !u!54 &8686489297480565293
