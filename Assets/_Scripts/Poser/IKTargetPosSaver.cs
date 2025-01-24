@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -49,7 +51,7 @@ public class IKTargetPosSaver : MonoBehaviour
             newPose.Positions = TargetPositions;
             newPose.Rotations = TargetAngles;
 
-            AssetDatabase.CreateAsset(newPose, "Assets/_ScriptableObjects/Poses/newPose.asset");
+            //AssetDatabase.CreateAsset(newPose, "Assets/_ScriptableObjects/Poses/newPose.asset");
         }
         
 
@@ -72,3 +74,5 @@ public class IKTargetPosSaver : MonoBehaviour
         Debug.Log("포즈 로드됨");
     }
 }
+
+#endif
