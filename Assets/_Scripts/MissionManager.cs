@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +18,9 @@ public class MissionManager : MonoBehaviour
     [SerializeField] GameObject handControllerRight;
     [SerializeField] GameObject leftHand;
     [SerializeField] GameObject rightHand;
+
+    [SerializeField] GameObject missionPanel;
+    [SerializeField] MissionContent missionContent;
 
     //미션에 사용할 클래스들
     [SerializeField] HandController handController;
@@ -95,6 +97,11 @@ public class MissionManager : MonoBehaviour
 
             //미션모드가 아니더라도 물건 부수면 미션 실패할 수 있도록 미리 구독
             obj.failed += MissionFail;
+
+            //미션 목표 UI에 표시
+            MissionContent mc = Instantiate(missionContent);
+            mc.missionText.text = obj.MissionData.missionGuide;
+            mc.transform.parent = missionPanel.transform;
         }
     }
 

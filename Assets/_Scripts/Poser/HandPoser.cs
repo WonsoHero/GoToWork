@@ -1,11 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
 public class HandPoser : MonoBehaviour
 {
     [SerializeField] List<Transform> IKTargets;
     [SerializeField] MissionOBJ missionObj;
+
+    float lerpFactor = 0.1f;
+    WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
     private void OnEnable()
     {
@@ -42,7 +45,7 @@ public class HandPoser : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
@@ -55,13 +58,27 @@ public class HandPoser : MonoBehaviour
         if (missionObj == null) return;
 
         //Debug.Log("포즈 변경");
-
         Pose pose = PoseContainer.Instance.PoseDict[poseName];
 
         for (int i = 0; i < IKTargets.Count; i++)
         {
-            IKTargets[i].localPosition = pose.Positions[i];
-            IKTargets[i].localRotation = pose.Rotations[i];
+            StartCoroutine(PoseLerp(IKTargets[i], pose.Positions[i], pose.Rotations[i], lerpFactor));
+            //IKTargets[i].localPosition = Vector3.Lerp(IKTargets[i].localPosition, pose.Positions[i], lerpFactor);
+            //IKTargets[i].localRotation = Quaternion.Lerp(IKTargets[i].localRotation, pose.Rotations[i], lerpFactor);
+        }
+    }
+
+    //서브 업데이트처럼 사용하기 위해 코루틴 돌림
+    IEnumerator PoseLerp(Transform target, Vector3 position, Quaternion rotation, float lerpPercent)
+    {
+        while (lerpPercent < 1.1f)
+        {
+            yield return waitForFixedUpdate;
+
+            Debug.Log(lerpPercent);
+            target.localPosition = Vector3.Lerp(target.localPosition, position, lerpPercent);
+            target.localRotation = Quaternion.Lerp(target.localRotation, rotation, lerpPercent);
+            lerpPercent += lerpFactor;
         }
     }
 }

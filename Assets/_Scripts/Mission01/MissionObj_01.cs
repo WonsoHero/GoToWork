@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 //휴대폰 알람 끄는 미션

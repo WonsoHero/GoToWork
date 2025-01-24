@@ -31,4 +31,7 @@ public class MissionData : ScriptableObject
     public HandControlMode handControlMode;
     public HandMoveAxis moveAxis;
     public HandPower handReverse;
+
+    // 미션 안내문구
+    public string missionGuide;
 }

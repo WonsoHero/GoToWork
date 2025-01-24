@@ -16,6 +16,7 @@ public class GrabbaleObject : MonoBehaviour
     float gripStrengthRight = 0;
     bool isLeftGrapped = false;
     bool isRightGrapped = false;
+    bool isSpaceDown = false;
 
     public bool IsLeftGrapped { get { return isLeftGrapped; } }
     public bool IsRightGrapped { get { return isRightGrapped; } }
@@ -53,9 +54,18 @@ public class GrabbaleObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "LeftHand" && enteredCollisionLeft >= 1)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isSpaceDown = true;
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isSpaceDown = false;
+            }
+
             gripStrengthLeft = handController.GetHandGauge();
 
-            if(gripStrengthLeft > minGripStrengthLeft)
+            if(isSpaceDown && gripStrengthLeft > minGripStrengthLeft)
             {
                 //파괴가능한 오브젝트면서 한계 힘을 넘으면
                 if(destruct != null && gripStrengthLeft > maxGripStrengthLeft)
@@ -76,6 +86,15 @@ public class GrabbaleObject : MonoBehaviour
 
         if(collision.gameObject.tag == "RightHand" && enteredCollisionRight >= 1)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isSpaceDown = true;
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                isSpaceDown = false;
+            }
+
             gripStrengthRight = handController.GetHandGauge();
 
             if(gripStrengthRight > minGripStrengthRight)

@@ -21,11 +21,10 @@ MonoBehaviour:
   leftHandControllerRotation: {x: -0, y: -0.011344421, z: -0, w: 0.9999357}
   rightHandControllerPosition: {x: 6.1372957, y: 0.8716775, z: 6.3326283}
   rightHandControllerRotation: {x: -0, y: -0.011344421, z: -0, w: 0.9999357}
-  poses:
-  - {fileID: 11400000, guid: 3fe50f1a99a13c94ba752bc8930db5d4, type: 2}
-  - {fileID: 11400000, guid: ea251ade9298c5f40bf2c498d8e4e09f, type: 2}
+  poses: 0000000000000000
   missionObjPosition: {x: 5.8126354, y: 1.1663796, z: 6.0077596}
   missionObjRotation: {x: 0.99970317, y: -0.00000046337422, z: -0.024365675, w: 0.00000011654713}
   handControlMode: 1
   moveAxis: 0
   handReverse: 0
+  missionGuide: "\uD3F0 \uC54C\uB78C\uC744 \uB044\uC138\uC694"
