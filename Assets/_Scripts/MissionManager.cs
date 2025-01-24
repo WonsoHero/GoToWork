@@ -100,7 +100,9 @@ public class MissionManager : MonoBehaviour
 
             //미션 목표 UI에 표시
             MissionContent mc = Instantiate(missionContent);
-            mc.missionText.text = obj.MissionData.missionGuide;
+            mc.TextChange(obj.MissionData.missionGuide);
+            mc.MissionClear(obj.MissionData.isCleared);
+            mc.MissionAdd(obj);
             mc.transform.parent = missionPanel.transform;
         }
     }

@@ -212,4 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83051eb4276146e48a18359bd97adb63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strikeThrough: {fileID: 11400000, guid: c2b384873ec2b9149ba28e530b0cab55, type: 2}
   missionText: {fileID: 2394454629825577900}
+  cleared: 0
