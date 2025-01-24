@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5bf069b5066de4181d407f99215ad1, type: 3}
+  m_Name: LaptopMission
+  m_EditorClassIdentifier: 
+  poseDictCreated: 0
+  missionIdx: 0
+  isCleared: 0
+  modelPosition: {x: 14.896982, y: -1.1143361, z: 3.5784597}
+  modelRotation: {x: -0, y: -0.6959127, z: 0, w: 0.71812636}
+  leftHandControllerPosition: {x: 13.715615, y: 0.11602092, z: 3.6474826}
+  leftHandControllerRotation: {x: -0, y: -0.6959127, z: -0, w: 0.71812636}
+  rightHandControllerPosition: {x: 13.710244, y: 0.19875598, z: 4.084014}
+  rightHandControllerRotation: {x: -0, y: -0.6959127, z: -0, w: 0.71812636}
+  poses: 
+  missionObjPosition: {x: 13.913, y: 0.383, z: 3.513}
+  missionObjRotation: {x: 0, y: 0, z: 0, w: 1}
+  handControlMode: 0
+  moveAxis: 0
+  handReverse: 0
