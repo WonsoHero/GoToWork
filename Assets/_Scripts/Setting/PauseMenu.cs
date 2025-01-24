@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -61,9 +61,9 @@ public class PauseMenu : MonoBehaviour
     }
     public async void OnMainMenuPressed()
     {
-        pauseMenuActiveSelf = false;
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.None;
+        PauseMenuCanvas?.SetActive(false);
+        pauseMenuActiveSelf = false;
         await SceneManager.LoadSceneAsync("MainMenu");
     }
     public void OnExitPressed()
