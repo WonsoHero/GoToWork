@@ -4,17 +4,16 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    private void Update()
+    [SerializeField]
+    private GameObject SettingPanel;
+
+    public async void OnStartBtnClicked(string sceneName)
     {
-        
-    }
-    public void OnStartBtnClicked(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
+        await SceneManager.LoadSceneAsync(sceneName);
     }
     public void OnSettingBtnClicked()
     {
-
+        ShowSettingPanel();
     }
     public void OnExitBtnClicked()
     {
@@ -23,5 +22,15 @@ public class MainMenuManager : MonoBehaviour
 #else
     Application.Quit();
 #endif
+    }
+
+    public void ShowSettingPanel()
+    {
+        SettingPanel.SetActive(true);
+    }
+
+    public void HideSettingPanel()
+    {
+        SettingPanel.SetActive(false);
     }
 }

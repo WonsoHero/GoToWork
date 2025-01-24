@@ -131,13 +131,19 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
+            if(state == PlayerState.Interaction)
+            {
+                ExitInteraction();
+                return;
+            }
+
             if(selectedInteractableObject != null)
             {
                 EnterInteraction(selectedInteractableObject);
             }
         }
 
-#if DEBUG
+#if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.Z))
         {
             ChangeModelToPants();
@@ -149,11 +155,26 @@ public class PlayerManager : MonoBehaviour
         }
 #endif
 
-        if (Input.GetKeyDown(KeyCode.Escape) && state == PlayerState.Interaction)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitInteraction();
+            if(!PauseMenu.Instance.PauseMenuActiveSelf)
+            {
+                PauseMenu.Instance.ShowPauseMenu();
+                var thirdPersonController = GetComponentInChildren<ThirdPersonController>();
+                thirdPersonController.BlockInput(true);
+
+            } else
+            {
+                PauseMenu.Instance.HidePauseMenu();
+                if(state == PlayerState.Normal)
+                {
+                    var thirdPersonController = GetComponentInChildren<ThirdPersonController>();
+                    thirdPersonController.BlockInput(false);
+                }
+            }
         }
     }
+
 
     /// <summary>
     ///  화면 중앙 (크로스헤어?)에 Interactable 이 있는지 감지
