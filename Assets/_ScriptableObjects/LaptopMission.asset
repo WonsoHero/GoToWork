@@ -17,13 +17,14 @@ MonoBehaviour:
   isCleared: 0
   modelPosition: {x: 14.896982, y: -1.1143361, z: 3.5784597}
   modelRotation: {x: -0, y: -0.6959127, z: 0, w: 0.71812636}
-  leftHandControllerPosition: {x: 13.715615, y: 0.11602092, z: 3.6474826}
+  leftHandControllerPosition: {x: 13.715615, y: 0.2, z: 3.6474826}
   leftHandControllerRotation: {x: -0, y: -0.6959127, z: -0, w: 0.71812636}
-  rightHandControllerPosition: {x: 13.710244, y: 0.19875598, z: 4.084014}
+  rightHandControllerPosition: {x: 13.710244, y: 0.2, z: 4.084014}
   rightHandControllerRotation: {x: -0, y: -0.6959127, z: -0, w: 0.71812636}
   poses: 
   missionObjPosition: {x: 13.913, y: 0.383, z: 3.513}
   missionObjRotation: {x: 0, y: 0, z: 0, w: 1}
-  handControlMode: 0
+  handControlMode: 1
   moveAxis: 0
   handReverse: 0
+  missionGuide: 
