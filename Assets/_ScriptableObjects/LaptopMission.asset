@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poseDictCreated: 0
   missionIdx: 0
-  isCleared: 0
-  modelPosition: {x: 14.896982, y: -1.1143361, z: 3.5784597}
-  modelRotation: {x: -0, y: -0.6959127, z: 0, w: 0.71812636}
-  leftHandControllerPosition: {x: 13.715615, y: 0.2, z: 3.6474826}
-  leftHandControllerRotation: {x: -0, y: -0.6959127, z: -0, w: 0.71812636}
-  rightHandControllerPosition: {x: 13.710244, y: 0.2, z: 4.084014}
-  rightHandControllerRotation: {x: -0, y: -0.6959127, z: -0, w: 0.71812636}
+  isCleared: 1
+  modelPosition: {x: 14.925626, y: -1.597336, z: 3.5360587}
+  modelRotation: {x: -0, y: -0.70987743, z: 0, w: 0.7043253}
+  leftHandControllerPosition: {x: 13.706053, y: 0.3031996, z: 2.7296007}
+  leftHandControllerRotation: {x: -0, y: -0.70987743, z: -0, w: 0.7043253}
+  rightHandControllerPosition: {x: 13.583665, y: 0.42895156, z: 4.2311916}
+  rightHandControllerRotation: {x: -0, y: -0.70987743, z: -0, w: 0.7043253}
   poses: 
-  missionObjPosition: {x: 13.913, y: 0.383, z: 3.513}
-  missionObjRotation: {x: 0, y: 0, z: 0, w: 1}
+  missionObjPosition: {x: 14, y: 0.3866319, z: 3.5109026}
+  missionObjRotation: {x: -0, y: -0, z: -0, w: 1}
   handControlMode: 1
   moveAxis: 0
-  handReverse: 0
-  missionGuide: 
+  handReverse: 1
+  missionGuide: "\uB178\uD2B8\uBD81 \uC804\uC6D0\uC744 \uD0A4\uC138\uC694"
