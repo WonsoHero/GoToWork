@@ -15,14 +15,14 @@ MonoBehaviour:
   poseDictCreated: 0
   missionIdx: 0
   isCleared: 1
-  modelPosition: {x: 14.92563, y: -1.597336, z: 3.536059}
+  modelPosition: {x: 14.92563, y: -1.5, z: 3.536059}
   modelRotation: {x: -0, y: -0.70987743, z: 0, w: 0.7043253}
   leftHandControllerPosition: {x: 13.70605, y: 0.3031996, z: 2.729601}
   leftHandControllerRotation: {x: -0, y: -0.70987743, z: -0, w: 0.7043253}
   rightHandControllerPosition: {x: 13.58366, y: 0.4289516, z: 4.231192}
   rightHandControllerRotation: {x: -0, y: -0.70987743, z: -0, w: 0.7043253}
   poses: 
-  missionObjPosition: {x: 14, y: 0.3866319, z: 3.5109026}
+  missionObjPosition: {x: 14, y: 0.3866279, z: 3.5109026}
   missionObjRotation: {x: -0, y: -0, z: -0, w: 1}
   handControlMode: 1
   moveAxis: 0
