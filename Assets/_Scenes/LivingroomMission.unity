@@ -174,8 +174,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7677984591413457053, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 205414207}
   m_SourcePrefab: {fileID: 100100000, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
+--- !u!1 &205414201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7677984591413457053, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
+  m_PrefabInstance: {fileID: 143794964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &205414206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8831471505502944903, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
+  m_PrefabInstance: {fileID: 143794964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205414201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165b0ec8718f6284da6116eac7d2a3bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &205414207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205414201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da6e6f3ba42ff408b6a2c47d07c642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inTrigger: 0
+  missionData: {fileID: 11400000, guid: 4a82ca397df4e23428f7efdbabc4b086, type: 2}
+  destructible: {fileID: 205414206}
 --- !u!1 &283458650
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionObjects:
   - {fileID: 1634055294}
+  - {fileID: 205414207}
   playerModel: {fileID: 1161476069}
   handControllerLeft: {fileID: 690366504}
   handControllerRight: {fileID: 1460687132}
