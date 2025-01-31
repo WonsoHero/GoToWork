@@ -19,6 +19,7 @@ public class UsbMission : MissionOBJ
     {
         if (other.CompareTag("UsbPort"))
         {
+            Debug.Log("Trigger USB Port");
             OnMissionSuccess(true);
             sendMailMonitor.SetActive(true);
         }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5bf069b5066de4181d407f99215ad1, type: 3}
+  m_Name: UsbMissionData
+  m_EditorClassIdentifier: 
+  poseDictCreated: 0
+  missionIdx: 1
+  isCleared: 0
+  modelPosition: {x: 14.92563, y: -1.5, z: 3.536059}
+  modelRotation: {x: 0, y: 0.70987743, z: 0, w: -0.7043252}
+  leftHandControllerPosition: {x: 13.70605, y: 0.3031996, z: 2.729601}
+  leftHandControllerRotation: {x: 0, y: 0.70987743, z: 0, w: -0.7043252}
+  rightHandControllerPosition: {x: 13.58366, y: 0.4289516, z: 4.231192}
+  rightHandControllerRotation: {x: 0, y: 0.70987743, z: 0, w: -0.7043252}
+  poses: 
+  missionObjPosition: {x: 14.113178, y: 0.3699452, z: 3.0330553}
+  missionObjRotation: {x: -0.4991347, y: -0.50110793, z: -0.50423974, w: 0.49547714}
+  handControlMode: 0
+  moveAxis: 0
+  handReverse: 0
+  missionGuide: "Usb\uB97C \uAF42\uC73C\uC138\uC694"

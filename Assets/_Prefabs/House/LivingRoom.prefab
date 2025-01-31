@@ -1795,6 +1795,9 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 8499788377376814757}
     - targetCorrespondingSourceObject: {fileID: 9030110831065765674, guid: 0196bcf6d24126243a8099e51932c4a9, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 7807685878027400198}
+    - targetCorrespondingSourceObject: {fileID: 9030110831065765674, guid: 0196bcf6d24126243a8099e51932c4a9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6746355562169781}
   m_SourcePrefab: {fileID: 100100000, guid: 0196bcf6d24126243a8099e51932c4a9, type: 3}
@@ -1818,6 +1821,23 @@ MonoBehaviour:
   destructModel: {fileID: 5078757300680500092, guid: 63bb90f26c2b1524788f1336a546f580, type: 3}
   forceMultiplier: 4
   destructForce: 20
+--- !u!114 &7807685878027400198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956734339022818973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c779d07250901446895c9d4398cb83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inTrigger: 0
+  missionData: {fileID: 11400000, guid: 1666ed56381701d43915b1ea986d260f, type: 2}
+  mousePointer: {fileID: 7862568066008109202}
+  windowCanvas: {fileID: 3953154442938689887}
+  mouseGameObject: {fileID: 5956734339022818973}
 --- !u!54 &6746355562169781
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2260,6 +2280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 570083418860253449}
     m_Modifications:
+    - target: {fileID: 2704432009954135171, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
+      propertyPath: windowScreen
+      value: 
+      objectReference: {fileID: 7301365701000225141}
     - target: {fileID: 2729277585379356415, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
       propertyPath: m_Name
       value: Lowpoly_Notebook_2
@@ -2312,6 +2336,26 @@ PrefabInstance:
 --- !u!4 &1510917721327981841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3362930171744662597, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
+  m_PrefabInstance: {fileID: 4205337882179690836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &3953154442938689887 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 900774353620060171, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
+  m_PrefabInstance: {fileID: 4205337882179690836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7301365701000225141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6849963962222936097, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
+  m_PrefabInstance: {fileID: 4205337882179690836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &7862568066008109202 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6287358757822149062, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
+  m_PrefabInstance: {fileID: 4205337882179690836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8976717427061353526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5102552494506806626, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
   m_PrefabInstance: {fileID: 4205337882179690836}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4253004424236250444
@@ -2505,6 +2549,10 @@ PrefabInstance:
     - target: {fileID: 4818960783651360, guid: c7f5f80064c7b7f43b7c4ec522039b51, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64881237981148542, guid: c7f5f80064c7b7f43b7c4ec522039b51, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3263,6 +3311,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1792553823692260782}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8831471505502944903}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       insertIndex: -1
@@ -3284,6 +3335,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
   m_PrefabInstance: {fileID: 7371486178061716940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1792553823692260782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677984591413457053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da6e6f3ba42ff408b6a2c47d07c642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inTrigger: 0
+  missionData: {fileID: 11400000, guid: 4a82ca397df4e23428f7efdbabc4b086, type: 2}
+  destructible: {fileID: 8831471505502944903}
+  sendMailMonitor: {fileID: 8976717427061353526}
 --- !u!114 &8831471505502944903
 MonoBehaviour:
   m_ObjectHideFlags: 0
