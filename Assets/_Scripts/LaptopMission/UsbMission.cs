@@ -23,6 +23,7 @@ public class UsbMission : MissionOBJ
         {
             Debug.Log("Trigger USB Port");
             OnMissionSuccess(true);
+            other.GetComponent<Outline>().enabled = false;
             FixUsbToLaptop(other.transform);
             sendMailMonitor.SetActive(true);
         }

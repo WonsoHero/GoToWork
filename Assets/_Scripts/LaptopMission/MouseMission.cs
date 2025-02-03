@@ -1,5 +1,7 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +11,8 @@ public class MouseMission : MissionOBJ
     [SerializeField] GameObject mousePointer;
     [SerializeField] Canvas windowCanvas;
     [SerializeField] GameObject mouseGameObject;
+    [SerializeField] GameObject MailImg;
+    [SerializeField] Destructible destructible;
 
     Camera uiCamera;
     GraphicRaycaster raycaster;
@@ -21,6 +25,16 @@ public class MouseMission : MissionOBJ
         raycaster = windowCanvas.GetComponent<GraphicRaycaster>();
         pointerEventData = new PointerEventData(EventSystem.current);
         lastMousePosition=mouseGameObject.transform.position;
+    }
+    private void OnEnable()
+    {
+        //파괴가능 오브젝트가 부서지면(다수일 수 있음) 실패
+        destructible.destruct += OnMissionFailed;
+    }
+
+    private void OnDisable()
+    {
+        destructible.destruct -= OnMissionFailed;
     }
     void Update()
     {
@@ -71,8 +85,24 @@ public class MouseMission : MissionOBJ
             if (button != null)
             {
                 OnMissionSuccess(true);
+                StartCoroutine(MailAction());
                 break;
             }
         }
     }
+    IEnumerator MailAction()
+    {
+        float elapsedTime = 0f;
+        float moveDuration = 3f;
+        Vector3 initialPosition = MailImg.transform.position;
+        float moveSpeed = 1f;
+
+        while (elapsedTime < moveDuration)
+        {
+            MailImg.transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+    }
+
 }

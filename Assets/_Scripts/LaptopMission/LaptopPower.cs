@@ -11,6 +11,7 @@ public class LaptopPower : MonoBehaviour
         {
             isMissionSuccess = true;
             missionSuccess?.Invoke(isMissionSuccess);
+            gameObject.GetComponent<Outline>().enabled = false;
         }
     }
 }
