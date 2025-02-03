@@ -167,37 +167,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4224680332878050031, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807685878027400198, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807685878027400198, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: mousePointer
-      value: 
-      objectReference: {fileID: 1000272476}
-    - target: {fileID: 7862568066008109202, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7862568066008109202, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.171
-      objectReference: {fileID: 0}
-    - target: {fileID: 7862568066008109202, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.115
-      objectReference: {fileID: 0}
     - target: {fileID: 8831984330513502934, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
       propertyPath: m_Name
       value: LivingRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 8976717427061353526, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -367,11 +339,6 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7572169345631703727, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
   m_PrefabInstance: {fileID: 2065148858}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1000272476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4224680332878050031, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
-  m_PrefabInstance: {fileID: 143794964}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1079128132
 GameObject:

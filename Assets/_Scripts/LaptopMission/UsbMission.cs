@@ -5,6 +5,8 @@ public class UsbMission : MissionOBJ
 {
     [SerializeField] Destructible destructible;
     [SerializeField] GameObject sendMailMonitor;
+    [SerializeField] Transform usbPort;
+    
     private void OnEnable()
     {
         //파괴가능 오브젝트가 부서지면(다수일 수 있음) 실패
@@ -21,7 +23,16 @@ public class UsbMission : MissionOBJ
         {
             Debug.Log("Trigger USB Port");
             OnMissionSuccess(true);
+            FixUsbToLaptop(other.transform);
             sendMailMonitor.SetActive(true);
         }
+    }
+    void FixUsbToLaptop(Transform usbPortTransform)
+    {
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        transform.rotation = Quaternion.Euler(90, 0, 90);
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        transform.SetParent(usbPortTransform);
+        transform.localPosition= Vector3.zero;
     }
 }

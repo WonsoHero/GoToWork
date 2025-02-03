@@ -701,7 +701,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!4 &318761496700350830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4240523363631844, guid: 13c76b2b258c62345b2838c57f752f92, type: 3}
@@ -3309,7 +3309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.427
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3317,19 +3317,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.49732512
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.49732518
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.50266063
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.50266063
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3341,7 +3341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90.611
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5152e0a318a8b744b83b5cae194722dd, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -3397,6 +3397,7 @@ MonoBehaviour:
   missionData: {fileID: 11400000, guid: 4a82ca397df4e23428f7efdbabc4b086, type: 2}
   destructible: {fileID: 8831471505502944903}
   sendMailMonitor: {fileID: 8976717427061353526}
+  usbPort: {fileID: 0}
 --- !u!114 &8831471505502944903
 MonoBehaviour:
   m_ObjectHideFlags: 0
