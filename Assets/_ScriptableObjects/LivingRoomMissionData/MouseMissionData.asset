@@ -22,7 +22,7 @@ MonoBehaviour:
   rightHandControllerPosition: {x: 13.58366, y: 0.4289516, z: 4.231192}
   rightHandControllerRotation: {x: 0, y: 0.70987743, z: 0, w: -0.7043252}
   poses: 
-  missionObjPosition: {x: 14.05695, y: 0.3964664, z: 4.059662}
+  missionObjPosition: {x: 14.1584, y: 0.385469, z: 4.0826344}
   missionObjRotation: {x: -0.00013542498, y: 0.77915204, z: -0.00018225417, w: -0.626835}
   handControlMode: 1
   moveAxis: 0
