@@ -523,6 +523,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4130037100990251396, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
+      propertyPath: multiflier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130037100990251396, guid: e0e33ae61f7bdb64a9aad9f25d0f8e13, type: 3}
       propertyPath: leftClavicle
       value: 
       objectReference: {fileID: 5481659937330928997}
