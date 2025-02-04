@@ -5,7 +5,7 @@ public class DialogueTrigger : MonoBehaviour
     public enum TriggerType { OnEnable, OnDisable, OnDestroy, OnTriggerEnter }
     public enum DialogueRandom { True, False }
     [SerializeField] private TriggerType triggerCondition;
-    [SerializeField] private DialogueRandom randomCondition;
+    [SerializeField] private DialogueRandom randomCondition = DialogueRandom.False;
     [SerializeField] private Dialogue dialogueData;
     [SerializeField] private string colliderTagName = "Player";
 

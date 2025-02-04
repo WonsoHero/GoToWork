@@ -65,8 +65,7 @@ public class DialogueManager : MonoBehaviour
     }
     private IEnumerator CloseDialogueAfterDelay()
     {
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-        yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Space));
+        yield return new WaitForSeconds(2f);
 
         dialoguePanel.SetActive(false);
         isDialogueActive = false;
