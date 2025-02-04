@@ -98,7 +98,10 @@ public class PlayerManager : MonoBehaviour
         ChangeState(PlayerState.Interaction);
 
         interactableObject.GetComponent<MissionOBJ>().MissionStarted(); //상호작용한 물체의 미션이 뭔지 체크
-        interactableObject.GetComponent<Outline>().enabled = false;
+        if (interactableObject.GetComponent<Outline>()!=null)
+        {
+            interactableObject.GetComponent<Outline>().enabled = false;
+        }
         ChangeCinemachineTarget(interactableObject.CameraPosition);
     }
 
