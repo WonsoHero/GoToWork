@@ -48,4 +48,27 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         isDialogueActive=false;
     }
+    public void RandomDialogue(Dialogue data)
+    {
+        if (isDialogueActive) return;
+
+        currentDialogue = data;
+        isDialogueActive = true;
+        dialoguePanel.SetActive(true);
+
+        int randomIndex = UnityEngine.Random.Range(0, currentDialogue.dialogues.Length);
+        OnDialogueStart?.Invoke(currentDialogue.dialogues[randomIndex]);
+        dialogueTmp.text = currentDialogue.dialogues[randomIndex];
+
+        // 대사 하나만 출력하고 종료
+        StartCoroutine(CloseDialogueAfterDelay());
+    }
+    private IEnumerator CloseDialogueAfterDelay()
+    {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitUntil(() => Input.GetKeyUp(KeyCode.Space));
+
+        dialoguePanel.SetActive(false);
+        isDialogueActive = false;
+    }
 }
