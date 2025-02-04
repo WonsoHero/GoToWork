@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MouseMissionData
   m_EditorClassIdentifier: 
   poseDictCreated: 0
-  missionIdx: 2
+  missionIdx: 3
   isCleared: 0
   modelPosition: {x: 14.92563, y: -1.5, z: 3.536059}
   modelRotation: {x: 0, y: 0.70987743, z: 0, w: -0.7043252}
@@ -27,4 +27,4 @@ MonoBehaviour:
   handControlMode: 1
   moveAxis: 0
   handReverse: 0
-  missionGuide: "\uBA54\uC77C\uC744 \uBCF4\uB0B4\uC138\uC694"
+  missionGuide: "3. \uBA54\uC77C\uC744 \uBCF4\uB0B4\uC138\uC694"

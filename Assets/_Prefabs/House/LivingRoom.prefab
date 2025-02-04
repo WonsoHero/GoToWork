@@ -522,8 +522,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5593324404413931189}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14583385, y: -0.691905, z: 0.14583388, w: 0.691905}
-  m_LocalPosition: {x: 15.026, y: 1.021, z: 3.513}
+  m_LocalRotation: {x: 0.19605681, y: -0.67938334, z: 0.19605684, w: 0.67938334}
+  m_LocalPosition: {x: 14.902, y: 1.033, z: 3.513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructModel: {fileID: 3437274872738015521, guid: 6954ec3f261ad224f8aec9abb8c7233a, type: 3}
   forceMultiplier: 4
-  destructForce: 20
+  destructForce: 10
 --- !u!65 &5442729757781521006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -840,7 +840,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!4 &318761496700350830 stripped
 Transform:
@@ -2533,6 +2533,10 @@ PrefabInstance:
       propertyPath: destructForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4363901016320843070, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
+      propertyPath: m_Constraints
+      value: 82
+      objectReference: {fileID: 0}
     - target: {fileID: 7611860448657466523, guid: 628395484de032e4bba9406a3f6a97cb, type: 3}
       propertyPath: CameraPosition
       value: 
@@ -3625,8 +3629,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 187.41911, y: 238.36775, z: 188.6176}
-  m_Center: {x: 10.670208, y: 7.4256616, z: -14.234408}
+  m_Size: {x: 159.91507, y: 238.36778, z: 188.6176}
+  m_Center: {x: -3.0818532, y: 7.4256577, z: -14.234408}
 --- !u!54 &5611735088330237161
 Rigidbody:
   m_ObjectHideFlags: 0

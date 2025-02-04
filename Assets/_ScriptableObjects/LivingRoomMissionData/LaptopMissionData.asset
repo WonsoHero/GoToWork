@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaptopMissionData
   m_EditorClassIdentifier: 
   poseDictCreated: 0
-  missionIdx: 0
+  missionIdx: 1
   isCleared: 1
   modelPosition: {x: 14.92563, y: -1.5, z: 3.536059}
   modelRotation: {x: -0, y: -0.70987743, z: 0, w: 0.7043253}
@@ -27,4 +27,4 @@ MonoBehaviour:
   handControlMode: 1
   moveAxis: 0
   handReverse: 1
-  missionGuide: "\uB178\uD2B8\uBD81 \uC804\uC6D0\uC744 \uD0A4\uC138\uC694"
+  missionGuide: "1. \uB178\uD2B8\uBD81 \uC804\uC6D0\uC744 \uD0A4\uC138\uC694"
