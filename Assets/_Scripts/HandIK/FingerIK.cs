@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class FingerIK : MonoBehaviour
 {
+    public bool isActivated = false;
     [SerializeField] Rig leftFingerRig;
     [SerializeField] Rig rightFingerRig;
     [SerializeField] HandController controller;
@@ -26,6 +27,9 @@ public class FingerIK : MonoBehaviour
 
     void MoveFinger()
     {
+        //활성화 비활성화 선택가능
+        if(!isActivated) return;
+
         if (controller.isLeftHandActing)
         {
             targetWeight = controller.GetHandGauge();

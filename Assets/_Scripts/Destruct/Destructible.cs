@@ -29,7 +29,7 @@ public class Destructible : MonoBehaviour
             //몸통으로 뿌수고
             if(collision.gameObject.tag == "Body")
             {
-                Debug.Log("몸통 충돌");
+                //Debug.Log("몸통 충돌");
                 DetectDestruct(collision, bodyForceFactor);
             }
         }
@@ -42,7 +42,7 @@ public class Destructible : MonoBehaviour
             {
                 if (collision.gameObject.tag == "LeftHand" || collision.gameObject.tag == "RightHand")
                 {
-                    Debug.Log("손 충돌");
+                    //Debug.Log("손 충돌");
                     DetectDestruct(collision, handForceFactor);
                 }
             }
@@ -54,7 +54,7 @@ public class Destructible : MonoBehaviour
                 {
                     if (collision.gameObject.tag == "LeftHand")
                     {
-                        Debug.Log("손 충돌");
+                        //Debug.Log("손 충돌");
                         DetectDestruct(collision, handForceFactor);
                     }
                 }
@@ -62,7 +62,7 @@ public class Destructible : MonoBehaviour
                 {
                     if (collision.gameObject.tag == "RightHand")
                     {
-                        Debug.Log("손 충돌");
+                        //Debug.Log("손 충돌");
                         DetectDestruct(collision, handForceFactor);
                     }
                 }

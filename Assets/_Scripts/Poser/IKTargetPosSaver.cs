@@ -51,7 +51,7 @@ public class IKTargetPosSaver : MonoBehaviour
             newPose.Positions = TargetPositions;
             newPose.Rotations = TargetAngles;
 
-            //AssetDatabase.CreateAsset(newPose, "Assets/_ScriptableObjects/Poses/newPose.asset");
+            AssetDatabase.CreateAsset(newPose, "Assets/_ScriptableObjects/Poses/newPose.asset");
         }
         
 

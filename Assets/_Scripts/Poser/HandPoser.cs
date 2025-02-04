@@ -75,7 +75,7 @@ public class HandPoser : MonoBehaviour
         {
             yield return waitForFixedUpdate;
 
-            Debug.Log(lerpPercent);
+            //Debug.Log(lerpPercent);
             target.localPosition = Vector3.Lerp(target.localPosition, position, lerpPercent);
             target.localRotation = Quaternion.Lerp(target.localRotation, rotation, lerpPercent);
             lerpPercent += lerpFactor;

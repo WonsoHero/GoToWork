@@ -45,6 +45,7 @@ public class MissionManager : MonoBehaviour
     public GameObject RightHand { get { return rightHand; } }
     public FixedJoint LeftHandJoint { get { return leftHandJoint; } }
     public FixedJoint RightHandJoint { get { return rightHandJoint; } }
+    public GameObject PlayerModel {  get { return playerModel; } }
 
     public PlayerManager playerManager;
 

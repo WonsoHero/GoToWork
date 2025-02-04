@@ -11,6 +11,9 @@ public enum PoseName
     IphonePointing, //왼손 검지로 가리키는 포즈
     IphoneGrab, //오른손으로 쥐고 있는 포즈
     
+
+    //미션 커피
+    CupGrab,
 }
 
 public class PoseContainer : MonoBehaviour

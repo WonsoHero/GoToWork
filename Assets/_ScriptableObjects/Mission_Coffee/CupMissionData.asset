@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5bf069b5066de4181d407f99215ad1, type: 3}
+  m_Name: CupMissionData
+  m_EditorClassIdentifier: 
+  poseDictCreated: 0
+  missionIdx: 0
+  isCleared: 0
+  modelPosition: {x: 13.045167, y: -0.99933517, z: -3.61417}
+  modelRotation: {x: -0, y: 0.9999405, z: -0, w: -0.010909149}
+  leftHandControllerPosition: {x: 13.858994, y: 0.45501047, z: -4.7333846}
+  leftHandControllerRotation: {x: -0, y: 0.9999405, z: -0, w: -0.010909149}
+  rightHandControllerPosition: {x: 13.123613, y: 0.68979686, z: -4.9794674}
+  rightHandControllerRotation: {x: -0, y: 0.9999405, z: -0, w: -0.010909149}
+  poses: 0000000003000000
+  missionObjPosition: {x: 13.213463, y: 0.7175239, z: -4.395018}
+  missionObjRotation: {x: 0.0007668864, y: -0.006247941, z: 0.0019216752, w: 0.9999784}
+  handControlMode: 1
+  moveAxis: 0
+  handReverse: 1
+  missionGuide: "\uCEF5\uC744 \uC9D1\uC5B4 \uBB3C\uC744 \uBC1B\uC73C\uC138\uC694"

@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody))]
 public class GrabbaleObject : MonoBehaviour
 {
+    [SerializeField] PoseName grabPose;
+    [SerializeField] bool isSimpleMode = false;
+
     Rigidbody rb;
     FixedJoint leftHandJoint;
     FixedJoint rightHandJoint;
@@ -10,6 +14,7 @@ public class GrabbaleObject : MonoBehaviour
     HandController handController;
     Destructible destruct;
 
+    int enteredCollision = 0;
     int enteredCollisionLeft = 0;
     int enteredCollisionRight = 0;
     float gripStrengthLeft = 0;
@@ -41,17 +46,32 @@ public class GrabbaleObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "LeftHand")
         {
+            enteredCollision++;
             enteredCollisionLeft++;
         }
         
         if (collision.gameObject.tag == "RightHand")
         {
+            enteredCollision++;
             enteredCollisionRight++;
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
+        if (isSimpleMode)
+        {
+            if (collision.gameObject.tag == "LeftHand" && enteredCollisionLeft >= 1)
+            {
+
+            }
+            if (collision.gameObject.tag == "RightHand" && enteredCollisionRight >= 1)
+            {
+
+            }
+            return;
+        }
+
         if (collision.gameObject.tag == "LeftHand" && enteredCollisionLeft >= 1)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -74,8 +94,11 @@ public class GrabbaleObject : MonoBehaviour
                     destruct.Destruct();
                     Debug.Log("너무 세게 잡음");
                 }
-                GrabObject(leftHandJoint);
-                isLeftGrapped = true;
+                if (!isLeftGrapped)
+                {
+                    GrabObject(leftHandJoint);
+                    isLeftGrapped = true;
+                }
             }
             else
             {
@@ -107,8 +130,11 @@ public class GrabbaleObject : MonoBehaviour
                     Debug.Log("너무 세게 잡음");
 
                 }
-                GrabObject(rightHandJoint);
-                isRightGrapped = true;
+                if (!isRightGrapped)
+                {
+                    GrabObject(rightHandJoint);
+                    isRightGrapped = true;
+                }
             }
             else
             {
@@ -122,11 +148,13 @@ public class GrabbaleObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "LeftHand")
         {
+            enteredCollision--;
             enteredCollisionLeft--;
         }
 
         if (collision.gameObject.tag == "RightHand")
         {
+            enteredCollision--;
             enteredCollisionRight--;
         }
     }
@@ -134,11 +162,17 @@ public class GrabbaleObject : MonoBehaviour
     void GrabObject(FixedJoint joint)
     {
         joint.connectedBody = rb;
-        //핸드포저에서 손동작 관리
+
+        Debug.Log(gameObject + "잡음");
+        //잡으면 핸드포저에서 손동작 변경
+        //handPoser.ChangePose(grabPose);
     }
 
     void ReleaseObject(FixedJoint joint)
     {
         joint.connectedBody = null;
+
+        //안잡고 있으면 오리지널 포즈로 복귀
+        //handPoser.ChangePose(PoseName.OriginalPose);
     }
 }

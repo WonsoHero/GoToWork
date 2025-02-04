@@ -395,17 +395,23 @@ public class HandController : MonoBehaviour
 
     void OnMissionChanged(MissionEventArgs param)
     {
+        FingerIK finger = MissionManager.Instance.PlayerModel.GetComponent<FingerIK>();
         //미션 할당되면 조작모드 변경
         if (param.isAssigned)
         {
             MissionData data = param.missionOBJ.MissionData;
             //미션 데이터에서 핸드 컨트롤 모드, 움직일 축, 정역방향 불러오기
             SetHandControlMode(data.handControlMode, data.moveAxis, data.handReverse);
+            if(handPower != HandPower.None)
+            {
+                finger.isActivated = true;
+            }
         }
         //미션이 null이면 일반조작
         else
         {
             SetHandControlMode(HandControlMode.None);
+            finger.isActivated = false;
         }
     }
 }
