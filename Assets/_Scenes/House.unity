@@ -1307,11 +1307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17264404c8f11745866d74b362be7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &1873561116 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3446420570317737109, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
-  m_PrefabInstance: {fileID: 4591171101595156631}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2010315743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2207180854487712285, guid: 50433a0bbccbfbe48b19593c0f062e9c, type: 3}
@@ -1588,22 +1583,6 @@ PrefabInstance:
     - target: {fileID: 5450160331143876945, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
       propertyPath: m_Name
       value: BathRoom
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491520583858532729, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
-      propertyPath: m_ConnectedBody
-      value: 
-      objectReference: {fileID: 1873561116}
-    - target: {fileID: 7491520583858532729, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
-      propertyPath: m_Spring.damper
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491520583858532729, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
-      propertyPath: m_Limits.bounciness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491520583858532729, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
-      propertyPath: m_Limits.bounceMinVelocity
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7863171210782373698, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
       propertyPath: m_LocalPosition.x

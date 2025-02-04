@@ -11,6 +11,7 @@ TagManager:
   - Body
   - UsbPort
   - Cup
+  - Desk
   layers:
   - Default
   - TransparentFX

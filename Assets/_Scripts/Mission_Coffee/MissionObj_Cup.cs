@@ -63,7 +63,9 @@ public class MissionObj_Cup : MissionOBJ
         }
     }
 
+
     //물 채움
+    [ContextMenu("WaterFill")]
     public void WaterFill()
     {
         waterFilled = true;

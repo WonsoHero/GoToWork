@@ -140,7 +140,7 @@ public class MissionManager : MonoBehaviour
     }
 
     //진행중인 미션 딕셔너리에서 찾아 캐싱
-    void AssignMission(int missionIdx)
+    public void AssignMission(int missionIdx)
     {
         //캐싱
         missionObj = missions[missionIdx];
@@ -156,11 +156,10 @@ public class MissionManager : MonoBehaviour
         //미션에 맞게 트랜스폼 로드
         LoadTransforms();
 
-
         Debug.Log(missionObj.name + "미션 할당됨");
     }
 
-    void RemoveMission(int missionIdx)
+    public void RemoveMission(int missionIdx)
     {
         Debug.Log("미션 할당 해제");
 
