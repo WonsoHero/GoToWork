@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MouseMissionData
   m_EditorClassIdentifier: 
   poseDictCreated: 0
-  missionIdx: 3
+  missionIdx: 13
   isCleared: 0
   modelPosition: {x: 14.92563, y: -1.5, z: 3.536059}
   modelRotation: {x: 0, y: 0.70987743, z: 0, w: -0.7043252}

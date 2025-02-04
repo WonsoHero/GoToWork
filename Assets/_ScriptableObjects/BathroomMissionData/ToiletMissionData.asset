@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ToiletMissionData
   m_EditorClassIdentifier: 
   poseDictCreated: 0
-  missionIdx: 10
-  isCleared: 1
+  missionIdx: 31
+  isCleared: 0
   modelPosition: {x: 0.8298839, y: -0.4466458, z: -0.4046871}
   modelRotation: {x: 0, y: 0.46947157, z: 0, w: 0.88294756}
   leftHandControllerPosition: {x: 5.682073, y: 1.0065204, z: 6.4158487}

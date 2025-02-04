@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CupMissionData
   m_EditorClassIdentifier: 
   poseDictCreated: 0
-  missionIdx: 0
+  missionIdx: 21
   isCleared: 0
   modelPosition: {x: 13.045167, y: -0.99933517, z: -3.61417}
   modelRotation: {x: -0, y: 0.9999405, z: -0, w: -0.010909149}
