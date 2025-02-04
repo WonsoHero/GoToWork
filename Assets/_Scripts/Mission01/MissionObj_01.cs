@@ -7,11 +7,22 @@ public class MissionObj_01 : MissionOBJ
     [SerializeField] IPhoneDisplay display;
     [SerializeField] Destructible destructible;
     [SerializeField] Rigidbody rightHand;
-
+    [SerializeField] GameObject tutorial;
+    [SerializeField] GameObject tutorial2;
     HandController handController;
     HandPoser handPoser;
     int enteredColliders = 0;
 
+    public override void MissionStarted()
+    {
+        base.MissionStarted();
+        tutorial.SetActive(true);
+    }
+    public override void OnMissionSuccess(bool Success)
+    {
+        base.OnMissionSuccess(true);
+        tutorial2.SetActive(true);
+    }
     private void Awake()
     {
         handController = MissionManager.Instance.HandController;

@@ -23,7 +23,7 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
     {
         succeed?.Invoke(isSucceed);
     }
-    public void OnMissionSuccess(bool success)
+    public virtual void OnMissionSuccess(bool success)
     {
         Debug.Log("미션 성공 이벤트 발생");
         succeed?.Invoke(success);
@@ -39,7 +39,7 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
         failed?.Invoke(fail);
     }
 
-    public void MissionStarted()
+    public virtual void MissionStarted()
     {
         Debug.Log(missionData.missionIdx + " 시작");
         missionStart?.Invoke(missionData.missionIdx);

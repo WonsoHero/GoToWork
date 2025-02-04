@@ -325,6 +325,8 @@ Transform:
   - {fileID: 2221194153178188257}
   - {fileID: 8790053134151949081}
   - {fileID: 4332611078173718061}
+  - {fileID: 8065134169282252470}
+  - {fileID: 7509281139337583235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 177.202, y: 0, z: 0}
 --- !u!114 &4218713707072186583
@@ -441,6 +443,8 @@ MonoBehaviour:
   display: {fileID: 5434200633909092762}
   destructible: {fileID: 4218713707072186583}
   rightHand: {fileID: 0}
+  tutorial: {fileID: 8102596184590134811}
+  tutorial2: {fileID: 5375938208189277769}
 --- !u!114 &6677693310203325280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,8 +457,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3040e83ee118e242953dfa9cc4b95d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabPose: 0
+  isSimpleMode: 0
   minGripStrengthLeft: 0.3
   minGripStrengthRight: 0.3
+  maxGripStrengthLeft: 0.8
+  maxGripStrengthRight: 0.8
 --- !u!1 &3624470970139805140
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +667,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5375938208189277769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7509281139337583235}
+  - component: {fileID: 2275366648437351548}
+  m_Layer: 10
+  m_Name: Tutorial2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7509281139337583235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375938208189277769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8356754369618147780}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2275366648437351548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5375938208189277769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: 288dc296e34bc7448acd607e2848f831, type: 2}
+  colliderTagName: Player
 --- !u!1 &6122039039944199671
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +878,54 @@ Transform:
   - {fileID: 6531164927226454280}
   m_Father: {fileID: 4332611078173718061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8102596184590134811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8065134169282252470}
+  - component: {fileID: 1502073130244950336}
+  m_Layer: 10
+  m_Name: Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8065134169282252470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102596184590134811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8356754369618147780}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502073130244950336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102596184590134811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: 1c7b826064a38e84583eb7d984c75498, type: 2}
+  colliderTagName: Player
 --- !u!1 &8401158399852942693
 GameObject:
   m_ObjectHideFlags: 0

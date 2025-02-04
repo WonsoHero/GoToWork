@@ -18,7 +18,7 @@ public class DialogueTrigger : MonoBehaviour
     }
     private void OnDisable()
     {
-        if (triggerCondition == TriggerType.OnDisable)
+        if (triggerCondition == TriggerType.OnDisable && DialogueManager.Instance !=null)
         {
             StartDialogue();
         }
