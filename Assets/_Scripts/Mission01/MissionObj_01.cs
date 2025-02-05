@@ -29,6 +29,10 @@ public class MissionObj_01 : MissionOBJ
     {
         handController = MissionManager.Instance.HandController;
         handPoser = MissionManager.Instance.HandPoser;
+        if (MissionData.isCleared == true)
+        {
+            GetComponent<AudioSource>().Stop();
+        }
     }
 
     private void OnEnable()
