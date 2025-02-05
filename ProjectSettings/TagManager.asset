@@ -12,6 +12,8 @@ TagManager:
   - UsbPort
   - Cup
   - Desk
+  - WaterClosetTop
+  - Floor
   layers:
   - Default
   - TransparentFX

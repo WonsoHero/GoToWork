@@ -31,10 +31,12 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
 
     public void OnMissionFailed()
     {
+        if (missionData.isCleared) return;
         failed?.Invoke(isFailed);
     }
     public void OnMissionFailed(bool fail)
     {
+        if (missionData.isCleared) return;
         Debug.Log("미션 실패 이벤트 발생");
         failed?.Invoke(fail);
     }
