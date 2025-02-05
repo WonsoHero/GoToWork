@@ -237,7 +237,12 @@ public class MissionManager : MonoBehaviour
 
         missionData.isCleared = success;
 
-        foreach(MissionOBJ obj in missionObjects)
+        CheckComplete();
+    }
+
+    public void CheckComplete()
+    {
+        foreach (MissionOBJ obj in missionObjects)
         {
             if (!obj.MissionData.isCleared)
             {

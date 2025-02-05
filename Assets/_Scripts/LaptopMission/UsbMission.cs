@@ -20,6 +20,7 @@ public class UsbMission : MissionOBJ
     {
         base.OnMissionSuccess(success);
         MissionData.isCleared = true;
+        MissionManager.Instance.CheckComplete();
     }
 
     private void OnTriggerEnter(Collider other)

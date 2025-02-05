@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poseDictCreated: 0
   missionIdx: 32
-  isCleared: 0
+  isCleared: 1
   modelPosition: {x: -0.53, y: -0.44664603, z: -0.381}
   modelRotation: {x: 0.043619387, y: 0, z: 0, w: 0.99904823}
   leftHandControllerPosition: {x: -0.863, y: 1.24, z: 0.293}

@@ -62,6 +62,7 @@ public class MissionObj_Spoon : MissionOBJ
     {
         base.OnMissionSuccess(success);
         MissionData.isCleared = true;
+        MissionManager.Instance.CheckComplete();
     }
 
     private void FixedUpdate()

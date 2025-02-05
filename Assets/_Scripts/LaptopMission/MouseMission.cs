@@ -41,6 +41,7 @@ public class MouseMission : MissionOBJ
     {
         base.OnMissionSuccess(success);
         MissionData.isCleared = true;
+        MissionManager.Instance.CheckComplete();
     }
 
     void Update()
