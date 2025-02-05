@@ -18,7 +18,7 @@ public class HandWashChecker : MonoBehaviour
     {
         if(isStaying)
         {
-            Debug.Log("IsStaying : " + timer.ToString());
+            //Debug.Log("IsStaying : " + timer.ToString());
             timer += Time.deltaTime;
 
             if (timer > SuccessTime) {
