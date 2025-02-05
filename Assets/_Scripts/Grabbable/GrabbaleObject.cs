@@ -19,6 +19,7 @@ public class GrabbaleObject : MonoBehaviour
     int enteredCollisionRight = 0;
     float gripStrengthLeft = 0;
     float gripStrengthRight = 0;
+    float gripStrength = 0;
     bool isLeftGrapped = false;
     bool isRightGrapped = false;
     bool isSpaceDown = false;
@@ -44,7 +45,32 @@ public class GrabbaleObject : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        gripStrength = handController.GetHandGauge();
+
+        if (isSpaceDown)
+        {
+            if (isLeftGrapped)
+            {
+                //파괴가능한 오브젝트면서 한계 힘을 넘으면
+                if (destruct != null && gripStrength > maxGripStrengthLeft)
+                {
+                    //물건 부숴짐
+                    destruct.Destruct();
+                    Debug.Log("너무 세게 잡음");
+                }
+            }
+
+            if (isRightGrapped)
+            {
+                //파괴가능한 오브젝트면서 한계 힘을 넘으면
+                if (destruct != null && gripStrength > maxGripStrengthRight)
+                {
+                    //물건 부숴짐
+                    destruct.Destruct();
+                    Debug.Log("너무 세게 잡음");
+                }
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -92,13 +118,7 @@ public class GrabbaleObject : MonoBehaviour
 
             if(isSpaceDown && gripStrengthLeft > minGripStrengthLeft)
             {
-                //파괴가능한 오브젝트면서 한계 힘을 넘으면
-                if(destruct != null && gripStrengthLeft > maxGripStrengthLeft)
-                {
-                    //물건 부숴짐
-                    destruct.Destruct();
-                    Debug.Log("너무 세게 잡음");
-                }
+                
                 if (!isLeftGrapped)
                 {
                     GrabObject(leftHandJoint);
@@ -127,13 +147,6 @@ public class GrabbaleObject : MonoBehaviour
 
             if(isSpaceDown && gripStrengthRight > minGripStrengthRight)
             {
-                //파괴가능한 오브젝트면서 한계 힘을 넘으면
-                if (destruct != null && gripStrengthRight > maxGripStrengthRight)
-                {
-                    //물건 부숴짐
-                    destruct.Destruct();
-                    Debug.Log("너무 세게 잡음");
-                }
                 if (!isRightGrapped)
                 {
                     GrabObject(rightHandJoint);
