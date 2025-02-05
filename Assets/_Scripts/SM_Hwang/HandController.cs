@@ -357,18 +357,18 @@ public class HandController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetHandControlMode(HandControlMode.Move);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetHandControlMode(HandControlMode.Rotate);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            SetHandControlMode(HandControlMode.None);
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SetHandControlMode(HandControlMode.Move);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SetHandControlMode(HandControlMode.Rotate);
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha0))
+        //{
+        //    SetHandControlMode(HandControlMode.None);
+        //}
     }
 
     private void Awake()
