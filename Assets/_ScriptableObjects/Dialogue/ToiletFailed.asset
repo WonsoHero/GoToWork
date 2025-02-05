@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5622cc2e46358e74d92827a57d2d1f05, type: 3}
   m_Name: ToiletFailed
   m_EditorClassIdentifier: 
-  dialogues: []
+  dialogues:
+  - "\uC545"
