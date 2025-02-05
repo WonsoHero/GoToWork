@@ -58,7 +58,7 @@ public class MissionObj_Cup : MissionOBJ
                 inTrigger = false;
                 //손모양 오리지널로 돌리고 손가락 ik 비활성화
                 //fingerIk.isActivated = false;
-                handPoser.ChangePose(PoseName.OriginalPose);
+                //handPoser.ChangePose(PoseName.OriginalPose);
             }
         }
     }
@@ -74,6 +74,6 @@ public class MissionObj_Cup : MissionOBJ
         spoon.OnWaterFilled();
 
         //상호작용 안되게 끔 왜 안꺼져
-        GetComponent<InteractableObject>().enabled = false;
+        //GetComponent<InteractableObject>().enabled = false;
     }
 }

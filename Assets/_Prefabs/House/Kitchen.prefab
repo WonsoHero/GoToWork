@@ -1047,7 +1047,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabPose: 3
-  isSimpleMode: 0
   minGripStrengthLeft: 0.2
   minGripStrengthRight: 0.2
   maxGripStrengthLeft: 0.95
@@ -3178,7 +3177,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabPose: 3
-  isSimpleMode: 0
   minGripStrengthLeft: 0.3
   minGripStrengthRight: 0.3
   maxGripStrengthLeft: 1.1

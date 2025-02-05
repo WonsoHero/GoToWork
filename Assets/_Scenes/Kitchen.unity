@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructSound: {fileID: 0}
+  destructSound: {fileID: 8300000, guid: 6166d2fd93f8e0a4481fd3bfefc369db, type: 3}
   mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!114 &331502454 stripped
 MonoBehaviour:
@@ -281,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 622985319554503524, guid: 7eeeb921061d3ff4e972e76de3ad9fd9, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754440738675242525, guid: 7eeeb921061d3ff4e972e76de3ad9fd9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6737595249959472043, guid: 7eeeb921061d3ff4e972e76de3ad9fd9, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1202,7 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructSound: {fileID: 0}
+  destructSound: {fileID: 8300000, guid: 90e5f43a4ee8d40488027bd3e0c9f9f9, type: 3}
   mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!1 &1306767291
 GameObject:
@@ -1381,6 +1385,25 @@ MonoBehaviour:
   missionObjPrefab: {fileID: 0}
   handControllerLeft: {fileID: 2043290585}
   handControllerRight: {fileID: 2046417329}
+--- !u!1 &1571070261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 654630185843076341, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+  m_PrefabInstance: {fileID: 1911312434271167784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1571070263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571070261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructSound: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!4 &1608302544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4455446201547502145, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
@@ -1474,7 +1497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructSound: {fileID: 0}
+  destructSound: {fileID: 8300000, guid: 90e5f43a4ee8d40488027bd3e0c9f9f9, type: 3}
   mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!1 &1942886862 stripped
 GameObject:
@@ -1493,7 +1516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructSound: {fileID: 0}
+  destructSound: {fileID: 8300000, guid: 6166d2fd93f8e0a4481fd3bfefc369db, type: 3}
   mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!4 &2010315743 stripped
 Transform:
@@ -1683,6 +1706,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1701626315}
     m_Modifications:
+    - target: {fileID: 544863897118957946, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: maxGripStrengthLeft
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 544863897118957946, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: maxGripStrengthRight
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2163977543541960589, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       propertyPath: cam
       value: 
@@ -1735,6 +1766,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 654630185843076341, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1571070263}
     - targetCorrespondingSourceObject: {fileID: 1463654411013057095, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 311804496}

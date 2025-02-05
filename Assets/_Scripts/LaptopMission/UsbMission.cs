@@ -17,6 +17,12 @@ public class UsbMission : MissionOBJ
     {
         destructible.destruct -= OnMissionFailed;
     }
+    public override void OnMissionSuccess(bool success)
+    {
+        base.OnMissionSuccess(success);
+        MissionData.isCleared = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("UsbPort"))

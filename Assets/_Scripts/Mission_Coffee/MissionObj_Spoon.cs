@@ -57,6 +57,12 @@ public class MissionObj_Spoon : MissionOBJ
         destructible.destruct -= OnMissionFailed;
     }
 
+    public override void OnMissionSuccess(bool success)
+    {
+        base.OnMissionSuccess(success);
+        MissionData.isCleared = true;
+    }
+
     private void FixedUpdate()
     {
         if (!isActivated)
