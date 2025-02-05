@@ -7,6 +7,7 @@ public class MissionObj_Cup : MissionOBJ
     [SerializeField] FingerIK fingerIk;
     [SerializeField] GameObject waterPlane;
     [SerializeField] MissionObj_Spoon spoon;
+    [SerializeField] GameObject dialouge;
 
     HandController handController;
     HandPoser handPoser;
@@ -63,7 +64,11 @@ public class MissionObj_Cup : MissionOBJ
         }
     }
 
-
+    public override void MissionStarted()
+    {
+        base.MissionStarted();
+        dialouge.SetActive(true);
+    }
     //물 채움
     [ContextMenu("WaterFill")]
     public void WaterFill()

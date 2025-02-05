@@ -16,6 +16,7 @@ public class MissionObj_Spoon : MissionOBJ
     [SerializeField] SpriteRenderer waterColor;
     [SerializeField] Color waterTargetColor;
     [SerializeField] Color powderTargetColor;
+    [SerializeField] GameObject dialogue;
 
     bool isActivated = false;
     bool isGrounded = false;
@@ -162,6 +163,8 @@ public class MissionObj_Spoon : MissionOBJ
             camPos = camChangePos;
 
             MissionManager.Instance.HandController.SetHandControlMode(MissionData.handControlMode, HandMoveAxis.All, HandPower.Forward);
+
+            dialogue.SetActive(true);
         }
     }
 
