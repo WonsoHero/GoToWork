@@ -1886,13 +1886,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4156328463296906720, guid: 186e93c2ebf965443a16bcbb17d4a3d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7705810767513104609}
   m_SourcePrefab: {fileID: 100100000, guid: 186e93c2ebf965443a16bcbb17d4a3d1, type: 3}
 --- !u!4 &5303164889470815402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4637990443345822, guid: 186e93c2ebf965443a16bcbb17d4a3d1, type: 3}
   m_PrefabInstance: {fileID: 5298725088171109172}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8081398178572398292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4156328463296906720, guid: 186e93c2ebf965443a16bcbb17d4a3d1, type: 3}
+  m_PrefabInstance: {fileID: 5298725088171109172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7705810767513104609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081398178572398292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 1
+  randomCondition: 0
+  dialogueData: {fileID: 11400000, guid: 4bd61342187e4bf44a51fcfaa7b41e59, type: 2}
+  colliderTagName: Player
 --- !u!1001 &6320196964903372994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,7 +2560,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabPose: 0
-  isSimpleMode: 0
   minGripStrengthLeft: 0.3
   minGripStrengthRight: 0.3
   maxGripStrengthLeft: 0.8

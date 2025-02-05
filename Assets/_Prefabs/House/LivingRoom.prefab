@@ -1459,6 +1459,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1208664771530722, guid: 5270541bfc65fd74a996a238bad737d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 163070884983173887}
+    - targetCorrespondingSourceObject: {fileID: 1208664771530722, guid: 5270541bfc65fd74a996a238bad737d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6237351000234279550}
   m_SourcePrefab: {fileID: 100100000, guid: 5270541bfc65fd74a996a238bad737d7, type: 3}
 --- !u!1 &1294051606620888105 stripped
 GameObject:
@@ -1542,6 +1545,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructSound: {fileID: 8300000, guid: 71ddbb243e1590c4aaa8ac412330467a, type: 3}
   mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
+--- !u!114 &6237351000234279550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294051606620888105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 1
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: cdde9872f41269e4aba7ffc440f1b953, type: 2}
+  colliderTagName: Player
 --- !u!4 &1296580162641885869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4308554943244646, guid: 5270541bfc65fd74a996a238bad737d7, type: 3}
