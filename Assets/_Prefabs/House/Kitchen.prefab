@@ -93,6 +93,54 @@ Transform:
   - {fileID: 9089435759920611121}
   m_Father: {fileID: 4455446201547502145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1570866277829203334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759930070987374558}
+  - component: {fileID: 8997400530618306660}
+  m_Layer: 10
+  m_Name: successDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &759930070987374558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570866277829203334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 631119304128845025}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8997400530618306660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570866277829203334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: 99a2bb338706e7342b81f9f5e1b838ab, type: 2}
+  colliderTagName: Player
 --- !u!1 &1585563295843610761
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,54 +532,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.059943, y: 3.6964452, z: 1}
   m_Center: {x: 1.6023726, y: 1.3482226, z: 0}
---- !u!1 &5503341190533661667
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3404402735500202419}
-  - component: {fileID: 1975784859214887561}
-  m_Layer: 10
-  m_Name: CupDialogue Fail
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3404402735500202419
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503341190533661667}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8995317552870840771}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1975784859214887561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503341190533661667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerCondition: 0
-  randomCondition: 1
-  dialogueData: {fileID: 11400000, guid: 7374244f51c2f1a4eabfab4af8ecfdab, type: 2}
-  colliderTagName: Player
 --- !u!1 &5794519776742877205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,9 +1258,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8920802223607317256, guid: 81ae78bd0c5c3b04f8220d673f38875f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1325568514017692150}
-    - targetCorrespondingSourceObject: {fileID: 8920802223607317256, guid: 81ae78bd0c5c3b04f8220d673f38875f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3404402735500202419}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6868404181178598691, guid: 81ae78bd0c5c3b04f8220d673f38875f, type: 3}
       insertIndex: -1
@@ -3436,6 +3433,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7215398509664839886, guid: 58c1ddb75b234fe4a865cf2a2f17c5f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8259426236324885667}
+    - targetCorrespondingSourceObject: {fileID: 7215398509664839886, guid: 58c1ddb75b234fe4a865cf2a2f17c5f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 759930070987374558}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4096723831883129400, guid: 58c1ddb75b234fe4a865cf2a2f17c5f4, type: 3}
       insertIndex: -1
