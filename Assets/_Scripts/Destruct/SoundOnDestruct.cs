@@ -10,6 +10,7 @@ public class SoundOnDestruct : MonoBehaviour
 
     private void OnDisable()
     {
+        if (!gameObject.scene.isLoaded) return;
         if (destructSound != null)
         {
             mixer.GetFloat(SoundSetting.mixerMusicVolumeKey, out float volume);
