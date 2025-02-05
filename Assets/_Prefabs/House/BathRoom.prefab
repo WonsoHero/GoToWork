@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2127459757600236196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4985200546978142655}
+  - component: {fileID: 3969314526630589580}
+  m_Layer: 10
+  m_Name: SinkFailedDialog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4985200546978142655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127459757600236196}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429454230390775660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3969314526630589580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127459757600236196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: 8d04b33a5f5c4c54d9ccd10e30e3e58b, type: 2}
+  colliderTagName: Player
+--- !u!1 &3128576630267605485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1335413522053543948}
+  - component: {fileID: 2173320545978686132}
+  m_Layer: 10
+  m_Name: SinkSuccessDialog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1335413522053543948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128576630267605485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429454230390775660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2173320545978686132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128576630267605485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: c555aca30f8783b468eea011557f452b, type: 2}
+  colliderTagName: Player
 --- !u!1 &4548388883491414526
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +361,54 @@ Transform:
   - {fileID: 8974929942459114388}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5455624203344969128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2154097182617857297}
+  - component: {fileID: 8970841536292617667}
+  m_Layer: 10
+  m_Name: ToiletFailedDialog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2154097182617857297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455624203344969128}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4095228648703469424}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8970841536292617667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455624203344969128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: b1b777e06332ee54187f7de80535e264, type: 2}
+  colliderTagName: Player
 --- !u!1 &6873189536056418126
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +713,54 @@ Transform:
   - {fileID: 8625473252589687526}
   m_Father: {fileID: 7863171210782373698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8832356249753336682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598386436364093030}
+  - component: {fileID: 5598990324962073150}
+  m_Layer: 10
+  m_Name: ToiletSuccessDialog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &598386436364093030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832356249753336682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4095228648703469424}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5598990324962073150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832356249753336682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 0
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: d98d5b7fe3046b74686379391f9da0b8, type: 2}
+  colliderTagName: Player
 --- !u!1001 &480768097416453973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2399,6 +2591,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5781692666186963, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8484250507520646903}
+    - targetCorrespondingSourceObject: {fileID: 5781692666186963, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 598386436364093030}
+    - targetCorrespondingSourceObject: {fileID: 5781692666186963, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2154097182617857297}
     - targetCorrespondingSourceObject: {fileID: 5781693763730587, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4045773331058735803}
@@ -2421,6 +2619,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5781692666482931, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8701474663470787576}
+    - targetCorrespondingSourceObject: {fileID: 5781692666482931, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5078445803439161878}
     - targetCorrespondingSourceObject: {fileID: 5781693405233928, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6565039578107808691}
@@ -2543,6 +2744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inTrigger: 0
   missionData: {fileID: 11400000, guid: 9524389187d5097478263abb32abc434, type: 2}
+  successDialogue: {fileID: 8832356249753336682}
   destructible: {fileID: 5011595510613341316}
   waterClosetCloseChecker: {fileID: 6542203893431418567}
   flushButton: {fileID: 6565039578107808691}
@@ -2567,6 +2769,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6575624, y: 0.80431604, z: 1.0512478}
   m_Center: {x: -0.04258115, y: 0.41679564, z: -0.19974604}
+--- !u!114 &5078445803439161878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095228648703834960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 2
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: b1b777e06332ee54187f7de80535e264, type: 2}
+  colliderTagName: Player
 --- !u!1 &4095228649680209940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5781693786596279, guid: 33f1c0eefcae96540b25f8f0f8d429e8, type: 3}
@@ -2994,6 +3212,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1371550627217790104}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4985200546978142655}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1335413522053543948}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
       insertIndex: -1
@@ -3025,6 +3249,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5926092152361877370}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3665825445995354438}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4452288213293619278}
   m_SourcePrefab: {fileID: 100100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
 --- !u!4 &4429454230390775660 stripped
 Transform:
@@ -3145,6 +3375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inTrigger: 0
   missionData: {fileID: 11400000, guid: 1127093bfdf7621489892fb51afb168a, type: 2}
+  successDialogue: {fileID: 3128576630267605485}
   destructible: {fileID: 1668261782421583998}
   handWashChecker: {fileID: 5397079696571238458}
 --- !u!138 &5481826569852999381
@@ -3194,6 +3425,38 @@ FixedJoint:
   m_MassScale: 1
   m_ConnectedMassScale: 1
 --- !u!138 &5926092152361877370
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429454230390866764}
+  serializedVersion: 1
+  m_ConnectedBody: {fileID: 9052747793214771148}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: 100
+  m_BreakTorque: 100
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!114 &3665825445995354438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429454230390866764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerCondition: 1
+  randomCondition: 1
+  dialogueData: {fileID: 11400000, guid: 8d04b33a5f5c4c54d9ccd10e30e3e58b, type: 2}
+  colliderTagName: Player
+--- !u!138 &4452288213293619278
 FixedJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
