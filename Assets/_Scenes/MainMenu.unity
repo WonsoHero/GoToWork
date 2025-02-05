@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 391964415}
   - component: {fileID: 391964414}
   - component: {fileID: 391964413}
+  - component: {fileID: 391964418}
   m_Layer: 0
   m_Name: TitleCube
   m_TagString: Untagged
@@ -437,6 +438,20 @@ Transform:
   - {fileID: 748810791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391964418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391964412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructSound: {fileID: 8300000, guid: a207671611ecd6f4e9e796418fedef9d, type: 3}
+  mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!1 &671467761
 GameObject:
   m_ObjectHideFlags: 0
