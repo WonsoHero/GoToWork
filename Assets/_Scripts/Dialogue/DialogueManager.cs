@@ -33,8 +33,8 @@ public class DialogueManager : MonoBehaviour
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(true);
+            StartCoroutine(ShowDialogue());
         }
-        StartCoroutine(ShowDialogue());
     }
     IEnumerator ShowDialogue()
     {
@@ -59,13 +59,13 @@ public class DialogueManager : MonoBehaviour
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(true);
-        }
-        int randomIndex = UnityEngine.Random.Range(0, currentDialogue.dialogues.Length);
-        OnDialogueStart?.Invoke(currentDialogue.dialogues[randomIndex]);
-        dialogueTmp.text = currentDialogue.dialogues[randomIndex];
+            int randomIndex = UnityEngine.Random.Range(0, currentDialogue.dialogues.Length);
+            OnDialogueStart?.Invoke(currentDialogue.dialogues[randomIndex]);
+            dialogueTmp.text = currentDialogue.dialogues[randomIndex];
 
-        // 대사 하나만 출력하고 종료
-        StartCoroutine(CloseDialogueAfterDelay());
+            // 대사 하나만 출력하고 종료
+            StartCoroutine(CloseDialogueAfterDelay());
+        }     
     }
     private IEnumerator CloseDialogueAfterDelay()
     {
