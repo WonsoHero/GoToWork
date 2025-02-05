@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabbaleObject : MonoBehaviour
 {
     [SerializeField] PoseName grabPose;
-    [SerializeField] bool isSimpleMode = false;
+    bool isSimpleMode = false;
 
     Rigidbody rb;
     FixedJoint leftHandJoint;
@@ -40,6 +40,11 @@ public class GrabbaleObject : MonoBehaviour
         rightHandJoint = MissionManager.Instance.RightHandJoint;
         handPoser = MissionManager.Instance.HandPoser;
         handController = MissionManager.Instance.HandController;
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -120,7 +125,7 @@ public class GrabbaleObject : MonoBehaviour
 
             gripStrengthRight = handController.GetHandGauge();
 
-            if(gripStrengthRight > minGripStrengthRight)
+            if(isSpaceDown && gripStrengthRight > minGripStrengthRight)
             {
                 //파괴가능한 오브젝트면서 한계 힘을 넘으면
                 if (destruct != null && gripStrengthRight > maxGripStrengthRight)
@@ -128,7 +133,6 @@ public class GrabbaleObject : MonoBehaviour
                     //물건 부숴짐
                     destruct.Destruct();
                     Debug.Log("너무 세게 잡음");
-
                 }
                 if (!isRightGrapped)
                 {

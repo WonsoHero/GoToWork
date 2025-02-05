@@ -27,7 +27,6 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
     {
         Debug.Log("미션 성공 이벤트 발생");
         succeed?.Invoke(success);
-        
     }
 
     public void OnMissionFailed()

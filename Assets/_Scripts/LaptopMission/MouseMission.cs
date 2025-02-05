@@ -36,6 +36,13 @@ public class MouseMission : MissionOBJ
     {
         destructible.destruct -= OnMissionFailed;
     }
+
+    public override void OnMissionSuccess(bool success)
+    {
+        base.OnMissionSuccess(success);
+        MissionData.isCleared = true;
+    }
+
     void Update()
     {
         if (mouseGameObject != null)

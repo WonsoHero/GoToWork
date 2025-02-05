@@ -157,9 +157,31 @@ public class MissionManager : MonoBehaviour
         //미션 오브젝트 쓰는 곳에서 쓸 수 있도록 이벤트 발생
         MissionEventArgs args = new MissionEventArgs(missionObj, true); //계속 새로 만드는데 안쓰이는건 가비지 컬렉터가 알아서 회수하나??
         missionObjChanged?.Invoke(args);
-
+        
         //미션에 맞게 트랜스폼 로드
         LoadTransforms();
+
+        Debug.Log(missionObj.name + "미션 할당됨");
+    }
+
+    public void AssignMission(int missionIdx, bool loadTransform)
+    {
+        //캐싱
+        missionObj = missions[missionIdx];
+        missionData = missionObj.MissionData;
+
+        //이벤트 구독
+        missionObj.succeed += MissionComplete;
+
+        //미션 오브젝트 쓰는 곳에서 쓸 수 있도록 이벤트 발생
+        MissionEventArgs args = new MissionEventArgs(missionObj, true); //계속 새로 만드는데 안쓰이는건 가비지 컬렉터가 알아서 회수하나??
+        missionObjChanged?.Invoke(args);
+
+        if (loadTransform)
+        {
+            //미션에 맞게 트랜스폼 로드
+            LoadTransforms();
+        }
 
         Debug.Log(missionObj.name + "미션 할당됨");
     }
@@ -178,6 +200,28 @@ public class MissionManager : MonoBehaviour
         //원래 트랜스폼으로 되돌리기
         //LoadTransforms();
         LoadOrigins();
+
+        //미션 오브젝트 쓰던 곳에서 할당 해제할 수 있도록 이벤트 발생
+        MissionEventArgs args = new MissionEventArgs(missionObj, false);
+        missionObjChanged?.Invoke(args);
+    }
+    public void RemoveMission(int missionIdx, bool loadTransform)
+    {
+        Debug.Log("미션 할당 해제");
+
+        //이벤트 구독 해제
+        missionObj.succeed -= MissionComplete;
+
+        //캐싱 취소 -> 미션 0번을 대목표로 설정?
+        missionObj = null;
+        missionData = null; //null -> 0번 미션으로 디폴트 설정? 
+
+        if (loadTransform)
+        {
+            //원래 트랜스폼으로 되돌리기
+            //LoadTransforms();
+            LoadOrigins();
+        }
 
         //미션 오브젝트 쓰던 곳에서 할당 해제할 수 있도록 이벤트 발생
         MissionEventArgs args = new MissionEventArgs(missionObj, false);
