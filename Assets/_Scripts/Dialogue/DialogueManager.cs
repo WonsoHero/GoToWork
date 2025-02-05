@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(Dialogue data)
     {
-        if (isDialogueActive) return;
+        //if (isDialogueActive) return;
 
         currentDialogue = data;
         dialogueIndex = 0;
