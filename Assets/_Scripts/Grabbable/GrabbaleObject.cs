@@ -32,7 +32,7 @@ public class GrabbaleObject : MonoBehaviour
     public float maxGripStrengthLeft = 0.8f;
     public float maxGripStrengthRight = 0.8f;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         destruct = gameObject.GetComponent<Destructible>();
@@ -114,15 +114,15 @@ public class GrabbaleObject : MonoBehaviour
                 isSpaceDown = false;
             }
 
-            gripStrengthLeft = handController.GetHandGauge();
+            //gripStrength = handController.GetHandGauge();
 
-            if(isSpaceDown && gripStrengthLeft > minGripStrengthLeft)
+            if(isSpaceDown && gripStrength > minGripStrengthLeft)
             {
-                
                 if (!isLeftGrapped)
                 {
                     GrabObject(leftHandJoint);
                     isLeftGrapped = true;
+                    Debug.Log("왼손 잡음");
                 }
             }
             else
@@ -143,14 +143,15 @@ public class GrabbaleObject : MonoBehaviour
                 isSpaceDown = false;
             }
 
-            gripStrengthRight = handController.GetHandGauge();
+            //gripStrength = handController.GetHandGauge();
 
-            if(isSpaceDown && gripStrengthRight > minGripStrengthRight)
+            if (isSpaceDown && gripStrength > minGripStrengthRight)
             {
                 if (!isRightGrapped)
                 {
                     GrabObject(rightHandJoint);
                     isRightGrapped = true;
+                    Debug.Log("오른손 잡음");
                 }
             }
             else
