@@ -844,54 +844,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 577413267}
   m_SourcePrefab: {fileID: 100100000, guid: 65ebdccc10b5bed46a226ce3aef88c28, type: 3}
---- !u!1 &688817063
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 688817064}
-  - component: {fileID: 688817065}
-  m_Layer: 10
-  m_Name: CupDialogue Fail
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &688817064
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688817063}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1911312434271167790}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &688817065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688817063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerCondition: 0
-  randomCondition: 1
-  dialogueData: {fileID: 11400000, guid: 7374244f51c2f1a4eabfab4af8ecfdab, type: 2}
-  colliderTagName: Player
 --- !u!1 &798617630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2284743991245581595, guid: 18775a72a33202b49bf5583c266fae91, type: 3}
@@ -1990,54 +1942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17264404c8f11745866d74b362be7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1883201610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1883201611}
-  - component: {fileID: 1883201612}
-  m_Layer: 10
-  m_Name: CupDialogue Succees
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1883201611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883201610}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1911312434271167790}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1883201612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883201610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a311ceb3fa6b044bd6b63ad0247769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerCondition: 0
-  randomCondition: 1
-  dialogueData: {fileID: 11400000, guid: 99a2bb338706e7342b81f9f5e1b838ab, type: 2}
-  colliderTagName: Player
 --- !u!4 &2010315743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2207180854487712285, guid: 50433a0bbccbfbe48b19593c0f062e9c, type: 3}
@@ -2517,29 +2421,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5166339007234392192, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-      propertyPath: failureDialogue
-      value: 
-      objectReference: {fileID: 688817063}
-    - target: {fileID: 5166339007234392192, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-      propertyPath: successDialogue
-      value: 
-      objectReference: {fileID: 1883201610}
     - target: {fileID: 9139805635922015361, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5807483300429138007, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-    - {fileID: 745675200772119855, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8995317552870840771, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1883201611}
-    - targetCorrespondingSourceObject: {fileID: 8995317552870840771, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 688817064}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 5503341190533661667, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
 --- !u!114 &1911312434271167789 stripped
@@ -2553,11 +2442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e28e4ba2e6d374da4968c0fe98b4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1911312434271167790 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8995317552870840771, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-  m_PrefabInstance: {fileID: 1911312434271167784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2361743632736955012
 MonoBehaviour:
   m_ObjectHideFlags: 0

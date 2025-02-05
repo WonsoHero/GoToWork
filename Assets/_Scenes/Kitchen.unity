@@ -1232,6 +1232,7 @@ MonoBehaviour:
   missionContent: {fileID: -8809274655598823839, guid: 0aac8d7f8fd819c4cad325024952ea84, type: 3}
   door: {fileID: 0}
   clearDialogue: {fileID: 0}
+  failureDialogue: {fileID: 0}
   handController: {fileID: 445965696}
   playerManager: {fileID: 297132693}
 --- !u!4 &1508830596
