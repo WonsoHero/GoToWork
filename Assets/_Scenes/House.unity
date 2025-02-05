@@ -608,6 +608,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ebdccc10b5bed46a226ce3aef88c28, type: 3}
+--- !u!1 &798617630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2284743991245581595, guid: 18775a72a33202b49bf5583c266fae91, type: 3}
+  m_PrefabInstance: {fileID: 2739892792193346320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &926984514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8837763933352948182, guid: 18775a72a33202b49bf5583c266fae91, type: 3}
@@ -1755,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hallway
       objectReference: {fileID: 0}
+    - target: {fileID: 4539356438778369248, guid: 18775a72a33202b49bf5583c266fae91, type: 3}
+      propertyPath: volumeObject
+      value: 
+      objectReference: {fileID: 798617630}
     - target: {fileID: 8837763933352948182, guid: 18775a72a33202b49bf5583c266fae91, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
