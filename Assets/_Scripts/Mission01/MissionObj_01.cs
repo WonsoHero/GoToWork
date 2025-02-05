@@ -9,6 +9,7 @@ public class MissionObj_01 : MissionOBJ
     [SerializeField] Rigidbody rightHand;
     [SerializeField] GameObject tutorial;
     [SerializeField] GameObject tutorial2;
+    
     HandController handController;
     HandPoser handPoser;
     int enteredColliders = 0;
@@ -21,6 +22,7 @@ public class MissionObj_01 : MissionOBJ
     public override void OnMissionSuccess(bool Success)
     {
         base.OnMissionSuccess(true);
+        GetComponent<AudioSource>().Stop();
         tutorial2.SetActive(true);
     }
     private void Awake()

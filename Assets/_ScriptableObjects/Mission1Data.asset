@@ -17,7 +17,7 @@ MonoBehaviour:
   isCleared: 0
   modelPosition: {x: 5.7480874, y: -0.4358369, z: 5.110227}
   modelRotation: {x: -0, y: -0.011344421, z: 0, w: 0.9999357}
-  leftHandControllerPosition: {x: 5.682073, y: 1.0065204, z: 6.4158487}
+  leftHandControllerPosition: {x: 5.5, y: 1.0065204, z: 6.4158487}
   leftHandControllerRotation: {x: -0, y: -0.011344421, z: -0, w: 0.9999357}
   rightHandControllerPosition: {x: 6.1372957, y: 0.8716775, z: 6.3326283}
   rightHandControllerRotation: {x: -0, y: -0.011344421, z: -0, w: 0.9999357}
