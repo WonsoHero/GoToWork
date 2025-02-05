@@ -469,7 +469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmMixer: {fileID: 24100000, guid: 629ba1a2ed4dc1d48a6af4501d7233d2, type: 2}
   sfxMixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
-  mainMenuBGM: {fileID: 8300000, guid: 6ce1b6c166162db4ba9ac78463fd3878, type: 3}
+  mainMenuBGM: {fileID: 8300000, guid: 6c2f5a3728c36dc4080fb48c96385779, type: 3}
+  succeessSFX: {fileID: 0}
+  completeSFX: {fileID: 0}
 --- !u!82 &671467763
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioMixer bgmMixer;
     [SerializeField] AudioMixer sfxMixer;
     [SerializeField] AudioClip mainMenuBGM;
+    [SerializeField] AudioClip succeessSFX;
+    [SerializeField] AudioClip completeSFX;
 
     static SoundManager instance;
     static public SoundManager Instance
@@ -46,5 +48,15 @@ public class SoundManager : MonoBehaviour
         sfxMixer.GetFloat(SoundSetting.mixerMusicVolumeKey, out float volume);
         float realVolume = Mathf.Pow(10f, volume / 80f);
         source.PlayOneShot(sfx, realVolume);
+    }
+
+    public void PlaySucceessSound()
+    {
+        PlaySFX(succeessSFX);
+    }
+
+    public void PlayCompleteSound()
+    {
+        PlaySFX(completeSFX);
     }
 }

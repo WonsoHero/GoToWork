@@ -257,6 +257,9 @@ public class MissionManager : MonoBehaviour
         handControllerRight.transform.position = handControllerRightOrigin.position;
         handControllerRight.transform.rotation = handControllerRightOrigin.rotation;
 
+        //손 포즈 복귀
+        handPoser.ChangePose(PoseName.OriginalPose);
+
         //미션 오브젝트는 내가 건든 그대로 남아있음
     }
 
