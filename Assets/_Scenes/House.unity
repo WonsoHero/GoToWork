@@ -2826,6 +2826,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6237351000234279550, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
+      propertyPath: randomCondition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8831984330513502934, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
       propertyPath: m_Name
       value: LivingRoom
