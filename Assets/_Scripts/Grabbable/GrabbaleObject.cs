@@ -45,6 +45,15 @@ public class GrabbaleObject : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isSpaceDown = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isSpaceDown = false;
+        }
+
         gripStrength = handController.GetHandGauge();
 
         if (isSpaceDown)
@@ -105,18 +114,10 @@ public class GrabbaleObject : MonoBehaviour
 
         if (collision.gameObject.tag == "LeftHand" && enteredCollisionLeft >= 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                isSpaceDown = true;
-            }
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                isSpaceDown = false;
-            }
 
             //gripStrength = handController.GetHandGauge();
 
-            if(isSpaceDown && gripStrength > minGripStrengthLeft)
+            if(gripStrength > minGripStrengthLeft)
             {
                 if (!isLeftGrapped)
                 {
@@ -134,18 +135,10 @@ public class GrabbaleObject : MonoBehaviour
 
         if(collision.gameObject.tag == "RightHand" && enteredCollisionRight >= 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                isSpaceDown = true;
-            }
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                isSpaceDown = false;
-            }
 
             //gripStrength = handController.GetHandGauge();
 
-            if (isSpaceDown && gripStrength > minGripStrengthRight)
+            if (gripStrength > minGripStrengthRight)
             {
                 if (!isRightGrapped)
                 {
