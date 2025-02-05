@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MissionManager : MonoBehaviour
 {
     public Action<MissionEventArgs> missionObjChanged;
+    public Action<int> missionComplete;
 
     //미션에 필요한 항목들을 몽땅 들고 있음
     [SerializeField] List<MissionOBJ> missionObjects;
@@ -21,6 +22,10 @@ public class MissionManager : MonoBehaviour
 
     [SerializeField] GameObject missionPanel;
     [SerializeField] MissionContent missionContent;
+    [SerializeField] HallwayDoor door;
+    [SerializeField] GameObject clearDialogue;
+
+    bool stageCleared = false;
 
     //미션에 사용할 클래스들
     [SerializeField] HandController handController;
@@ -181,19 +186,28 @@ public class MissionManager : MonoBehaviour
 
     void MissionComplete(bool success)
     {
-        Debug.Log(missionObj.name + " 컴플리트");
+        //Debug.Log(missionData.missionIdx + " 컴플리트");
+        //완료한 미션의 인덱스를 이벤트로 쏴줌
+        //missionComplete?.Invoke(missionData.missionIdx);
+
         missionData.isCleared = success;
 
         foreach(MissionOBJ obj in missionObjects)
         {
             if (!obj.MissionData.isCleared)
             {
-                Debug.Log("모든 미션 클리어 못함");
+                //Debug.Log("모든 미션 클리어 못함");
                 return;
             }
         }
 
-        Debug.Log("모든 미션 클리어");
+        //Debug.Log("모든 미션 클리어");
+        if (!stageCleared)
+        {
+            stageCleared = true;
+            door.OpenDoor();
+            clearDialogue.SetActive(true);
+        }
     }
 
     void MissionFail(bool fail)
