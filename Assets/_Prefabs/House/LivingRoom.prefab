@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructSound: {fileID: 8300000, guid: 3d24179f7a761254b8904ac36a9cb59f, type: 3}
+  destructSound: {fileID: 8300000, guid: 71ddbb243e1590c4aaa8ac412330467a, type: 3}
   mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!4 &1296580162641885869 stripped
 Transform:

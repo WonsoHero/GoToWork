@@ -7,9 +7,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject SettingPanel;
 
-    public async void OnStartBtnClicked(string sceneName)
+    public void OnStartBtnClicked(string sceneName)
     {
-        await SceneManager.LoadSceneAsync(sceneName);
+       SceneManager.LoadScene(sceneName);
     }
     public void OnSettingBtnClicked()
     {
