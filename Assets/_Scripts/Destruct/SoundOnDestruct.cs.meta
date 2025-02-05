@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 0994901da9b6ce849a7c08b242c9a6a7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - destructSound: {instanceID: 0}
+  - mixer: {fileID: 24300002, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

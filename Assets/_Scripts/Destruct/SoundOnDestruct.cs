@@ -1,16 +1,22 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SoundOnDestruct : MonoBehaviour
 {
     [SerializeField] AudioClip destructSound;
-    [SerializeField] float volume = 0.5f;
+    [SerializeField] AudioMixer mixer;
 
     private void OnDisable()
     {
         if (destructSound != null)
         {
-            AudioSource.PlayClipAtPoint(destructSound, transform.position, volume);
+            mixer.GetFloat(SoundSetting.mixerMusicVolumeKey, out float volume);
+
+            float realVolume = Mathf.Pow(10f, volume / 80f);
+            Debug.Log("Volume: " + volume + ", RealVolume" + realVolume);
+            AudioSource.PlayClipAtPoint(destructSound, transform.position, realVolume);
         }
     }
 }

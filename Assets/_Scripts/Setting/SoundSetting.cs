@@ -10,10 +10,10 @@ public class SoundSetting : MonoBehaviour
     [SerializeField] AudioMixer bgmMixer;
     [SerializeField] AudioMixer sfxMixer;
 
-    private readonly static string SavedBGMVolumeKey = "SavedBGMVolume";
-    private readonly static string SavedSFXVolumeKey = "SavedSFXVolume";
+    public readonly static string SavedBGMVolumeKey = "SavedBGMVolume";
+    public readonly static string SavedSFXVolumeKey = "SavedSFXVolume";
 
-    private readonly static string mixerMusicVolumeKey = "MusicVolume";
+    public readonly static string mixerMusicVolumeKey = "MusicVolume";
 
     private void Start()
     {
