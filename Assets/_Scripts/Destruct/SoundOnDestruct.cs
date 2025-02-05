@@ -16,7 +16,7 @@ public class SoundOnDestruct : MonoBehaviour
             mixer.GetFloat(SoundSetting.mixerMusicVolumeKey, out float volume);
 
             float realVolume = Mathf.Pow(10f, volume / 80f);
-            Debug.Log("Volume: " + volume + ", RealVolume" + realVolume);
+            //Debug.Log("Volume: " + volume + ", RealVolume" + realVolume);
             AudioSource.PlayClipAtPoint(destructSound, transform.position, realVolume);
         }
     }
