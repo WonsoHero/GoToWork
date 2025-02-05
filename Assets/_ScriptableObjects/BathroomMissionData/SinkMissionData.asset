@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poseDictCreated: 0
   missionIdx: 32
-  isCleared: 0
+  isCleared: 1
   modelPosition: {x: -0.53, y: -0.44664603, z: -0.381}
   modelRotation: {x: 0.043619387, y: 0, z: 0, w: 0.99904823}
-  leftHandControllerPosition: {x: 4.8, y: 0.24700038, z: 0.3030005}
+  leftHandControllerPosition: {x: -0.863, y: 1.24, z: 0.293}
   leftHandControllerRotation: {x: -0, y: -0.011344421, z: -0, w: 0.9999357}
-  rightHandControllerPosition: {x: 5.3, y: 0.24700038, z: 0.3030005}
+  rightHandControllerPosition: {x: -0.117, y: 1.24, z: 0.293}
   rightHandControllerRotation: {x: -0, y: -0.011344421, z: -0, w: 0.9999357}
   poses: 0000000000000000
   missionObjPosition: {x: -0.482, y: 0.8987, z: 0.366}

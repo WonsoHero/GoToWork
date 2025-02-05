@@ -3002,6 +3002,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4530267717744287070}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5926092152361877370}
   m_SourcePrefab: {fileID: 100100000, guid: 3856a38fec85e334fa05a5b58c5f852e, type: 3}
 --- !u!4 &4429454230390775660 stripped
 Transform:
@@ -3027,7 +3030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructModel: {fileID: 1577902533296026129, guid: f0452262eea5ef641bee711478fc127f, type: 3}
   forceMultiplier: 1
-  destructForce: 17
+  destructForce: 20
 --- !u!64 &885609009421144368
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3170,6 +3173,22 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!138 &5926092152361877370
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429454230390866764}
+  serializedVersion: 1
+  m_ConnectedBody: {fileID: 9052747793214771148}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: 100
+  m_BreakTorque: 100
+  m_EnableCollision: 1
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1001 &4544718255215903287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3262,7 +3281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577058674734721606, guid: 45ca9e5fb811ded4e9f30270ca323dac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.304
+      value: -0.581
       objectReference: {fileID: 0}
     - target: {fileID: 577058674734721606, guid: 45ca9e5fb811ded4e9f30270ca323dac, type: 3}
       propertyPath: m_LocalRotation.w
