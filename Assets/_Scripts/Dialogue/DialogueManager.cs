@@ -30,8 +30,10 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = data;
         dialogueIndex = 0;
         isDialogueActive = true;
-        dialoguePanel.SetActive(true);
-
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+        }
         StartCoroutine(ShowDialogue());
     }
     IEnumerator ShowDialogue()
@@ -50,12 +52,14 @@ public class DialogueManager : MonoBehaviour
     }
     public void RandomDialogue(Dialogue data)
     {
-        if (isDialogueActive) return;
+        //if (isDialogueActive) return;
 
         currentDialogue = data;
         isDialogueActive = true;
-        dialoguePanel.SetActive(true);
-
+        if (dialoguePanel != null)
+        {
+            dialoguePanel.SetActive(true);
+        }
         int randomIndex = UnityEngine.Random.Range(0, currentDialogue.dialogues.Length);
         OnDialogueStart?.Invoke(currentDialogue.dialogues[randomIndex]);
         dialogueTmp.text = currentDialogue.dialogues[randomIndex];
