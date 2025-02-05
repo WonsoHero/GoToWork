@@ -202,8 +202,6 @@ public class Outline : MonoBehaviour
 
     void LoadSmoothNormals()
     {
-        if (!gameObject.scene.isLoaded) return;
-
         // Retrieve or generate smooth normals
         foreach (var meshFilter in GetComponentsInChildren<MeshFilter>())
         {
