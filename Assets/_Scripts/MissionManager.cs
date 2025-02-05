@@ -24,6 +24,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] MissionContent missionContent;
     [SerializeField] HallwayDoor door;
     [SerializeField] GameObject clearDialogue;
+    [SerializeField] GameObject failureDialogue;
 
     bool stageCleared = false;
 
@@ -256,7 +257,8 @@ public class MissionManager : MonoBehaviour
 
     void MissionFail(bool fail)
     {
-        Debug.Log("미션실패, 2초후 다시 시작");
+        failureDialogue.SetActive(true);
+
         StartCoroutine(RestartMission());
     }
 

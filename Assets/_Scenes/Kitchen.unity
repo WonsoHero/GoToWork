@@ -1221,7 +1221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionObjects:
   - {fileID: 577413264}
-  - {fileID: 2139448025}
+  - {fileID: 0}
   - {fileID: 1651673046}
   playerModel: {fileID: 4510444}
   handControllerLeft: {fileID: 2043290585}
@@ -1459,17 +1459,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &2139448025 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8723794893434534459, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
-  m_PrefabInstance: {fileID: 1911312434271167784}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e28e4ba2e6d374da4968c0fe98b4a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1911312434271167784
 PrefabInstance:
   m_ObjectHideFlags: 0

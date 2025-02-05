@@ -17,27 +17,37 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
     bool isFailed = false;
 
     [SerializeField] MissionData missionData;
+    [SerializeField] GameObject successDialogue;
+
     public MissionData MissionData { get { return missionData; } }
 
     public void OnMissionSuccess()
     {
         succeed?.Invoke(isSucceed);
+
+        ActiveDialogue(successDialogue);
     }
     public virtual void OnMissionSuccess(bool success)
     {
         Debug.Log("미션 성공 이벤트 발생");
         succeed?.Invoke(success);
+
+        ActiveDialogue(successDialogue);
     }
 
     public void OnMissionFailed()
     {
         if (missionData.isCleared) return;
+        //ActiveDialogue(failureDialogue);
+
         failed?.Invoke(isFailed);
     }
     public void OnMissionFailed(bool fail)
     {
         if (missionData.isCleared) return;
         Debug.Log("미션 실패 이벤트 발생");
+        //ActiveDialogue(failureDialogue);
+
         failed?.Invoke(fail);
     }
 
@@ -51,6 +61,12 @@ public class MissionOBJ : MonoBehaviour, IMissionObject
     {
         Debug.Log(missionData.missionIdx + " 중단");
         missionStop.Invoke(missionData.missionIdx);
+    }
+
+    void ActiveDialogue(GameObject dialogue)
+    {
+        if(dialogue == null) return;
+        dialogue.SetActive(true);
     }
 }
 public interface IMissionObject

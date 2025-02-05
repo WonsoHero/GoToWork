@@ -70,6 +70,8 @@ public class MissionObj_Cup : MissionOBJ
         }
     }
 
+    
+
     public override void MissionStarted()
     {
         base.MissionStarted();
