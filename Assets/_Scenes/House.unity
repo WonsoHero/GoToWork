@@ -1332,6 +1332,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bccc7a703419044d86448cdd3542212, type: 3}
+--- !u!114 &1156363893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9172190753822254675, guid: d92a8ad923e130148973412c0cfcf498, type: 3}
+  m_PrefabInstance: {fileID: 5814819380512747231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c779d07250901446895c9d4398cb83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1228853048 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 248363788269181361, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
@@ -1791,7 +1802,7 @@ MonoBehaviour:
   - {fileID: 577413264}
   - {fileID: 426861876}
   - {fileID: 1246012178}
-  - {fileID: 0}
+  - {fileID: 1156363893}
   - {fileID: 1911312434271167789}
   - {fileID: 1062202121}
   - {fileID: 1837963473}
@@ -2426,8 +2437,7 @@ PrefabInstance:
       value: Kitchen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5503341190533661667, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
@@ -2750,7 +2760,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3665825445995354438, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
+    - {fileID: 5078445803439161878, guid: beded4754bc8cdd4ab0d6ea59081e76e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -3480,7 +3480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inTrigger: 0
   missionData: {fileID: 11400000, guid: a717d2bf8a3eb74408a1da0db64e3c3d, type: 2}
-  successDialogue: {fileID: 0}
+  successDialogue: {fileID: 1570866277829203334}
   ground: {fileID: 7518017317701953744}
   cup: {fileID: 5166339007234392192}
   spoonAxis: {fileID: 7552636364203167335}
