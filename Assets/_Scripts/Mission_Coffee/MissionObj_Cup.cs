@@ -46,6 +46,12 @@ public class MissionObj_Cup : MissionOBJ
                 handPoser.ChangePose(PoseName.CupGrab);
             }
         }
+
+        //바닥에 떨어지면 깨짐
+        if(other.tag == "Floor")
+        {
+            destructible.Destruct();
+        }
     }
 
     private void OnTriggerExit(Collider other)

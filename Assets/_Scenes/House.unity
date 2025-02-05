@@ -208,6 +208,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
+--- !u!1 &200199747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5752428508763466595, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+  m_PrefabInstance: {fileID: 1911312434271167784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &200199751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200199747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0994901da9b6ce849a7c08b242c9a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructSound: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 72171b9b35851f544b8ab6007d753553, type: 2}
 --- !u!1 &267071637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5529184934577359050, guid: 022e40550abc2de4da1c63e20cf9df90, type: 3}
@@ -2381,6 +2400,10 @@ PrefabInstance:
       propertyPath: cup
       value: 
       objectReference: {fileID: 1911312434271167789}
+    - target: {fileID: 3570957617848092643, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3816833457540528424, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 7168
@@ -2425,8 +2448,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5554054037075000379, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 5794519776742877205, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958424504193105728, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577566174532914024, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7577566174532914024, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
@@ -2436,6 +2471,10 @@ PrefabInstance:
     - target: {fileID: 7695748606635953380, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 7168
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401775710075053107, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 9139805635922015361, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       propertyPath: m_Name
@@ -2452,6 +2491,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6361825725408321512, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1911312434271167789}
+    - targetCorrespondingSourceObject: {fileID: 5752428508763466595, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 200199751}
   m_SourcePrefab: {fileID: 100100000, guid: 7c9a41c89180f3440ae147358f4286ed, type: 3}
 --- !u!1 &1911312434271167785 stripped
 GameObject:
