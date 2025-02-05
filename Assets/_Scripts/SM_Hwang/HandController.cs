@@ -20,7 +20,7 @@ public class HandController : MonoBehaviour
     [SerializeField] float smoothFactor = 0.1f; //관성
     [SerializeField] public float multiflier = 10f; //감도 배수
 
-    [SerializeField] HandControllerCanvas canvas;
+    //[SerializeField] HandControllerCanvas canvas;
 
     float mouseX;
     float mouseY;
@@ -46,7 +46,7 @@ public class HandController : MonoBehaviour
         handControlMode = HandControlMode.None;
         handMoveAxis = HandMoveAxis.All;
         handPower= HandPower.None;
-        canvas.gameObject.SetActive(false);
+        //canvas.gameObject.SetActive(false);
 
     }
     private void Update()
@@ -177,7 +177,7 @@ public class HandController : MonoBehaviour
             //목표 회전으로 보간
             float smoothAngle = Mathf.MoveTowardsAngle(hand.rotation.eulerAngles.y, angle, mouseSpeed * Time.deltaTime);
 
-            canvas.ShowText(GetHandRotation().ToString());
+            //canvas.ShowText(GetHandRotation().ToString());
             // 회전 적용 (Quaternion.Euler로 y축 회전만 적용)
             hand.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
         }
@@ -342,17 +342,17 @@ public class HandController : MonoBehaviour
     }
     void TestParameterByInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (canvas.gameObject.activeSelf)
-            {
-                canvas.gameObject.SetActive(false);
-            }
-            else
-            {
-                canvas.gameObject.SetActive(true);
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (canvas.gameObject.activeSelf)
+        //    {
+        //        canvas.gameObject.SetActive(false);
+        //    }
+        //    else
+        //    {
+        //        canvas.gameObject.SetActive(true);
+        //    }
+        //}
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
