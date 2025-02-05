@@ -27,4 +27,4 @@ MonoBehaviour:
   handControlMode: 2
   moveAxis: 0
   handReverse: 0
-  missionGuide: "\uC2A4\uD47C\uC744 \uC800\uC5B4 \uC74C\uB8CC\uB97C \uC11E\uC73C\uC138\uC694"
+  missionGuide: "\uC74C\uB8CC\uB97C \uC11E\uC73C\uC138\uC694"
