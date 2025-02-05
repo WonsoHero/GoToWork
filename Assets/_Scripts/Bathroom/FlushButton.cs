@@ -19,7 +19,7 @@ public class FlushButton : MonoBehaviour
     {
         if (other.gameObject.CompareTag("LeftHand") || other.gameObject.CompareTag("RightHand"))
         {
-            Debug.Log("야야 left hand");
+            //Debug.Log("야야 left hand");
 
             if (isPressed) return;
 
