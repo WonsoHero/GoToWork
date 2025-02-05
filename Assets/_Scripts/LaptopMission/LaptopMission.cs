@@ -28,6 +28,10 @@ public class LaptopMission : MissionOBJ
         laptopPower.missionSuccess -= OnMissionSuccess;
         laptopPower.missionSuccess -= OnPowerMissionSuccess;
     }
+    public override void OnMissionSuccess(bool success)
+    {
+        base.OnMissionSuccess(success);
+    }
     public void OnPowerMissionSuccess(bool success)
     {
         if (windowScreen != null)
@@ -50,7 +54,6 @@ public class LaptopMission : MissionOBJ
             }
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "LeftHand")
